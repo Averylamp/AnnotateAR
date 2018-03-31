@@ -18,12 +18,14 @@ extension ViewController{
 
     @objc func dismissHostClientVC(){
         if self.view.subviews.contains(hostClientVC.view){
+            hostClientVC.view.isUserInteractionEnabled = false
             UIView.animate(withDuration: 0.5, animations: {
                 self.hostClientVC.view.center.y -= 30
                 self.hostClientVC.view.alpha = 0.0
             }) { (finished) in
                 
             }
+            self.unblockInteraction()
         }
         
     }
