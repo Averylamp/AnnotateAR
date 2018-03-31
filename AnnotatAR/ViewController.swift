@@ -92,7 +92,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.view.addSubview(modelOptionsVC.view)
         modelOptionsVC.view.alpha = 0.0
         modelOptionsVC.view.isUserInteractionEnabled = false
-        modelOptionsVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+        modelOptionsVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
         
     }
 
@@ -120,6 +120,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     /// Creates a new AR configuration to run on the `session`.
     /// - Tag: ARReferenceImage-Loading
 	func resetTracking() {
+        
+        if let root = DataManager.shared().rootNode{
+            root.removeFromParentNode()
+            DataManager.shared().rootNode = nil
+        }
         
         guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
             fatalError("Missing expected asset catalog resources.")
