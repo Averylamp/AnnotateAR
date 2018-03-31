@@ -27,12 +27,10 @@ extension ViewController{
     
     func addTestObject(name:String){
         let node = ARObjectNode(modelName: name)
-        if let node = node {
-            node.load()
-            node.position = SCNVector3Make(0, 0, -1)
-            DataManager.shared().currentObjectMoving = node
-            self.sceneView.pointOfView?.addChildNode(node)
-        }
+        node.load()
+        node.position = SCNVector3Make(0, 0, -1)
+        DataManager.shared().currentObjectMoving = node
+        self.sceneView.pointOfView?.addChildNode(node)
         
     }
     

@@ -10,8 +10,8 @@ import UIKit
 import SceneKit
 
 protocol DataManagerDelegate {
-    func receivedObjectsUpdate(objects: [ARObject])
-    func receivedNewObject(object: ARObject)
+    func receivedObjectsUpdate(objects: [ARObjectNode])
+    func receivedNewObject(object: ARObjectNode)
     func newDevicesConnected(devices: [String])
 }
 
@@ -68,7 +68,7 @@ class DataManager {
     var rootNode: SCNNode?
     var currentObjectMoving: SCNNode?
     
-    var objects = [ARObject]()
+    var objects = [ARObjectNode]()
     
     @objc func update(){
         //       print("Run loop update \(CACurrentMediaTime())")
@@ -88,12 +88,12 @@ class DataManager {
         connectivity.sendData(data: objectData)
     }
     
-    func sendObject(object: ARObject){
+    func sendObject(object: ARObjectNode){
         let objectData = NSKeyedArchiver.archivedData(withRootObject: object)
         connectivity.sendData(data: objectData)
     }
     
-    func updateObject(object: ARObject){
+    func updateObject(object: ARObjectNode){
         if let root = rootNode{
             if let node = root.childNode(withName: object.id, recursively: true){
                 print("Updating transform of object")
@@ -131,7 +131,7 @@ extension DataManager: ConnectivityManagerDelegate{
         print("Received Data" )
         DispatchQueue.main.async {
             let object = NSKeyedUnarchiver.unarchiveObject(with: data)
-            if let newObject = object as? ARObject{
+            if let newObject = object as? ARObjectNode{
                 print("AR Object update received")
                 self.updateObject(object: newObject)
                 self.delegate?.receivedNewObject(object: newObject)

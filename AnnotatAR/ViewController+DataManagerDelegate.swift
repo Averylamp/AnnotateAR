@@ -79,11 +79,11 @@ extension ViewController:DataManagerDelegate{
     }
     
     
-    func receivedObjectsUpdate(objects: [ARObject]){
+    func receivedObjectsUpdate(objects: [ARObjectNode]){
         
     }
     
-    func receivedNewObject(object: ARObject){
+    func receivedNewObject(object: ARObjectNode){
         
     }
     

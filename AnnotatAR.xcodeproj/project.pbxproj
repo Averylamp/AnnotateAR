@@ -16,7 +16,6 @@
 		BB9A4A04206F4F4E0078B072 /* AnnotatARTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A03206F4F4E0078B072 /* AnnotatARTests.swift */; };
 		BB9A4A0F206F4F4E0078B072 /* AnnotatARUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A0E206F4F4E0078B072 /* AnnotatARUITests.swift */; };
 		BB9A4A1D206F52DB0078B072 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A1C206F52DB0078B072 /* DataManager.swift */; };
-		BB9A4A1F206F55F30078B072 /* ARObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A1E206F55F30078B072 /* ARObject.swift */; };
 		BB9A4A21206F56430078B072 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A20206F56430078B072 /* Extensions.swift */; };
 		BB9A4A23206F568A0078B072 /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A22206F568A0078B072 /* ConnectivityManager.swift */; };
 		BB9A4A25206F5B050078B072 /* ViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A24206F5B050078B072 /* ViewController+ARSessionDelegate.swift */; };
@@ -63,7 +62,6 @@
 		BB9A4A0E206F4F4E0078B072 /* AnnotatARUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotatARUITests.swift; sourceTree = "<group>"; };
 		BB9A4A10206F4F4E0078B072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB9A4A1C206F52DB0078B072 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		BB9A4A1E206F55F30078B072 /* ARObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObject.swift; sourceTree = "<group>"; };
 		BB9A4A20206F56430078B072 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BB9A4A22206F568A0078B072 /* ConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		BB9A4A24206F5B050078B072 /* ViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				BB9A4A1C206F52DB0078B072 /* DataManager.swift */,
 				BB9A4A6F206F94DC0078B072 /* ARObjectNode.swift */,
 				BB9A4A22206F568A0078B072 /* ConnectivityManager.swift */,
-				BB9A4A1E206F55F30078B072 /* ARObject.swift */,
 				BB9A49F2206F4F4D0078B072 /* Main.storyboard */,
 				BB9A4A2C206F5FB20078B072 /* PromptViewControllers */,
 				BB9A49F5206F4F4E0078B072 /* Assets.xcassets */,
@@ -322,7 +319,6 @@
 				BB9A4A70206F94DC0078B072 /* ARObjectNode.swift in Sources */,
 				BB9A4A2E206F66AD0078B072 /* ViewController+Notifications.swift in Sources */,
 				BB9A4A72206F97BB0078B072 /* ViewController+Gestures.swift in Sources */,
-				BB9A4A1F206F55F30078B072 /* ARObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
