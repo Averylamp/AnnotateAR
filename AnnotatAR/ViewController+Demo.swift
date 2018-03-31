@@ -58,7 +58,7 @@ extension ViewController{
                     rootTappedNode = tempParent
                 }
             }
-            if let tappedARObjectNode = rootTappedNode as? ARObjectNode{
+            if let tappedARObjectNode = rootTappedNode as? ARObjectNode, DataManager.shared().userType == .Host{
                 self.promptModelOptions(model: tappedARObjectNode)
             }
         }

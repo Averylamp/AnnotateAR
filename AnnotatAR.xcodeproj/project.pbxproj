@@ -28,6 +28,7 @@
 		BB9A4A70206F94DC0078B072 /* ARObjectNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A6F206F94DC0078B072 /* ARObjectNode.swift */; };
 		BB9A4A72206F97BB0078B072 /* ViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A71206F97BB0078B072 /* ViewController+Gestures.swift */; };
 		BB9A4A74207006A00078B072 /* ModelOptionsPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A73207006A00078B072 /* ModelOptionsPromptViewController.swift */; };
+		BF8283ED206FE43A00B3ABF0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8283EC206FE43A00B3ABF0 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		BB9A4A6F206F94DC0078B072 /* ARObjectNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectNode.swift; sourceTree = "<group>"; };
 		BB9A4A71206F97BB0078B072 /* ViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Gestures.swift"; sourceTree = "<group>"; };
 		BB9A4A73207006A00078B072 /* ModelOptionsPromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOptionsPromptViewController.swift; sourceTree = "<group>"; };
+		BF8283EC206FE43A00B3ABF0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				BB9A4A1C206F52DB0078B072 /* DataManager.swift */,
 				BB9A4A6F206F94DC0078B072 /* ARObjectNode.swift */,
 				BB9A4A22206F568A0078B072 /* ConnectivityManager.swift */,
+				BF8283EC206FE43A00B3ABF0 /* MenuViewController.swift */,
 				BB9A49F2206F4F4D0078B072 /* Main.storyboard */,
 				BB9A4A2C206F5FB20078B072 /* PromptViewControllers */,
 				BB9A49F5206F4F4E0078B072 /* Assets.xcassets */,
@@ -310,6 +313,7 @@
 			files = (
 				BB9A4A27206F5BCA0078B072 /* StatusViewController.swift in Sources */,
 				BB9A4A74207006A00078B072 /* ModelOptionsPromptViewController.swift in Sources */,
+				BF8283ED206FE43A00B3ABF0 /* MenuViewController.swift in Sources */,
 				BB9A4A23206F568A0078B072 /* ConnectivityManager.swift in Sources */,
 				BB9A4A21206F56430078B072 /* Extensions.swift in Sources */,
 				BB9A49F1206F4F4D0078B072 /* ViewController.swift in Sources */,

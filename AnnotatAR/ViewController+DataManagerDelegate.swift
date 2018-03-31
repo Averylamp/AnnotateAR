@@ -27,9 +27,7 @@ extension ViewController:DataManagerDelegate{
                     self.hostClientVC.view.center.y -= 20
                     self.hostClientVC.view.alpha = 1.0
                 }) { (finished) in
-                    
                 }
-                
             }
         case .FindCenter:
             print("Find Center State")
@@ -42,12 +40,11 @@ extension ViewController:DataManagerDelegate{
         default:
             print("Missing something")
         }
-        
-        
     }
     
     func promptModelOptions(model:ARObjectNode){
-        if !self.view.subviews.contains(modelOptionsVC.view) || modelOptionsVC.view.isUserInteractionEnabled == false{
+        if !self.view.subviews.contains(modelOptionsVC.view) ||
+            modelOptionsVC.view.isUserInteractionEnabled == false{
             modelOptionsVC.view.center = self.view.center
             modelOptionsVC.view.alpha = 0.0
             modelOptionsVC.view.center.y += 20
@@ -62,7 +59,8 @@ extension ViewController:DataManagerDelegate{
     }
     
     func presentPrompt(text:String, confirmation:String, height: CGFloat){
-        if !self.view.subviews.contains(promptVC.view) || promptVC.view.isUserInteractionEnabled == false{
+        if !self.view.subviews.contains(promptVC.view) ||
+            promptVC.view.isUserInteractionEnabled == false{
             promptVC.setupPrompt(mainText: text, confirmationText: confirmation)
             promptVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: height)
             promptVC.view.center = self.view.center
@@ -74,11 +72,8 @@ extension ViewController:DataManagerDelegate{
                 self.promptVC.view.center.y -= 20
                 self.promptVC.view.alpha = 1.0
             }) { (finished) in
-                
             }
-            
         }
-        
     }
     
     func blockInteraction(){
