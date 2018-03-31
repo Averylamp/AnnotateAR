@@ -71,7 +71,8 @@ extension ViewController{
     }
     
     @objc func setupCurrentObjectForMoving(notification: NSNotification){
-        if let userInfo = notification.userInfo, let node = userInfo["model"] as? ARObjectNode, let pointOfView = self.sceneView.pointOfView{
+        if let userInfo = notification.userInfo,
+            let node = userInfo["model"] as? ARObjectNode, let pointOfView = self.sceneView.pointOfView{
             DataManager.shared().currentObjectMoving = node
             DataManager.shared().displayLink.isPaused = false
             let transform = pointOfView.convertTransform(node.transform, from: node.parent)
@@ -82,7 +83,8 @@ extension ViewController{
     }
     
     @objc func deleteCurrentObject(notification: NSNotification){
-        if let userInfo = notification.userInfo, let node = userInfo["model"] as? ARObjectNode{
+        if let userInfo = notification.userInfo,
+            let node = userInfo["model"] as? ARObjectNode{
             DataManager.shared().displayLink.isPaused = true
             DataManager.shared().deleteObject(object: node)
         }
