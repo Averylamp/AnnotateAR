@@ -18,6 +18,7 @@ protocol DataManagerDelegate {
 enum State {
     case HostClientSelector
     case FindCenter
+    case Demo
 }
 
 enum UserType {
@@ -55,18 +56,19 @@ class DataManager {
     
     var allConnectedDevices = [String]()
     
-    var userType: UserType = .Unknown
-    var state: State = .HostClientSelector
-    
+//    var userType: UserType = .Unknown
+//    var state: State = .HostClientSelector
+    var userType: UserType = .Host
+    var state: State = .Demo
+    var initialState:State = .Demo
+
     var alignmentSCNNodes = [SCNNode]()
     var alignmentPoints = [CGPoint]()
     
     var rootNode: SCNNode?
+    var currentObjectMoving: SCNNode?
     
     var objects = [ARObject]()
-    
-    
-    var currentObjectMoving: SCNNode?
     
     @objc func update(){
         //       print("Run loop update \(CACurrentMediaTime())")

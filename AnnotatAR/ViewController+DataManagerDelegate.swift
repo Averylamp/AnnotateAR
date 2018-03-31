@@ -33,7 +33,10 @@ extension ViewController:DataManagerDelegate{
         case .FindCenter:
             print("Find Center State")
             presentPrompt(text: "Find the center point of the demo.  (The host will have set the location)", confirmation: "Got it!", height: 250)
-            
+        case .Demo:
+            print("Demo Time")
+            addTestRoot()
+            addTestObject(name:"ship")
         default:
             print("Missing something")
         }

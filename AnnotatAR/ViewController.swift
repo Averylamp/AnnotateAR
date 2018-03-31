@@ -68,6 +68,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         promptVC.view.alpha = 0.0
         promptVC.view.isUserInteractionEnabled = false
         promptVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleSingleTap(gestureRecognizer:)))
+        tapGestureRecognizer.delegate = self
+        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+        
+        
     }
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -105,6 +111,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
         statusViewController.scheduleMessage("All set for AR", inSeconds: 5.5, messageType: .contentPlacement)
+        
+        DataManager.shared().state = DataManager.shared().initialState
         
         nextState()
         

@@ -25,6 +25,9 @@
 		BB9A4A2B206F5FAB0078B072 /* HostClientSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A2A206F5FAB0078B072 /* HostClientSelectorViewController.swift */; };
 		BB9A4A2E206F66AD0078B072 /* ViewController+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A2D206F66AD0078B072 /* ViewController+Notifications.swift */; };
 		BB9A4A30206F6E0E0078B072 /* PromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A2F206F6E0E0078B072 /* PromptViewController.swift */; };
+		BB9A4A6E206F7B1B0078B072 /* ViewController+Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A6D206F7B1B0078B072 /* ViewController+Demo.swift */; };
+		BB9A4A70206F94DC0078B072 /* ARObjectNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A6F206F94DC0078B072 /* ARObjectNode.swift */; };
+		BB9A4A72206F97BB0078B072 /* ViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A71206F97BB0078B072 /* ViewController+Gestures.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		BB9A4A2A206F5FAB0078B072 /* HostClientSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostClientSelectorViewController.swift; sourceTree = "<group>"; };
 		BB9A4A2D206F66AD0078B072 /* ViewController+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Notifications.swift"; sourceTree = "<group>"; };
 		BB9A4A2F206F6E0E0078B072 /* PromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewController.swift; sourceTree = "<group>"; };
+		BB9A4A6D206F7B1B0078B072 /* ViewController+Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Demo.swift"; sourceTree = "<group>"; };
+		BB9A4A6F206F94DC0078B072 /* ARObjectNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectNode.swift; sourceTree = "<group>"; };
+		BB9A4A71206F97BB0078B072 /* ViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Gestures.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,10 +129,13 @@
 				BB9A4A26206F5BCA0078B072 /* StatusViewController.swift */,
 				BB9A49EE206F4F4D0078B072 /* art.scnassets */,
 				BB9A49F0206F4F4D0078B072 /* ViewController.swift */,
+				BB9A4A71206F97BB0078B072 /* ViewController+Gestures.swift */,
+				BB9A4A6D206F7B1B0078B072 /* ViewController+Demo.swift */,
 				BB9A4A2D206F66AD0078B072 /* ViewController+Notifications.swift */,
 				BB9A4A28206F5E9A0078B072 /* ViewController+DataManagerDelegate.swift */,
 				BB9A4A24206F5B050078B072 /* ViewController+ARSessionDelegate.swift */,
 				BB9A4A1C206F52DB0078B072 /* DataManager.swift */,
+				BB9A4A6F206F94DC0078B072 /* ARObjectNode.swift */,
 				BB9A4A22206F568A0078B072 /* ConnectivityManager.swift */,
 				BB9A4A1E206F55F30078B072 /* ARObject.swift */,
 				BB9A49F2206F4F4D0078B072 /* Main.storyboard */,
@@ -309,7 +318,10 @@
 				BB9A4A2B206F5FAB0078B072 /* HostClientSelectorViewController.swift in Sources */,
 				BB9A4A1D206F52DB0078B072 /* DataManager.swift in Sources */,
 				BB9A49ED206F4F4D0078B072 /* AppDelegate.swift in Sources */,
+				BB9A4A6E206F7B1B0078B072 /* ViewController+Demo.swift in Sources */,
+				BB9A4A70206F94DC0078B072 /* ARObjectNode.swift in Sources */,
 				BB9A4A2E206F66AD0078B072 /* ViewController+Notifications.swift in Sources */,
+				BB9A4A72206F97BB0078B072 /* ViewController+Gestures.swift in Sources */,
 				BB9A4A1F206F55F30078B072 /* ARObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
