@@ -20,6 +20,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let hostClientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HostClientVC") as! HostClientSelectorViewController
     let promptVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PromptVC") as! PromptViewController
     
+    let menuVC = MenuViewController()
+    
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
         return childViewControllers.lazy.flatMap({ $0 as? StatusViewController }).first!
@@ -68,6 +70,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         promptVC.view.alpha = 0.0
         promptVC.view.isUserInteractionEnabled = false
         promptVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+        
+        self.addChildViewController(menuVC)
+        self.view.addSubview(menuVC.view)
+        menuVC.view.frame = CGRect(x: CGFloat(0), y: self.view.frame.height - MenuViewController.heightOfExpandButton, width: self.view.frame.height, height: MenuViewController.heightOfView)
+        menuVC.delegate = self
+        
+        let panelPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handlePanGesture(_:)))
+        panelPanGestureRecognizer.delegate = self
+        menuVC.view.addGestureRecognizer(panelPanGestureRecognizer)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleSingleTap(gestureRecognizer:)))
         tapGestureRecognizer.delegate = self
