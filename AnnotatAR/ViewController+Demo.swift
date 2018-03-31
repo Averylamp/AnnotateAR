@@ -39,6 +39,9 @@ extension ViewController{
             print("Lock node called")
             DataManager.shared().lockCurrentMovingObject()
         }else{
+            if DataManager.shared().userType == .Client{
+                return
+            }
             // Must have clicked on the object
             
             let location = gestureRecognizer.location(in: sceneView)
