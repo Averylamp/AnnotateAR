@@ -82,7 +82,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.view.addSubview(modelOptionsVC.view)
         modelOptionsVC.view.alpha = 0.0
         modelOptionsVC.view.isUserInteractionEnabled = false
-        modelOptionsVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+        modelOptionsVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
         
     }
 
