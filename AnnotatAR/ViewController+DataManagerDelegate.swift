@@ -99,7 +99,7 @@ extension ViewController:DataManagerDelegate{
     }
     
     func receivedNewObject(object: ARObjectNode){
-        statusViewController.showMessage("Received new obejct: \(object.name) ")
+        statusViewController.showMessage("Received new obejct: \(object.modelName) ")
         print("Received Object")
         if let root = DataManager.shared().rootNode{
             if root.childNode(withName: object.name!, recursively: true) == nil{
@@ -112,8 +112,11 @@ extension ViewController:DataManagerDelegate{
     func newDevicesConnected(devices: [String]){
         print("New Devices Connected")
         if devices.count > 1{
+            self.statusViewController.stateLabel.text = "Devices: \(devices.count + 1)"
             self.statusViewController.showMessage("Devices connected: \(devices.joined(separator: ", "))")
         }else{
+            self.statusViewController.stateLabel.text = "Devices: \(devices.count + 1)"
+            
             self.statusViewController.showMessage("Device connected: \(devices.joined(separator: ", "))")
         }
     }
