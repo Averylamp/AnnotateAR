@@ -15,6 +15,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
+    var blockingBlurView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.dark))
+    
+    var hostClientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HostClientVC")
+    
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
         return childViewControllers.lazy.flatMap({ $0 as? StatusViewController }).first!
@@ -34,6 +38,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        blockingBlurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.addSubview(blockingBlurView)
+        
+        
         sceneView.delegate = self
         sceneView.session.delegate = self
 
@@ -43,7 +51,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
         
         DataManager.shared().delegate = self
-        
+        self.initializeObservers()
     }
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -77,9 +85,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let configuration = ARWorldTrackingConfiguration()
         configuration.detectionImages = referenceImages
+        configuration.isAutoFocusEnabled = true
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-
-        statusViewController.scheduleMessage("Look around to detect images", inSeconds: 7.5, messageType: .contentPlacement)
+        
+        statusViewController.scheduleMessage("All set for AR", inSeconds: 5.5, messageType: .contentPlacement)
+        
+        nextState()
+        
 	}
 
     // MARK: - ARSCNViewDelegate (Image detection results)
