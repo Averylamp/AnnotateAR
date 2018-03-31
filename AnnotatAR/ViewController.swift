@@ -19,6 +19,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     let hostClientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HostClientVC") as! HostClientSelectorViewController
     let promptVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PromptVC") as! PromptViewController
+    let modelOptionsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModelOptionsVC") as! ModelOptionsPromptViewController
     
     let menuVC = MenuViewController()
     
@@ -58,7 +59,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         blockingBlurView.isUserInteractionEnabled = false
         self.view.addSubview(blockingBlurView)
         
+        let panelPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handlePanGesture(_:)))
+        panelPanGestureRecognizer.delegate = self
+        menuVC.view.addGestureRecognizer(panelPanGestureRecognizer)
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleSingleTap(gestureRecognizer:)))
+        tapGestureRecognizer.delegate = self
+        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+        instantiatePopoverViewControllers()
+        
+    }
+    
+    func instantiatePopoverViewControllers(){
         self.addChildViewController(hostClientVC)
         self.view.addSubview(hostClientVC.view)
         hostClientVC.view.alpha = 0.0
@@ -72,18 +84,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         promptVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
         
         self.addChildViewController(menuVC)
-        self.view.addSubview(menuVC.view)
+        self.view.insertSubview(menuVC.view, belowSubview: blockingBlurView)
         menuVC.view.frame = CGRect(x: CGFloat(0), y: self.view.frame.height - MenuViewController.heightOfExpandButton, width: self.view.frame.height, height: MenuViewController.heightOfView)
         menuVC.delegate = self
         
-        let panelPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handlePanGesture(_:)))
-        panelPanGestureRecognizer.delegate = self
-        menuVC.view.addGestureRecognizer(panelPanGestureRecognizer)
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleSingleTap(gestureRecognizer:)))
-        tapGestureRecognizer.delegate = self
-        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
-        
+        self.addChildViewController(modelOptionsVC)
+        self.view.addSubview(modelOptionsVC.view)
+        modelOptionsVC.view.alpha = 0.0
+        modelOptionsVC.view.isUserInteractionEnabled = false
+        modelOptionsVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
         
     }
 
