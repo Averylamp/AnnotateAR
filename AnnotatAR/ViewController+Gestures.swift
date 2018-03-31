@@ -14,11 +14,13 @@ extension ViewController: UIGestureRecognizerDelegate{
         print("Screen tapped")
         switch DataManager.shared().state {
         case .Demo:
-            demoScreenTapped()
+            demoScreenTapped(gestureRecognizer: gestureRecognizer)
         case .HostClientSelector:
             print("Unhandled tap")
         case .FindCenter:
             print("Unhandled tap")
+            DataManager.shared().state = .Demo
+            nextState()
         default:
             print("Unhandled tap")
         }

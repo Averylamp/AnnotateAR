@@ -167,4 +167,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             .removeFromParentNode()
         ])
     }
+    
+    @IBAction func testButtonClicked(_ sender: Any) {
+        self.addTestObject(name: "ship")
+    }
+    
 }
