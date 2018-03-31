@@ -19,6 +19,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     let hostClientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HostClientVC") as! HostClientSelectorViewController
     let promptVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PromptVC") as! PromptViewController
+    let modelOptionsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModelOptionsVC") as! ModelOptionsPromptViewController
     
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
@@ -57,6 +58,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.view.addSubview(blockingBlurView)
         
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleSingleTap(gestureRecognizer:)))
+        tapGestureRecognizer.delegate = self
+        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+        
+        instantiatePopoverViewControllers()
+    }
+    
+    func instantiatePopoverViewControllers(){
         self.addChildViewController(hostClientVC)
         self.view.addSubview(hostClientVC.view)
         hostClientVC.view.alpha = 0.0
@@ -69,10 +78,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         promptVC.view.isUserInteractionEnabled = false
         promptVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleSingleTap(gestureRecognizer:)))
-        tapGestureRecognizer.delegate = self
-        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
-        
+        self.addChildViewController(modelOptionsVC)
+        self.view.addSubview(modelOptionsVC.view)
+        modelOptionsVC.view.alpha = 0.0
+        modelOptionsVC.view.isUserInteractionEnabled = false
+        modelOptionsVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
         
     }
 

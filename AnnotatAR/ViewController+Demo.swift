@@ -58,11 +58,9 @@ extension ViewController{
                     rootTappedNode = tempParent
                 }
             }
-            
-            
-            
-            
-            
+            if let tappedARObjectNode = rootTappedNode as? ARObjectNode{
+                self.promptModelOptions(model: tappedARObjectNode)
+            }
         }
     }
 

@@ -46,6 +46,21 @@ extension ViewController:DataManagerDelegate{
         
     }
     
+    func promptModelOptions(model:ARObjectNode){
+        if !self.view.subviews.contains(modelOptionsVC.view) || modelOptionsVC.view.isUserInteractionEnabled == false{
+            modelOptionsVC.view.center = self.view.center
+            modelOptionsVC.view.alpha = 0.0
+            modelOptionsVC.view.center.y += 20
+            modelOptionsVC.view.isUserInteractionEnabled = true
+            modelOptionsVC.setModel(model: model)
+            blockInteraction()
+            UIView.animate(withDuration: animationDuration) {
+                self.modelOptionsVC.view.center.y -= 20
+                self.modelOptionsVC.view.alpha = 1.0
+            }
+        }
+    }
+    
     func presentPrompt(text:String, confirmation:String, height: CGFloat){
         if !self.view.subviews.contains(promptVC.view) || promptVC.view.isUserInteractionEnabled == false{
             promptVC.setupPrompt(mainText: text, confirmationText: confirmation)
@@ -92,7 +107,6 @@ extension ViewController:DataManagerDelegate{
             if root.childNode(withName: object.name!, recursively: true) == nil{
                 object.load()
                 root.addChildNode(object)
-                DataManager.shared().allNodes.append(object)
             }
         }
     }

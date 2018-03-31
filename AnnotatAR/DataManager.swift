@@ -63,13 +63,9 @@ class DataManager {
 //    var state: State = .Demo
 //    var initialState:State = .Demo
 
-    var alignmentSCNNodes = [SCNNode]()
-    var alignmentPoints = [CGPoint]()
     
     var rootNode: SCNNode?
     var currentObjectMoving: ARObjectNode?
-    
-    var allNodes = [ARObjectNode]()
     
     @objc func update(){
         //       print("Run loop update \(CACurrentMediaTime())")
@@ -85,7 +81,6 @@ class DataManager {
     
     func addObject(object: ARObjectNode){
         self.currentObjectMoving = object
-        self.allNodes.append(object)
         self.sendObject(object: object)
     }
    
@@ -146,10 +141,13 @@ extension DataManager: ConnectivityManagerDelegate{
         }
         print("New Devices: \(newDevices)")
         if newDevices.count > 0{
-            
-            for object in self.allNodes{
-                self.sendObject(object: object)
-                self.updateObject(object: object)
+            if let root = self.rootNode{
+                for object in root.childNodes{
+                    if let childNode = object as? ARObjectNode{
+                        self.sendObject(object: childNode)
+                        self.updateObject(object: childNode)
+                    }
+                }
             }
         }
         self.allConnectedDevices  = connectedDevices
