@@ -32,7 +32,6 @@ class ModelOptionsPromptViewController: UIViewController {
     }
     
     @IBAction func moveButtonClicked(_ sender: Any) {
-        DataManager.shared().currentObjectMoving = self.model
         var userInfo = [String: Any]()
         userInfo["model"] = self.model
         NotificationCenter.default.post(name: moveModelOptionsNotificationName, object: self, userInfo: userInfo)
@@ -41,7 +40,9 @@ class ModelOptionsPromptViewController: UIViewController {
     }
     
     @IBAction func deleteButtonClicked(_ sender: Any) {
-        
+        var userInfo = [String: Any]()
+        userInfo["model"] = self.model
+        NotificationCenter.default.post(name: deleteModelOptionsNotificationName, object: self, userInfo: userInfo)
         NotificationCenter.default.post(name: hideModelOptionsNotificationName, object: self)
 
     }

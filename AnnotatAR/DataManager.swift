@@ -63,7 +63,6 @@ class DataManager {
 //    var state: State = .Demo
 //    var initialState:State = .Demo
 
-    
     var rootNode: SCNNode?
     var currentObjectMoving: ARObjectNode?
     
@@ -93,6 +92,18 @@ class DataManager {
         print("Sending object: \(object.id)")
         let objectData = NSKeyedArchiver.archivedData(withRootObject: object)
         connectivity.sendData(data: objectData)
+    }
+    
+    func deleteObject(object: ARObjectNode){
+        object.removeFromParentNode()
+        sendDeleteObject(object: object)
+    }
+    
+    func sendDeleteObject(object: ARObjectNode){
+        var data = [String: ARObjectNode]()
+        data["object"] = object
+        let fullData = NSKeyedArchiver.archivedData(withRootObject: data)
+        connectivity.sendData(data: fullData)
     }
     
     func updateObject(object: ARObjectNode){
@@ -167,6 +178,9 @@ extension DataManager: ConnectivityManagerDelegate{
             }
             if let animationObject = object as? [String: Any], let nodeName = animationObject["name"] as? String, let transformValues = animationObject["transform"] as? [Float]{
                 self.nodeAnimation(nodeName: nodeName, transform: SCNMatrix4.matrixFromFloatArray(transformValue: transformValues))
+            }
+            if let deleteObject = object as? [String:ARObjectNode]{
+                
             }
         }
     }
