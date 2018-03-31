@@ -98,9 +98,13 @@ class DataManager {
     }
     
     func deleteObject(object: ARObjectNode){
-        object.removeFromParentNode()
-        if userType == .Host{
-            sendDeleteObject(object: object)
+        if let root = rootNode{
+            if let node = root.childNode(withName: object.id, recursively: true) as? ARObjectNode{
+                node.removeFromParentNode()
+                if userType == .Host{
+                    sendDeleteObject(object: node)
+                }
+            }
         }
     }
     
@@ -120,8 +124,11 @@ class DataManager {
         if let root = rootNode{
             if let node = root.childNode(withName: object.id, recursively: true){
                 print("Updating transform of object")
-                node.transform = object.transform
+                node.transform = object.rootTransform
             }else{
+                print("Object not added already")
+                object.load()
+                object.transform = object.rootTransform
                 root.addChildNode(object)
             }
         }
@@ -196,6 +203,7 @@ extension DataManager: ConnectivityManagerDelegate{
             }
             if let deleteObject = object as? [String:ARObjectNode],
                 let node = deleteObject["model"]{
+                print("Received Delete Object notification")
                 self.deleteObject(object: node)
             }
             if let request = object as? String,

@@ -82,6 +82,12 @@
                                     <action selector="restartExperience:" destination="ri3-7p-e6d" eventType="touchUpInside" id="g0X-9j-zRG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rS9-tH-PAx">
+                                <rect key="frame" x="32" y="56" width="34" height="33"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -90,6 +96,9 @@
                             <constraint firstItem="wYK-n4-ypp" firstAttribute="trailing" secondItem="aSK-t0-G4r" secondAttribute="trailing" id="AKH-fs-H3Q"/>
                             <constraint firstItem="1uT-CF-YpX" firstAttribute="leading" secondItem="wYK-n4-ypp" secondAttribute="leading" constant="16" id="EfQ-ka-33s"/>
                             <constraint firstItem="1uT-CF-YpX" firstAttribute="top" secondItem="aSK-t0-G4r" secondAttribute="top" constant="20" id="J9G-Za-9yG"/>
+                            <constraint firstItem="rS9-tH-PAx" firstAttribute="top" secondItem="1uT-CF-YpX" secondAttribute="bottom" constant="4" id="MCd-Vg-JCn"/>
+                            <constraint firstItem="rS9-tH-PAx" firstAttribute="leading" secondItem="x6b-bh-aZK" secondAttribute="leading" id="d76-k3-8XB"/>
+                            <constraint firstItem="rS9-tH-PAx" firstAttribute="bottom" secondItem="wYK-n4-ypp" secondAttribute="bottom" constant="4" id="zsK-IR-fXb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wYK-n4-ypp"/>
                     </view>
@@ -97,6 +106,7 @@
                         <outlet property="messageLabel" destination="x6b-bh-aZK" id="103-E5-rNP"/>
                         <outlet property="messagePanel" destination="1uT-CF-YpX" id="taj-MT-abc"/>
                         <outlet property="restartExperienceButton" destination="aSK-t0-G4r" id="T3U-OD-TP3"/>
+                        <outlet property="stateLabel" destination="rS9-tH-PAx" id="xqv-Z7-ApF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9h-Vm-ZUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -132,7 +142,7 @@
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McS-HY-8Qi">
-                                <rect key="frame" x="16" y="606" width="171" height="53"/>
+                                <rect key="frame" x="16" y="514" width="171" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="4eh-15-pbG"/>
                                     <constraint firstAttribute="width" constant="171" id="XB9-h6-slO"/>
@@ -156,7 +166,7 @@
                             <constraint firstAttribute="bottom" secondItem="E6c-py-dvH" secondAttribute="bottom" id="kLb-BI-xJ4"/>
                             <constraint firstAttribute="bottom" secondItem="R5W-V8-6lY" secondAttribute="bottom" id="poH-DX-LIv"/>
                             <constraint firstItem="E6c-py-dvH" firstAttribute="leading" secondItem="GBj-4O-Whc" secondAttribute="leading" id="wEL-Op-yTe"/>
-                            <constraint firstItem="GBj-4O-Whc" firstAttribute="bottom" secondItem="McS-HY-8Qi" secondAttribute="bottom" constant="8" id="xvq-b4-P1H"/>
+                            <constraint firstItem="GBj-4O-Whc" firstAttribute="bottom" secondItem="McS-HY-8Qi" secondAttribute="bottom" constant="100" id="xvq-b4-P1H"/>
                             <constraint firstItem="GBj-4O-Whc" firstAttribute="trailing" secondItem="tnx-rc-95S" secondAttribute="trailing" id="yUU-ir-Rk1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GBj-4O-Whc"/>

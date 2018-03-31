@@ -121,6 +121,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     /// - Tag: ARReferenceImage-Loading
 	func resetTracking() {
         
+        if let root = DataManager.shared().rootNode{
+            root.removeFromParentNode()
+            DataManager.shared().rootNode = nil
+        }
+        
         guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
             fatalError("Missing expected asset catalog resources.")
         }
@@ -189,7 +194,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func testButtonClicked(_ sender: Any) {
-        self.addTestObject(name: "ship")
+        self.addTestObject(name: "Man")
     }
     
 }

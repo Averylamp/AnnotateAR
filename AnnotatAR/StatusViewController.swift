@@ -27,6 +27,8 @@ class StatusViewController: UIViewController {
 
     // MARK: - IBOutlets
 
+    @IBOutlet weak var stateLabel: UILabel!
+    
     @IBOutlet weak private var messagePanel: UIVisualEffectView!
     
     @IBOutlet weak private var messageLabel: UILabel!

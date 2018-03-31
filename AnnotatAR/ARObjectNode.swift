@@ -57,7 +57,13 @@ class ARObjectNode: SCNReferenceNode{
         aCoder.encode(self.id, forKey: "id")
         aCoder.encode(self.modelName, forKey: "modelName")
         aCoder.encode(self.name, forKey: "name")
-        self.rootTransform = DataManager.shared().rootNode!.convertTransform(self.transform, from : DataManager.shared().rootNode!)
+        
+        if (self.parent != DataManager.shared().rootNode){
+            self.rootTransform = DataManager.shared().rootNode!.convertTransform(self.transform, from : DataManager.shared().rootNode!)
+        }else{
+            self.rootTransform = self.transform
+        }
+        print("Root transform : \(self.rootTransform)\nRegular transform : \(self.transform)")
         aCoder.encode(self.rootTransform.toFloatArray(), forKey: "transform")
         aCoder.encode(descriptionText, forKey: "descriptionText")
     }
