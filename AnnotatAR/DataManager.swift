@@ -16,6 +16,7 @@ protocol DataManagerDelegate {
 }
 
 enum State {
+    case HostClientSelector
     case FindCenter
 }
 
@@ -55,7 +56,7 @@ class DataManager {
     var allConnectedDevices = [String]()
     
     var userType: UserType = .Unknown
-    var state: State = .FindCenter
+    var state: State = .HostClientSelector
     
     var alignmentSCNNodes = [SCNNode]()
     var alignmentPoints = [CGPoint]()

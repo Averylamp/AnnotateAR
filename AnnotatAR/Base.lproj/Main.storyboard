@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14080" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14071"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +14,7 @@
         <!--Status View Controller-->
         <scene sceneID="5Tw-8P-01p">
             <objects>
-                <viewController id="ri3-7p-e6d" customClass="StatusViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ri3-7p-e6d" customClass="StatusViewController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RAa-Gm-0Pa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,7 +106,7 @@
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RLh-bf-1c3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -155,6 +156,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="56.799999999999997" y="98.50074962518741"/>
+        </scene>
+        <!--Host Client Selector View Controller-->
+        <scene sceneID="5DK-CP-aLg">
+            <objects>
+                <viewController storyboardIdentifier="HostClientVC" id="gPi-pZ-xcE" customClass="HostClientSelectorViewController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9z1-Z2-NCP">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please indicate whether you would like to host a session or join a session" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFe-Ek-aVA">
+                                <rect key="frame" x="40" y="20" width="220" height="82"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muK-Z1-eje">
+                                <rect key="frame" x="0.0" y="130" width="150" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="H0a-dP-Yxe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="HOST">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hostButtonClicked:" destination="gPi-pZ-xcE" eventType="touchUpInside" id="ohv-Iw-FM5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqo-kj-iDZ">
+                                <rect key="frame" x="150" y="130" width="150" height="70"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="JOIN">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clientButtonClicked:" destination="gPi-pZ-xcE" eventType="touchUpInside" id="ZsB-rv-frC"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b1l-UC-gPe">
+                                <rect key="frame" x="149.5" y="130" width="1" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="xhQ-2A-yuS"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebG-uh-gAC">
+                                <rect key="frame" x="0.0" y="130" width="300" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Rjz-eV-cFY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="ebG-uh-gAC" firstAttribute="width" secondItem="9z1-Z2-NCP" secondAttribute="width" id="2Yf-tc-Wn3"/>
+                            <constraint firstItem="b1l-UC-gPe" firstAttribute="bottom" secondItem="h5f-p2-Hmv" secondAttribute="bottom" id="5U2-qq-64k"/>
+                            <constraint firstItem="aFe-Ek-aVA" firstAttribute="top" secondItem="h5f-p2-Hmv" secondAttribute="top" constant="20" id="5sj-59-6ob"/>
+                            <constraint firstItem="ebG-uh-gAC" firstAttribute="top" secondItem="muK-Z1-eje" secondAttribute="top" id="BcW-E3-EnJ"/>
+                            <constraint firstItem="aFe-Ek-aVA" firstAttribute="width" secondItem="9z1-Z2-NCP" secondAttribute="width" constant="-80" id="Fdf-Dk-qlM"/>
+                            <constraint firstItem="ebG-uh-gAC" firstAttribute="centerX" secondItem="h5f-p2-Hmv" secondAttribute="centerX" id="Fpe-n8-ZTl"/>
+                            <constraint firstItem="aqo-kj-iDZ" firstAttribute="width" secondItem="muK-Z1-eje" secondAttribute="width" id="IkL-UP-t8Q"/>
+                            <constraint firstItem="aFe-Ek-aVA" firstAttribute="centerX" secondItem="h5f-p2-Hmv" secondAttribute="centerX" id="LDG-vG-kAL"/>
+                            <constraint firstItem="muK-Z1-eje" firstAttribute="width" secondItem="9z1-Z2-NCP" secondAttribute="width" multiplier="0.5" id="P5s-au-b4K"/>
+                            <constraint firstItem="aqo-kj-iDZ" firstAttribute="trailing" secondItem="h5f-p2-Hmv" secondAttribute="trailing" id="RIl-V2-Avm"/>
+                            <constraint firstItem="b1l-UC-gPe" firstAttribute="centerX" secondItem="h5f-p2-Hmv" secondAttribute="centerX" id="dvO-8d-fp7"/>
+                            <constraint firstItem="h5f-p2-Hmv" firstAttribute="bottom" secondItem="muK-Z1-eje" secondAttribute="bottom" id="eQc-d1-0sX"/>
+                            <constraint firstItem="b1l-UC-gPe" firstAttribute="height" secondItem="muK-Z1-eje" secondAttribute="height" id="f8H-LO-vqt"/>
+                            <constraint firstItem="muK-Z1-eje" firstAttribute="leading" secondItem="h5f-p2-Hmv" secondAttribute="leading" id="i8f-zf-edR"/>
+                            <constraint firstItem="aqo-kj-iDZ" firstAttribute="bottom" secondItem="muK-Z1-eje" secondAttribute="bottom" id="v4q-aj-5ae"/>
+                            <constraint firstItem="aqo-kj-iDZ" firstAttribute="top" secondItem="muK-Z1-eje" secondAttribute="top" id="woJ-a9-ECS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="h5f-p2-Hmv"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="200"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pDV-xF-lp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="779" y="160"/>
         </scene>
     </scenes>
     <resources>
