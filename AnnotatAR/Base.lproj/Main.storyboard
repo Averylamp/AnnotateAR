@@ -152,9 +152,38 @@
                                     <action selector="testButtonClicked:" destination="BV1-FR-VrT" eventType="touchUpInside" id="V5Q-Mp-V8A"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GdA-nf-bSQ">
+                                <rect key="frame" x="315" y="243.5" width="60" height="200"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SdY-La-2eN">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="200"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="UxY-vc-aaz">
+                                            <rect key="frame" x="0.0" y="0.0" width="60" height="200"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="light"/>
+                                    </visualEffectView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="0lK-tI-Qwh"/>
+                                    <constraint firstAttribute="width" constant="60" id="Mpd-cn-CMg"/>
+                                    <constraint firstItem="SdY-La-2eN" firstAttribute="width" secondItem="GdA-nf-bSQ" secondAttribute="width" id="Qaa-0z-LOe"/>
+                                    <constraint firstItem="SdY-La-2eN" firstAttribute="centerX" secondItem="GdA-nf-bSQ" secondAttribute="centerX" id="jZ7-X6-Vf2"/>
+                                    <constraint firstItem="SdY-La-2eN" firstAttribute="centerY" secondItem="GdA-nf-bSQ" secondAttribute="centerY" id="xnQ-yn-8Wx"/>
+                                    <constraint firstItem="SdY-La-2eN" firstAttribute="height" secondItem="GdA-nf-bSQ" secondAttribute="height" id="zLd-Hf-oYP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="GdA-nf-bSQ" firstAttribute="centerY" secondItem="GBj-4O-Whc" secondAttribute="centerY" id="063-F5-Lab"/>
+                            <constraint firstItem="GBj-4O-Whc" firstAttribute="trailing" secondItem="GdA-nf-bSQ" secondAttribute="trailing" id="HzZ-nd-L6E"/>
                             <constraint firstAttribute="trailing" secondItem="R5W-V8-6lY" secondAttribute="trailing" id="J42-1v-Ihf"/>
                             <constraint firstItem="tnx-rc-95S" firstAttribute="top" secondItem="GBj-4O-Whc" secondAttribute="top" id="Sdx-fT-fqG"/>
                             <constraint firstItem="R5W-V8-6lY" firstAttribute="leading" secondItem="RLh-bf-1c3" secondAttribute="leading" id="Yj0-Fo-B5n"/>
@@ -398,8 +427,40 @@
             </objects>
             <point key="canvasLocation" x="1828.8" y="157.42128935532236"/>
         </scene>
+        <!--Splash Screen View Controller-->
+        <scene sceneID="dwZ-LP-PC8">
+            <objects>
+                <viewController storyboardIdentifier="SplashVC" id="2Yi-hD-Ovc" customClass="SplashScreenViewController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ozC-xu-aO7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="ieK-eL-qPn">
+                                <rect key="frame" x="87.5" y="213.5" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Nxz-Jz-l2q"/>
+                                    <constraint firstAttribute="width" constant="200" id="qFv-kX-UU0"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.83529411760000005" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ieK-eL-qPn" firstAttribute="centerX" secondItem="3n9-Wm-Zbp" secondAttribute="centerX" id="6LB-ZI-tXx"/>
+                            <constraint firstItem="ieK-eL-qPn" firstAttribute="centerY" secondItem="3n9-Wm-Zbp" secondAttribute="centerY" constant="-30" id="eNU-JE-LyF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3n9-Wm-Zbp"/>
+                    </view>
+                    <connections>
+                        <outlet property="mainLogo" destination="ieK-eL-qPn" id="mL4-hG-mCs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2US-J3-5Q9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-985" y="99"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Logo" width="428" height="214"/>
         <image name="restart" width="20" height="23"/>
         <image name="restartPressed" width="20" height="23"/>
     </resources>
