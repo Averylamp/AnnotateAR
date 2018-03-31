@@ -30,6 +30,7 @@
 		BB9A4A74207006A00078B072 /* ModelOptionsPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A73207006A00078B072 /* ModelOptionsPromptViewController.swift */; };
 		BF8283ED206FE43A00B3ABF0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8283EC206FE43A00B3ABF0 /* MenuViewController.swift */; };
 		BF8283EF206FF57C00B3ABF0 /* ViewController+MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8283EE206FF57C00B3ABF0 /* ViewController+MenuViewController.swift */; };
+		BFAB0E8A207031A300784379 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB0E89207031A200784379 /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		BB9A4A73207006A00078B072 /* ModelOptionsPromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOptionsPromptViewController.swift; sourceTree = "<group>"; };
 		BF8283EC206FE43A00B3ABF0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		BF8283EE206FF57C00B3ABF0 /* ViewController+MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+MenuViewController.swift"; sourceTree = "<group>"; };
+		BFAB0E89207031A200784379 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				BB9A4A6F206F94DC0078B072 /* ARObjectNode.swift */,
 				BB9A4A22206F568A0078B072 /* ConnectivityManager.swift */,
 				BF8283EC206FE43A00B3ABF0 /* MenuViewController.swift */,
+				BFAB0E89207031A200784379 /* MenuView.swift */,
 				BB9A49F2206F4F4D0078B072 /* Main.storyboard */,
 				BB9A4A2C206F5FB20078B072 /* PromptViewControllers */,
 				BB9A49F5206F4F4E0078B072 /* Assets.xcassets */,
@@ -327,6 +330,7 @@
 				BB9A4A2B206F5FAB0078B072 /* HostClientSelectorViewController.swift in Sources */,
 				BB9A4A1D206F52DB0078B072 /* DataManager.swift in Sources */,
 				BB9A49ED206F4F4D0078B072 /* AppDelegate.swift in Sources */,
+				BFAB0E8A207031A300784379 /* MenuView.swift in Sources */,
 				BB9A4A6E206F7B1B0078B072 /* ViewController+Demo.swift in Sources */,
 				BB9A4A70206F94DC0078B072 /* ARObjectNode.swift in Sources */,
 				BB9A4A2E206F66AD0078B072 /* ViewController+Notifications.swift in Sources */,
