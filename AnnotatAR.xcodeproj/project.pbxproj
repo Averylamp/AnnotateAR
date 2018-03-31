@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB4DDF3E207050CD006B6034 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4DDF3D207050CD006B6034 /* SplashScreenViewController.swift */; };
 		BB9A49ED206F4F4D0078B072 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A49EC206F4F4D0078B072 /* AppDelegate.swift */; };
 		BB9A49EF206F4F4D0078B072 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BB9A49EE206F4F4D0078B072 /* art.scnassets */; };
 		BB9A49F1206F4F4D0078B072 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A49F0206F4F4D0078B072 /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB4DDF3D207050CD006B6034 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		BB9A49E9206F4F4D0078B072 /* AnnotatAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnnotatAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9A49EC206F4F4D0078B072 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB9A49EE206F4F4D0078B072 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				BF8283EC206FE43A00B3ABF0 /* MenuViewController.swift */,
 				BFAB0E89207031A200784379 /* MenuView.swift */,
 				BB9A49F2206F4F4D0078B072 /* Main.storyboard */,
+				BB4DDF3D207050CD006B6034 /* SplashScreenViewController.swift */,
 				BB9A4A2C206F5FB20078B072 /* PromptViewControllers */,
 				BB9A49F5206F4F4E0078B072 /* Assets.xcassets */,
 				BB9A49F7206F4F4E0078B072 /* LaunchScreen.storyboard */,
@@ -328,6 +331,7 @@
 				BB9A4A29206F5E9A0078B072 /* ViewController+DataManagerDelegate.swift in Sources */,
 				BB9A4A30206F6E0E0078B072 /* PromptViewController.swift in Sources */,
 				BB9A4A2B206F5FAB0078B072 /* HostClientSelectorViewController.swift in Sources */,
+				BB4DDF3E207050CD006B6034 /* SplashScreenViewController.swift in Sources */,
 				BB9A4A1D206F52DB0078B072 /* DataManager.swift in Sources */,
 				BB9A49ED206F4F4D0078B072 /* AppDelegate.swift in Sources */,
 				BFAB0E8A207031A300784379 /* MenuView.swift in Sources */,

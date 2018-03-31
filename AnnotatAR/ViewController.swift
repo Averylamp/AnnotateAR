@@ -95,9 +95,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         modelOptionsVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
 
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let splashScreenVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashVC")
+        self.present(splashScreenVC, animated: false)
 		
 		// Prevent the screen from being dimmed to avoid interuppting the AR experience.
 		UIApplication.shared.isIdleTimerDisabled = true
@@ -194,7 +200,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func testButtonClicked(_ sender: Any) {
-        self.addTestObject(name: "Drone")
+        self.addTestObject(name: "Circle")
     }
     
 }
