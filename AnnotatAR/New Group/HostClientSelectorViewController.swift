@@ -26,11 +26,15 @@ class HostClientSelectorViewController: UIViewController {
     }
     
     @IBAction func hostButtonClicked(_ sender: Any) {
+        DataManager.shared().userType = .Host
+        DataManager.shared().connectivity.startAdvertising()
         
         NotificationCenter.default.post(name: hideHostClientNotificationName, object: self)
     }
     
     @IBAction func clientButtonClicked(_ sender: Any) {
+        DataManager.shared().userType = .Client
+        DataManager.shared().connectivity.startBrowsing()
         
         NotificationCenter.default.post(name: hideHostClientNotificationName, object: self)
     }

@@ -19,6 +19,17 @@ extension ViewController:DataManagerDelegate{
                 self.view.addSubview(hostClientVC.view)
                 hostClientVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
                 hostClientVC.view.center = self.view.center
+                hostClientVC.view.alpha = 0.0
+                hostClientVC.view.center.y += 20
+                hostClientVC.view.isUserInteractionEnabled = true
+                blockInteraction()
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.hostClientVC.view.center.y -= 20
+                    self.hostClientVC.view.alpha = 1.0
+                }) { (finished) in
+                    
+                }
+                
             }
         case .FindCenter:
             print("Missing something")
@@ -27,6 +38,20 @@ extension ViewController:DataManagerDelegate{
         }
         
         
+    }
+    
+    func blockInteraction(){
+        UIView.animate(withDuration: 0.5) {
+            self.blockingBlurView.alpha = 1.0
+            self.blockingBlurView.isUserInteractionEnabled = true
+        }
+    }
+    
+    func unblockInteraction(){
+        UIView.animate(withDuration: 0.5) {
+            self.blockingBlurView.alpha = 0.0
+            self.blockingBlurView.isUserInteractionEnabled = false
+        }
     }
     
     

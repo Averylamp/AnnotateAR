@@ -15,7 +15,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
-    var blockingBlurView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.dark))
+    var blockingBlurView =  UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.dark))
     
     var hostClientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HostClientVC")
     
@@ -38,10 +38,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        blockingBlurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.view.addSubview(blockingBlurView)
-        
-        
         sceneView.delegate = self
         sceneView.session.delegate = self
 
@@ -52,6 +48,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         DataManager.shared().delegate = self
         self.initializeObservers()
+        
+        blockingBlurView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blockingBlurView.frame = self.view.frame
+        blockingBlurView.alpha = 0.0
+        blockingBlurView.isUserInteractionEnabled = false
+        self.view.addSubview(blockingBlurView)
     }
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -134,6 +136,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var imageHighlightAction: SCNAction {
         return .sequence([
             .wait(duration: 0.25),
+            .fadeOpacity(to: 0.85, duration: 0.25),
+            .fadeOpacity(to: 0.15, duration: 0.25),
             .fadeOpacity(to: 0.85, duration: 0.25),
             .fadeOpacity(to: 0.15, duration: 0.25),
             .fadeOpacity(to: 0.85, duration: 0.25),
