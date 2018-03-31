@@ -7,8 +7,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-	userquery = request.args.get("fname")
-	if fname is not None:
+	userquery = request.args.get("userquery")
+	if userquery is not None:
 		return redirect(url_for("get_plot", userquery=userquery))
 	return render_template('index.html')
 
