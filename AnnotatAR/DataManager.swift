@@ -111,11 +111,18 @@ class DataManager {
         connectivity.sendData(data: fullData)
     }
     
+    func requestAllObjects(){
+        let data = "AllObjectsPlease"
+        connectivity.sendData(data: data.data(using: .utf8)!)
+    }
+    
     func updateObject(object: ARObjectNode){
         if let root = rootNode{
             if let node = root.childNode(withName: object.id, recursively: true){
                 print("Updating transform of object")
                 node.transform = object.transform
+            }else{
+                root.addChildNode(object)
             }
         }
     }
@@ -190,6 +197,17 @@ extension DataManager: ConnectivityManagerDelegate{
             if let deleteObject = object as? [String:ARObjectNode],
                 let node = deleteObject["model"]{
                 self.deleteObject(object: node)
+            }
+            if let request = object as? String,
+                let root = self.rootNode,
+                request == "AllObjectsPlease",
+                self.userType == .Host
+            {
+                for node in root.childNodes{
+                    if let arNode = node as? ARObjectNode{
+                        self.sendObject(object: arNode)
+                    }
+                }
             }
         }
     }

@@ -36,6 +36,9 @@ extension ViewController:DataManagerDelegate{
             print("Demo Time")
             if DataManager.shared().userType == .Host{
 //                addTestObject(name:"ship")
+            }else{
+                print("Requesting All Objects")
+                DataManager.shared().requestAllObjects()
             }
         default:
             print("Missing something")
