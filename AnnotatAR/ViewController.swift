@@ -17,7 +17,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     var blockingBlurView =  UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.dark))
     
-    var hostClientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HostClientVC")
+    let hostClientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HostClientVC") as! HostClientSelectorViewController
+    let promptVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PromptVC") as! PromptViewController
     
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
@@ -54,6 +55,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         blockingBlurView.alpha = 0.0
         blockingBlurView.isUserInteractionEnabled = false
         self.view.addSubview(blockingBlurView)
+        
+        
+        self.addChildViewController(hostClientVC)
+        self.view.addSubview(hostClientVC.view)
+        hostClientVC.view.alpha = 0.0
+        hostClientVC.view.isUserInteractionEnabled = false
+        hostClientVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
+        
+        self.addChildViewController(promptVC)
+        self.view.addSubview(promptVC.view)
+        promptVC.view.alpha = 0.0
+        promptVC.view.isUserInteractionEnabled = false
+        promptVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
     }
 
 	override func viewDidAppear(_ animated: Bool) {

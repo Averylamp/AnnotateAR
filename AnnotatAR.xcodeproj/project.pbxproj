@@ -24,6 +24,7 @@
 		BB9A4A29206F5E9A0078B072 /* ViewController+DataManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A28206F5E9A0078B072 /* ViewController+DataManagerDelegate.swift */; };
 		BB9A4A2B206F5FAB0078B072 /* HostClientSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A2A206F5FAB0078B072 /* HostClientSelectorViewController.swift */; };
 		BB9A4A2E206F66AD0078B072 /* ViewController+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A2D206F66AD0078B072 /* ViewController+Notifications.swift */; };
+		BB9A4A30206F6E0E0078B072 /* PromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A2F206F6E0E0078B072 /* PromptViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		BB9A4A28206F5E9A0078B072 /* ViewController+DataManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+DataManagerDelegate.swift"; sourceTree = "<group>"; };
 		BB9A4A2A206F5FAB0078B072 /* HostClientSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostClientSelectorViewController.swift; sourceTree = "<group>"; };
 		BB9A4A2D206F66AD0078B072 /* ViewController+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Notifications.swift"; sourceTree = "<group>"; };
+		BB9A4A2F206F6E0E0078B072 /* PromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				BB9A4A2A206F5FAB0078B072 /* HostClientSelectorViewController.swift */,
+				BB9A4A2F206F6E0E0078B072 /* PromptViewController.swift */,
 			);
 			name = PromptViewControllers;
 			path = "New Group";
@@ -302,6 +305,7 @@
 				BB9A49F1206F4F4D0078B072 /* ViewController.swift in Sources */,
 				BB9A4A25206F5B050078B072 /* ViewController+ARSessionDelegate.swift in Sources */,
 				BB9A4A29206F5E9A0078B072 /* ViewController+DataManagerDelegate.swift in Sources */,
+				BB9A4A30206F6E0E0078B072 /* PromptViewController.swift in Sources */,
 				BB9A4A2B206F5FAB0078B072 /* HostClientSelectorViewController.swift in Sources */,
 				BB9A4A1D206F52DB0078B072 /* DataManager.swift in Sources */,
 				BB9A49ED206F4F4D0078B072 /* AppDelegate.swift in Sources */,

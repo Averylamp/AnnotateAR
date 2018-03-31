@@ -8,22 +8,21 @@
 
 import UIKit
 
+let animationDuration = 0.5
 extension ViewController:DataManagerDelegate{
     
     func nextState(){
         switch DataManager.shared().state {
         case .HostClientSelector:
             print("Host Client selector")
-            if !self.view.subviews.contains(hostClientVC.view){
-                self.addChildViewController(hostClientVC)
-                self.view.addSubview(hostClientVC.view)
-                hostClientVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
+            if !self.view.subviews.contains(hostClientVC.view) || hostClientVC.view.isUserInteractionEnabled == false{
+                
                 hostClientVC.view.center = self.view.center
                 hostClientVC.view.alpha = 0.0
                 hostClientVC.view.center.y += 20
                 hostClientVC.view.isUserInteractionEnabled = true
                 blockInteraction()
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: animationDuration, animations: {
                     self.hostClientVC.view.center.y -= 20
                     self.hostClientVC.view.alpha = 1.0
                 }) { (finished) in
@@ -32,7 +31,9 @@ extension ViewController:DataManagerDelegate{
                 
             }
         case .FindCenter:
-            print("Missing something")
+            print("Find Center State")
+            presentPrompt(text: "Find the center point of the demo.  (The host will have set the location)", confirmation: "Got it!", height: 250)
+            
         default:
             print("Missing something")
         }
@@ -40,15 +41,35 @@ extension ViewController:DataManagerDelegate{
         
     }
     
+    func presentPrompt(text:String, confirmation:String, height: CGFloat){
+        if !self.view.subviews.contains(promptVC.view) || promptVC.view.isUserInteractionEnabled == false{
+            promptVC.setupPrompt(mainText: text, confirmationText: confirmation)
+            promptVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: height)
+            promptVC.view.center = self.view.center
+            promptVC.view.alpha = 0.0
+            promptVC.view.center.y += 20
+            promptVC.view.isUserInteractionEnabled = true
+            blockInteraction()
+            UIView.animate(withDuration: animationDuration, animations: {
+                self.promptVC.view.center.y -= 20
+                self.promptVC.view.alpha = 1.0
+            }) { (finished) in
+                
+            }
+            
+        }
+        
+    }
+    
     func blockInteraction(){
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: animationDuration) {
             self.blockingBlurView.alpha = 1.0
             self.blockingBlurView.isUserInteractionEnabled = true
         }
     }
     
     func unblockInteraction(){
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: animationDuration) {
             self.blockingBlurView.alpha = 0.0
             self.blockingBlurView.isUserInteractionEnabled = false
         }
