@@ -194,7 +194,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func testButtonClicked(_ sender: Any) {
-        self.addTestObject(name: "Man")
+        self.addTestObject(name: "Drone")
     }
     
 }
