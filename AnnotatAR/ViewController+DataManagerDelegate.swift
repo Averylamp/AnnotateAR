@@ -14,6 +14,7 @@ extension ViewController:DataManagerDelegate{
     func nextState(){
         switch DataManager.shared().state {
         case .HostClientSelector:
+            addTestRoot()
             print("Host Client selector")
             if !self.view.subviews.contains(hostClientVC.view) || hostClientVC.view.isUserInteractionEnabled == false{
                 
@@ -35,8 +36,9 @@ extension ViewController:DataManagerDelegate{
             presentPrompt(text: "Find the center point of the demo.  (The host will have set the location)", confirmation: "Got it!", height: 250)
         case .Demo:
             print("Demo Time")
-            addTestRoot()
-            addTestObject(name:"ship")
+            if DataManager.shared().userType == .Host{
+//                addTestObject(name:"ship")
+            }
         default:
             print("Missing something")
         }
@@ -80,15 +82,28 @@ extension ViewController:DataManagerDelegate{
     
     
     func receivedObjectsUpdate(objects: [ARObjectNode]){
-        
+        print("Received Objects")
     }
     
     func receivedNewObject(object: ARObjectNode){
-        
+        statusViewController.showMessage("Received new obejct: \(object.name) ")
+        print("Received Object")
+        if let root = DataManager.shared().rootNode{
+            if root.childNode(withName: object.name!, recursively: true) == nil{
+                object.load()
+                root.addChildNode(object)
+                DataManager.shared().allNodes.append(object)
+            }
+        }
     }
     
     func newDevicesConnected(devices: [String]){
-        
+        print("New Devices Connected")
+        if devices.count > 1{
+            self.statusViewController.showMessage("Devices connected: \(devices.joined(separator: ", "))")
+        }else{
+            self.statusViewController.showMessage("Device connected: \(devices.joined(separator: ", "))")
+        }
     }
     
     

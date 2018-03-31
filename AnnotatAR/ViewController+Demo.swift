@@ -14,7 +14,7 @@ extension ViewController{
     func addTestRoot(){
         
         let pointNode = SCNNode()
-        let pointGeometry = SCNSphere(radius: 0.007)
+        let pointGeometry = SCNSphere(radius: 0.01)
         let orangeMaterial = SCNMaterial()
         orangeMaterial.diffuse.contents = UIColor.orange
         pointGeometry.materials = [orangeMaterial]
@@ -29,20 +29,41 @@ extension ViewController{
         let node = ARObjectNode(modelName: name)
         node.load()
         node.position = SCNVector3Make(0, 0, -1)
-        DataManager.shared().currentObjectMoving = node
         self.sceneView.pointOfView?.addChildNode(node)
+        DataManager.shared().addObject(object: node)
         
     }
     
-    func demoScreenTapped(){
-        print("Lock node called")
-        if let node = DataManager.shared().currentObjectMoving, let root = DataManager.shared().rootNode {
-            node.transform = root.convertTransform(node.transform, from: node.parent)
-            node.removeFromParentNode()
-            root.addChildNode(node)
-
+    func demoScreenTapped(gestureRecognizer: UITapGestureRecognizer){
+        if DataManager.shared().currentObjectMoving != nil {
+            print("Lock node called")
+            DataManager.shared().lockCurrentMovingObject()
+        }else{
+            // Must have clicked on the object
+            
+            let location = gestureRecognizer.location(in: sceneView)
+            let hits = self.sceneView.hitTest(location, options: nil)
+            guard let tappedNode = hits.first?.node else {
+                print("tapped, but not on node")
+                return
+            } //if it didn't hit anything, just return
+            
+            var rootTappedNode = tappedNode
+            
+            while true {
+                guard let tempParent = rootTappedNode.parent else { break }
+                if (DataManager.shared().rootNode == tempParent) {
+                    break
+                } else {
+                    rootTappedNode = tempParent
+                }
+            }
+            
+            
+            
+            
+            
         }
-        
     }
 
 

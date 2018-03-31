@@ -47,7 +47,7 @@ class DataManager {
         displayLink = CADisplayLink(target: self, selector: #selector(update))
         displayLink.preferredFramesPerSecond = 10
         displayLink.add(to: RunLoop.current, forMode: .defaultRunLoopMode)
-        displayLink.isPaused = true
+        displayLink.isPaused = false
     }
     
     var lastSelectedObjectSet = 0
@@ -56,19 +56,20 @@ class DataManager {
     
     var allConnectedDevices = [String]()
     
-//    var userType: UserType = .Unknown
-//    var state: State = .HostClientSelector
-    var userType: UserType = .Host
-    var state: State = .Demo
-    var initialState:State = .Demo
+    var userType: UserType = .Unknown
+    var state: State = .HostClientSelector
+    var initialState:State = .HostClientSelector
+//    var userType: UserType = .Host
+//    var state: State = .Demo
+//    var initialState:State = .Demo
 
     var alignmentSCNNodes = [SCNNode]()
     var alignmentPoints = [CGPoint]()
     
     var rootNode: SCNNode?
-    var currentObjectMoving: SCNNode?
+    var currentObjectMoving: ARObjectNode?
     
-    var objects = [ARObjectNode]()
+    var allNodes = [ARObjectNode]()
     
     @objc func update(){
         //       print("Run loop update \(CACurrentMediaTime())")
@@ -80,7 +81,12 @@ class DataManager {
             print("Sending new Transform -\(newTransform)")
             sendAnimation(object: data)
         }
-        
+    }
+    
+    func addObject(object: ARObjectNode){
+        self.currentObjectMoving = object
+        self.allNodes.append(object)
+        self.sendObject(object: object)
     }
    
     func sendAnimation(object: [String: Any]){
@@ -89,6 +95,7 @@ class DataManager {
     }
     
     func sendObject(object: ARObjectNode){
+        print("Sending object: \(object.id)")
         let objectData = NSKeyedArchiver.archivedData(withRootObject: object)
         connectivity.sendData(data: objectData)
     }
@@ -101,6 +108,30 @@ class DataManager {
             }
         }
     }
+    
+    func lockCurrentMovingObject(){
+        if let node = self.currentObjectMoving, let root = rootNode{
+            node.transform = root.convertTransform(node.transform, from: node.parent)
+            node.removeFromParentNode()
+            root.addChildNode(node)
+            sendObject(object: node)
+            self.currentObjectMoving = nil
+            self.displayLink.isPaused = true
+        }
+    }
+    
+    func nodeAnimation(nodeName: String, transform: SCNMatrix4){
+        if let root = rootNode, let movingNode = root.childNode(withName: nodeName, recursively: false){
+            let animation = CABasicAnimation(keyPath: "transform")
+            animation.fromValue = movingNode.transform
+            animation.toValue = transform
+            animation.duration = 6 / 60.0
+            movingNode.addAnimation(animation, forKey: nil)
+            movingNode.transform = transform
+        }
+    }
+    
+    
 }
 
 extension DataManager: ConnectivityManagerDelegate{
@@ -116,7 +147,7 @@ extension DataManager: ConnectivityManagerDelegate{
         print("New Devices: \(newDevices)")
         if newDevices.count > 0{
             
-            for object in self.objects{
+            for object in self.allNodes{
                 self.sendObject(object: object)
                 self.updateObject(object: object)
             }
@@ -135,6 +166,9 @@ extension DataManager: ConnectivityManagerDelegate{
                 print("AR Object update received")
                 self.updateObject(object: newObject)
                 self.delegate?.receivedNewObject(object: newObject)
+            }
+            if let animationObject = object as? [String: Any], let nodeName = animationObject["name"] as? String, let transformValues = animationObject["transform"] as? [Float]{
+                self.nodeAnimation(nodeName: nodeName, transform: SCNMatrix4.matrixFromFloatArray(transformValue: transformValues))
             }
         }
     }

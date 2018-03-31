@@ -14,11 +14,11 @@ class ARObjectNode: SCNReferenceNode{
     var id: String
     var modelName: String
     var descriptionText: String
-    
+    var rootTransform: SCNMatrix4
     
     init(id: String = "",
           modelName: String,
-          transform: SCNMatrix4 = SCNMatrix4.init(),
+          rootTransform: SCNMatrix4 = SCNMatrix4.init(),
           descriptionText: String = "" ) {
         if id == ""{
             let dateFormatter = DateFormatter()
@@ -30,7 +30,9 @@ class ARObjectNode: SCNReferenceNode{
         self.modelName = modelName
         let url = Bundle.main.url(forResource: "art.scnassets/\(modelName)", withExtension: "scn")!
         self.descriptionText = descriptionText
+        self.rootTransform = rootTransform
         super.init(url: url)!
+        self.name = self.id
     }
 
     
@@ -39,14 +41,14 @@ class ARObjectNode: SCNReferenceNode{
         let modelName = aDecoder.decodeObject(forKey: "modelName") as! String
         
         let transformValue = aDecoder.decodeObject(forKey: "transform") as! [Float]
-        let transform = SCNMatrix4.matrixFromFloatArray(transformValue: transformValue)
+        let rootTransform = SCNMatrix4.matrixFromFloatArray(transformValue: transformValue)
         
         let descriptionText = aDecoder.decodeObject(forKey: "descriptionText") as! String
         
         self.init(
             id: id,
             modelName: modelName,
-            transform: transform,
+            rootTransform: rootTransform,
             descriptionText: descriptionText
         )
     }
@@ -55,8 +57,8 @@ class ARObjectNode: SCNReferenceNode{
         aCoder.encode(self.id, forKey: "id")
         aCoder.encode(self.modelName, forKey: "modelName")
         aCoder.encode(self.name, forKey: "name")
-        
-        aCoder.encode(self.transform.toFloatArray(), forKey: "transform")
+        self.rootTransform = DataManager.shared().rootNode!.convertTransform(self.transform, from : DataManager.shared().rootNode!)
+        aCoder.encode(self.rootTransform.toFloatArray(), forKey: "transform")
         aCoder.encode(descriptionText, forKey: "descriptionText")
     }
     
