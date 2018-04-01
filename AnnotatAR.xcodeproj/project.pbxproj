@@ -30,6 +30,7 @@
 		BB9A4A70206F94DC0078B072 /* ARObjectNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A6F206F94DC0078B072 /* ARObjectNode.swift */; };
 		BB9A4A72206F97BB0078B072 /* ViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A71206F97BB0078B072 /* ViewController+Gestures.swift */; };
 		BB9A4A74207006A00078B072 /* ModelOptionsPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A73207006A00078B072 /* ModelOptionsPromptViewController.swift */; };
+		BBF3EDEB2070D4AC00B7011B /* TextPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF3EDEA2070D4AC00B7011B /* TextPromptViewController.swift */; };
 		BF8283ED206FE43A00B3ABF0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8283EC206FE43A00B3ABF0 /* MenuViewController.swift */; };
 		BF8283EF206FF57C00B3ABF0 /* ViewController+MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8283EE206FF57C00B3ABF0 /* ViewController+MenuViewController.swift */; };
 		BFAB0E902070B77A00784379 /* WolframAlphaPromtController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB0E8F2070B77A00784379 /* WolframAlphaPromtController.swift */; };
@@ -90,6 +91,7 @@
 		BB9A4A71206F97BB0078B072 /* ViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Gestures.swift"; sourceTree = "<group>"; };
 		BB9A4A73207006A00078B072 /* ModelOptionsPromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOptionsPromptViewController.swift; sourceTree = "<group>"; };
 		BBC2EF757B596C42F4AD7654 /* Pods-AnnotatARUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnnotatARUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnnotatARUITests/Pods-AnnotatARUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BBF3EDEA2070D4AC00B7011B /* TextPromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPromptViewController.swift; sourceTree = "<group>"; };
 		BF8283EC206FE43A00B3ABF0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		BF8283EE206FF57C00B3ABF0 /* ViewController+MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+MenuViewController.swift"; sourceTree = "<group>"; };
 		BFAB0E8F2070B77A00784379 /* WolframAlphaPromtController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WolframAlphaPromtController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		BB9A4A2C206F5FB20078B072 /* PromptViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BBF3EDEA2070D4AC00B7011B /* TextPromptViewController.swift */,
 				BB4DDF3D207050CD006B6034 /* SplashScreenViewController.swift */,
 				BFAB0E8F2070B77A00784379 /* WolframAlphaPromtController.swift */,
 				BB9A4A73207006A00078B072 /* ModelOptionsPromptViewController.swift */,
@@ -534,6 +537,7 @@
 				BB4DDF3E207050CD006B6034 /* SplashScreenViewController.swift in Sources */,
 				BB9A4A1D206F52DB0078B072 /* DataManager.swift in Sources */,
 				BB9A49ED206F4F4D0078B072 /* AppDelegate.swift in Sources */,
+				BBF3EDEB2070D4AC00B7011B /* TextPromptViewController.swift in Sources */,
 				BB9A4A6E206F7B1B0078B072 /* ViewController+Demo.swift in Sources */,
 				BB9A4A70206F94DC0078B072 /* ARObjectNode.swift in Sources */,
 				BB9A4A2E206F66AD0078B072 /* ViewController+Notifications.swift in Sources */,

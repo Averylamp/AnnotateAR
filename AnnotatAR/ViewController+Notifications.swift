@@ -15,6 +15,8 @@ let moveModelOptionsNotificationName = Notification.Name("MoveModelOptionsNotifi
 let deleteModelOptionsNotificationName = Notification.Name("DeleteModelOptionsNotification")
 let hideWolframAlphaNotificationName = Notification.Name("HideWolframalphaNotification")
 let calculateEquationNotificationName = Notification.Name("calculateWRAEquation")
+let createTextNodeNotificationName = Notification.Name("CreateTextNodeNotification")
+let hideTextPromptNotificationName = Notification.Name("HideTextPromptNotification")
 
 extension ViewController{
 
@@ -32,6 +34,11 @@ extension ViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.dismissWolframAlphaVC), name: hideWolframAlphaNotificationName, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.calculateWolframalphaEquation(notification:)), name: calculateEquationNotificationName, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.hideTextPromptVC), name: hideTextPromptNotificationName, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.createTextNode(notification:)), name: createTextNodeNotificationName, object: nil)
+        
     }
 
     @objc func dismissHostClientVC(){
@@ -44,9 +51,6 @@ extension ViewController{
                 
             }
             self.unblockInteraction()
-            self.delay(2.0) {
-                self.nextState()
-            }
         }
     }
     
@@ -77,11 +81,11 @@ extension ViewController{
     }
     
     @objc func dismissWolframAlphaVC(){
-        if self.view.subviews.contains(WFRAVC.view){
-            WFRAVC.view.isUserInteractionEnabled = false
+        if self.view.subviews.contains(WolframAlphaVC.view){
+            WolframAlphaVC.view.isUserInteractionEnabled = false
             UIView.animate(withDuration: animationDuration) {
-                self.WFRAVC.view.center.y -= 30
-                self.WFRAVC.view.alpha = 0.0
+                self.WolframAlphaVC.view.center.y -= 30
+                self.WolframAlphaVC.view.alpha = 0.0
             }
             self.unblockInteraction()
         }
@@ -89,7 +93,8 @@ extension ViewController{
     
     @objc func setupCurrentObjectForMoving(notification: NSNotification){
         if let userInfo = notification.userInfo,
-            let node = userInfo["model"] as? ARObjectNode, let pointOfView = self.sceneView.pointOfView{
+            let node = userInfo["model"] as? ARObjectNode,
+            let pointOfView = self.sceneView.pointOfView{
             DataManager.shared().currentObjectMoving = node
             DataManager.shared().displayLink.isPaused = false
             let transform = pointOfView.convertTransform(node.transform, from: node.parent)
@@ -150,5 +155,25 @@ extension ViewController{
         }
     }
     
+    @objc func hideTextPromptVC(){
+        if self.view.subviews.contains(textPromptVC.view){
+            textPromptVC.view.isUserInteractionEnabled = false
+            UIView.animate(withDuration: animationDuration) {
+                self.textPromptVC.view.center.y -= 30
+                self.textPromptVC.view.alpha = 0.0
+            }
+            self.unblockInteraction()
+        }
+    }
+    
+    @objc func createTextNode(notification: NSNotification){
+        if let userInfo = notification.userInfo,
+            let text = userInfo["text"] as? String{
+            let node = ARObjectNode(modelName: "Text", descriptionText: text, colorID: colorIndex % colors.count)
+            node.setupNode()
+            self.addARObjectNode(node: node)
+        }
+        
+    }
     
 }

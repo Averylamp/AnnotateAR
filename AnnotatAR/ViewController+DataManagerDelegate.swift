@@ -79,6 +79,36 @@ extension ViewController:DataManagerDelegate{
         }
     }
     
+    func presentWolframAlphaVC(){
+        if !self.view.subviews.contains(WolframAlphaVC.view) ||
+            WolframAlphaVC.view.isUserInteractionEnabled == false{
+            WolframAlphaVC.view.center = self.view.center
+            WolframAlphaVC.view.alpha = 0.0
+            WolframAlphaVC.view.center.y += 20
+            WolframAlphaVC.view.isUserInteractionEnabled = true
+            blockInteraction()
+            UIView.animate(withDuration: animationDuration) {
+                self.WolframAlphaVC.view.center.y -= 20
+                self.WolframAlphaVC.view.alpha = 1.0
+            }
+        }
+    }
+    
+    func presentTextPromptVC(){
+        if !self.view.subviews.contains(textPromptVC.view) ||
+            textPromptVC.view.isUserInteractionEnabled == false{
+            textPromptVC.view.center = self.view.center
+            textPromptVC.view.alpha = 0.0
+            textPromptVC.view.center.y += 20
+            textPromptVC.view.isUserInteractionEnabled = true
+            blockInteraction()
+            UIView.animate(withDuration: animationDuration) {
+                self.textPromptVC.view.center.y -= 20
+                self.textPromptVC.view.alpha = 1.0
+            }
+        }
+    }
+    
     func blockInteraction(){
         UIView.animate(withDuration: animationDuration) {
             self.blockingBlurView.alpha = 1.0

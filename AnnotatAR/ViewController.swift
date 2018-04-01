@@ -20,7 +20,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let hostClientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HostClientVC") as! HostClientSelectorViewController
     let promptVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PromptVC") as! PromptViewController
     let modelOptionsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModelOptionsVC") as! ModelOptionsPromptViewController
-    let WFRAVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WolframAlphaVC") as! WolframAlphaPromptController
+    let WolframAlphaVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WolframAlphaVC") as! WolframAlphaPromptController
+    let textPromptVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TextPromptVC") as! TextPromptViewController
     
     let menuVC = MenuViewController()
     
@@ -111,11 +112,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         modelOptionsVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         
         
-        self.addChildViewController(WFRAVC)
-        self.view.addSubview(WFRAVC.view)
-        WFRAVC.view.alpha = 0.0
-        WFRAVC.view.isUserInteractionEnabled = false
-        WFRAVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        self.addChildViewController(WolframAlphaVC)
+        self.view.addSubview(WolframAlphaVC.view)
+        WolframAlphaVC.view.alpha = 0.0
+        WolframAlphaVC.view.isUserInteractionEnabled = false
+        WolframAlphaVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        
+        self.addChildViewController(textPromptVC)
+        self.view.addSubview(textPromptVC.view)
+        textPromptVC.view.alpha = 0.0
+        textPromptVC.view.isUserInteractionEnabled = false
+        textPromptVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -266,9 +273,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             node.setupNode()
             self.addARObjectNode(node: node)
         case 102:
-            let node = ARObjectNode(modelName: "Text", descriptionText: "Hello there", colorID: colorIndex % colors.count)
-            node.setupNode()
-            self.addARObjectNode(node: node)
+            self.presentTextPromptVC()
+        case 103:
+            self.presentWolframAlphaVC()
         default:
             print("Unknown annotation")
         }

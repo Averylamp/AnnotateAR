@@ -19,26 +19,17 @@ class WolframAlphaPromptController: UIViewController {
         
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.insertSubview(blurEffectView, at: 0)
-        self.titleLabel.text = "What equation would you like to display to the group?"
-        self.titleLabel.backgroundColor = UIColor.clear
     }
     
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet var equationTextField: UITextField!
     
-    
-    
     var equation = ""
-    
-//    func setModel(model:ARObjectNode){
-//        self.model = model
-    
-//    }
     
     @IBAction func createButtonClicked(_ sender: Any) {
         
         if self.equationTextField.text == "" || self.equationTextField.text == nil{
             //TODO: - DO SOMETHING THAT SHOWS THE EQUATION DOES NOT WORK
+            cancelClicked(sender)
             return
         }
         
@@ -49,14 +40,7 @@ class WolframAlphaPromptController: UIViewController {
         
     }
     
-//    @IBAction func deleteButtonClicked(_ sender: Any) {
-//        var userInfo = [String: Any]()
-//        userInfo["model"] = self.model
-//        NotificationCenter.default.post(name: deleteModelOptionsNotificationName, object: self, userInfo: userInfo)
-//        NotificationCenter.default.post(name: hideModelOptionsNotificationName, object: self)
-//    }
-//
-    
+
     @IBAction func cancelClicked(_ sender: Any) {
         NotificationCenter.default.post(name: hideWolframAlphaNotificationName, object: self)
     }
