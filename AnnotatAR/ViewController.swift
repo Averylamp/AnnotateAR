@@ -293,5 +293,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    @IBOutlet var annotationViewButtons: [UIView]!
+    
+    
+    func hideAnnotationViewButtons(){
+        UIView.animate(withDuration: animationDuration, animations: {
+            self.annotationViewButtons.forEach{
+                $0.alpha = 0.0
+                $0.isUserInteractionEnabled = false
+            }
+        })
+    }
+    
+    func hideMenuOptions(){
+        UIView.animate(withDuration: animationDuration) {
+            self.menuVC.view.alpha = 0.0
+            self.menuVC.view.isUserInteractionEnabled = false
+        }
+    }
     
 }

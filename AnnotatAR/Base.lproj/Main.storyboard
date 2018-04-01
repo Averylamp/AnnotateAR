@@ -82,7 +82,7 @@
                                     <action selector="restartExperience:" destination="ri3-7p-e6d" eventType="touchUpInside" id="g0X-9j-zRG"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rS9-tH-PAx" customClass="LTMorphingLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rS9-tH-PAx" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
                                 <rect key="frame" x="32" y="56" width="0.0" height="33"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -111,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9h-Vm-ZUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53.600000000000001" y="-280.20989505247377"/>
+            <point key="canvasLocation" x="57" y="-348"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -141,7 +141,7 @@
                                     <segue destination="ri3-7p-e6d" kind="embed" id="uiU-1f-e8S"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GdA-nf-bSQ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GdA-nf-bSQ" userLabel="PointerView">
                                 <rect key="frame" x="305" y="155" width="80" height="70"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SdY-La-2eN">
@@ -181,7 +181,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6C-gw-i4e">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6C-gw-i4e" userLabel="CircleView">
                                 <rect key="frame" x="305" y="240" width="80" height="70"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhM-O5-dAW">
@@ -221,7 +221,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qtg-8U-6kI">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qtg-8U-6kI" userLabel="TextView">
                                 <rect key="frame" x="305" y="325" width="80" height="70"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pnu-uT-Z6v">
@@ -262,7 +262,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJV-1p-lBn">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJV-1p-lBn" userLabel="GraphView">
                                 <rect key="frame" x="305" y="410" width="80" height="70"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8HO-Z8-kwM">
@@ -303,7 +303,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97t-Li-azD">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97t-Li-azD" userLabel="ColorView">
                                 <rect key="frame" x="305" y="495" width="80" height="70"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OoK-Vd-36O">
@@ -376,6 +376,11 @@
                         <outlet property="blurView" destination="R5W-V8-6lY" id="oF2-lD-Srf"/>
                         <outlet property="colorPaletteButton" destination="lZn-VT-czV" id="9kN-Iw-2Qr"/>
                         <outlet property="sceneView" destination="E6c-py-dvH" id="Gr4-Uw-Z4A"/>
+                        <outletCollection property="annotationViewButtons" destination="GdA-nf-bSQ" collectionClass="NSMutableArray" id="Jam-hB-rb6"/>
+                        <outletCollection property="annotationViewButtons" destination="T6C-gw-i4e" collectionClass="NSMutableArray" id="Mph-mj-V4A"/>
+                        <outletCollection property="annotationViewButtons" destination="Qtg-8U-6kI" collectionClass="NSMutableArray" id="tLR-yc-Uuq"/>
+                        <outletCollection property="annotationViewButtons" destination="zJV-1p-lBn" collectionClass="NSMutableArray" id="umj-TD-4PD"/>
+                        <outletCollection property="annotationViewButtons" destination="97t-Li-azD" collectionClass="NSMutableArray" id="8I2-gY-Axl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -443,6 +448,7 @@
                             <constraint firstItem="ebG-uh-gAC" firstAttribute="centerX" secondItem="h5f-p2-Hmv" secondAttribute="centerX" id="Fpe-n8-ZTl"/>
                             <constraint firstItem="aqo-kj-iDZ" firstAttribute="width" secondItem="muK-Z1-eje" secondAttribute="width" id="IkL-UP-t8Q"/>
                             <constraint firstItem="aFe-Ek-aVA" firstAttribute="centerX" secondItem="h5f-p2-Hmv" secondAttribute="centerX" id="LDG-vG-kAL"/>
+                            <constraint firstItem="aqo-kj-iDZ" firstAttribute="leading" secondItem="muK-Z1-eje" secondAttribute="trailing" id="Lik-db-Htu"/>
                             <constraint firstItem="muK-Z1-eje" firstAttribute="width" secondItem="9z1-Z2-NCP" secondAttribute="width" multiplier="0.5" id="P5s-au-b4K"/>
                             <constraint firstItem="aqo-kj-iDZ" firstAttribute="trailing" secondItem="h5f-p2-Hmv" secondAttribute="trailing" id="RIl-V2-Avm"/>
                             <constraint firstItem="b1l-UC-gPe" firstAttribute="centerX" secondItem="h5f-p2-Hmv" secondAttribute="centerX" id="dvO-8d-fp7"/>
