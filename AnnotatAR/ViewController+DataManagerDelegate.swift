@@ -14,7 +14,7 @@ extension ViewController:DataManagerDelegate{
     func nextState(){
         switch DataManager.shared().state {
         case .HostClientSelector:
-            addTestRoot()
+            addCenteredRoot()
             print("Host Client selector")
             if !self.view.subviews.contains(hostClientVC.view) || hostClientVC.view.isUserInteractionEnabled == false{
                 

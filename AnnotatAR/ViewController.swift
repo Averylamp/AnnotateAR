@@ -68,6 +68,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleSingleTap(gestureRecognizer:)))
         tapGestureRecognizer.delegate = self
         self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+        
+        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(ViewController.handlePinch(gestureRecognizer:)))
+        pinchGestureRecognizer.delegate = self
+        self.sceneView.addGestureRecognizer(pinchGestureRecognizer)
+    
         instantiatePopoverViewControllers()
         
     }
@@ -182,6 +187,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             // Add the plane visualization to the scene.
             node.addChildNode(planeNode)
+            
+            self.addRootNode(imageNode: node)
         }
 
         DispatchQueue.main.async {
@@ -189,6 +196,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             self.statusViewController.cancelAllScheduledMessages()
             self.statusViewController.showMessage("Detected image “\(imageName)”")
         }
+    }
+    
+    func addRootNode(imageNode: SCNNode){
+        if let root = DataManager.shared().rootNode{
+            root.childNodes.forEach{
+                $0.removeFromParentNode()
+            }
+        }
+        let pointNode = SCNNode()
+        let pointGeometry = SCNSphere(radius: 0.01)
+        let orangeMaterial = SCNMaterial()
+        orangeMaterial.diffuse.contents = UIColor.orange
+        pointGeometry.materials = [orangeMaterial]
+        pointNode.geometry = pointGeometry
+        let transform = self.sceneView.scene.rootNode.convertTransform(imageNode.transform, to: self.sceneView.scene.rootNode)
+        pointNode.transform = transform
+        self.sceneView.scene.rootNode.addChildNode(pointNode)
+        DataManager.shared().rootNode = pointNode
     }
 
     var imageHighlightAction: SCNAction {
@@ -205,7 +230,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func testButtonClicked(_ sender: Any) {
-        self.addTestObject(name: "Circle")
+        self.addARObjectNode(name: "Man")
+    }
+    
+    
+    @IBAction func addAnnotation(_ sender: UIButton) {
+        switch sender.tag {
+        case 100:
+            self.addARObjectNode(name: "Pointer")
+        case 101:
+            self.addARObjectNode(name: "Circle")
+        default:
+            print("Unknown annotation")
+        }
     }
     
 }
