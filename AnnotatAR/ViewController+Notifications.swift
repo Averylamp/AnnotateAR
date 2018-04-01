@@ -50,6 +50,10 @@ extension ViewController{
             }) { (finished) in
                 
             }
+            if DataManager.shared().userType == .Client{
+                self.hideMenuOptions()
+                self.hideAnnotationViewButtons()
+            }
             self.unblockInteraction()
         }
     }
@@ -114,7 +118,8 @@ extension ViewController{
     
     @objc func calculateWolframalphaEquation(notification: NSNotification){
         if let userInfo = notification.userInfo, let equation = userInfo["equation"] as? String{
-            var encodedString: String = equation.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let equationReplacedEscapes = equation.replacingOccurrences(of: "/", with: "")
+            let encodedString: String = equationReplacedEscapes.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             print(encodedString)
             
             let requestURL = "https://annotatear.herokuapp.com/query/\(encodedString)"
