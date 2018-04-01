@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import LTMorphingLabel
 
 class SplashScreenViewController: UIViewController {
     
     @IBOutlet weak var mainLogo: UIImageView!
+    @IBOutlet weak var definitionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,12 @@ class SplashScreenViewController: UIViewController {
         UIView.animate(withDuration: 1.0) {
             self.mainLogo.center.y -= 100
         }
+        self.delay(0.5) {
+            UIView.animate(withDuration: 1.0, animations: {
+                self.definitionLabel.alpha = 1.0
+            })
+        }
+        
     }
     
 }
