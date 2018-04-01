@@ -32,6 +32,7 @@
 		BB9A4A74207006A00078B072 /* ModelOptionsPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A4A73207006A00078B072 /* ModelOptionsPromptViewController.swift */; };
 		BF8283ED206FE43A00B3ABF0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8283EC206FE43A00B3ABF0 /* MenuViewController.swift */; };
 		BF8283EF206FF57C00B3ABF0 /* ViewController+MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8283EE206FF57C00B3ABF0 /* ViewController+MenuViewController.swift */; };
+		BFAB0E8E2070AF4600784379 /* WolframAlphaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAB0E8D2070AF4600784379 /* WolframAlphaViewController.swift */; };
 		E08E26B1F555800734D797E4 /* Pods_AnnotatARTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC40B81AC6FE6862A25C1551 /* Pods_AnnotatARTests.framework */; };
 		EEFE34BFFA61BF45824DAD0F /* Pods_AnnotatAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A792B553EBA5731301903987 /* Pods_AnnotatAR.framework */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,7 @@
 		BBC2EF757B596C42F4AD7654 /* Pods-AnnotatARUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnnotatARUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnnotatARUITests/Pods-AnnotatARUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BF8283EC206FE43A00B3ABF0 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		BF8283EE206FF57C00B3ABF0 /* ViewController+MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+MenuViewController.swift"; sourceTree = "<group>"; };
+		BFAB0E8D2070AF4600784379 /* WolframAlphaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WolframAlphaViewController.swift; sourceTree = "<group>"; };
 		CC40B81AC6FE6862A25C1551 /* Pods_AnnotatARTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnnotatARTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEFD62D318A3BB477E222EA7 /* Pods-AnnotatAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnnotatAR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnnotatAR/Pods-AnnotatAR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +212,7 @@
 				BB9A4A73207006A00078B072 /* ModelOptionsPromptViewController.swift */,
 				BB9A4A2A206F5FAB0078B072 /* HostClientSelectorViewController.swift */,
 				BB9A4A2F206F6E0E0078B072 /* PromptViewController.swift */,
+				BFAB0E8D2070AF4600784379 /* WolframAlphaViewController.swift */,
 			);
 			name = PromptViewControllers;
 			path = "New Group";
@@ -524,6 +527,7 @@
 				BB9A4A21206F56430078B072 /* Extensions.swift in Sources */,
 				BB9A49F1206F4F4D0078B072 /* ViewController.swift in Sources */,
 				BB9A4A25206F5B050078B072 /* ViewController+ARSessionDelegate.swift in Sources */,
+				BFAB0E8E2070AF4600784379 /* WolframAlphaViewController.swift in Sources */,
 				BB9A4A29206F5E9A0078B072 /* ViewController+DataManagerDelegate.swift in Sources */,
 				BB9A4A30206F6E0E0078B072 /* PromptViewController.swift in Sources */,
 				BB9A4A2B206F5FAB0078B072 /* HostClientSelectorViewController.swift in Sources */,

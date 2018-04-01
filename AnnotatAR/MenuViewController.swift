@@ -44,7 +44,7 @@ class MenuViewController: UIViewController{
     //tells if the current menu is open or closed
     private var expandState: menuState = .close
     
-    private var viewNames: [String] = ["Man", "Sun", "Mercury", "Venus", "Mars", "Earth", "Jupiter", "Saturn", "Uranus", "Pluto", "Bike", "Fighter", "Drone", "Ship"]
+    private var viewNames: [String] = ["Man", "Sun", "Mercury", "Venus", "Mars", "Earth",  "Jupiter", "Saturn", "Uranus", "Pluto", "Bike", "Fighter", "Drone", "Ship"]
 //    private var viewNames: [String] = ["Man", "Sun", "Mercury", "Venus", "Mars", "Earth", "Jupiter", "Saturn", "Uranus", "Pluto", "Bike", "Fighter", "Drone", "Ship"]
     
     override func viewDidLoad() {
