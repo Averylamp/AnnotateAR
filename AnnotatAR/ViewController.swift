@@ -63,7 +63,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let panelPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handlePanGesture(_:)))
         panelPanGestureRecognizer.delegate = self
-        menuVC.view.addGestureRecognizer(panelPanGestureRecognizer)
+//        menuVC.view.addGestureRecognizer(panelPanGestureRecognizer)
+//        panelPanGestureRecognizer.isEnabled = false
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleSingleTap(gestureRecognizer:)))
         tapGestureRecognizer.delegate = self
@@ -98,7 +99,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         self.addChildViewController(menuVC)
         self.view.insertSubview(menuVC.view, belowSubview: blockingBlurView)
-        menuVC.view.frame = CGRect(x: CGFloat(0), y: self.view.frame.height - MenuViewController.heightOfExpandButton, width: self.view.frame.height, height: MenuViewController.heightOfView)
+        menuVC.view.frame = CGRect(x: CGFloat(0), y: self.view.frame.height - MenuViewController.heightOfExpandButton, width: self.view.frame.width, height: MenuViewController.heightOfView)
         menuVC.delegate = self
         
         self.addChildViewController(modelOptionsVC)
