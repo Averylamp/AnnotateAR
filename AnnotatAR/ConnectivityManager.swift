@@ -21,7 +21,7 @@ protocol ConnectivityManagerDelegate {
 }
 
 class ConnectivityManager : NSObject {
-    let ServiceType = "AnnotatAR0"
+    let ServiceType = "AnnotatAR"
     let myPeerId = MCPeerID(displayName: UIDevice.current.name)
     var advertiser: MCNearbyServiceAdvertiser?
     var browser: MCNearbyServiceBrowser?
