@@ -83,4 +83,18 @@ extension ViewController: UIGestureRecognizerDelegate{
         }
     }
     
+    @objc func handleRotateGesture(gestureRecognizer: UIPanGestureRecognizer){
+        guard gestureRecognizer.view != nil else { return }
+        
+        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            let translation = gestureRecognizer.translation(in: view).x / 100.0
+            if let node = DataManager.shared().currentObjectMoving{
+                node.eulerAngles.y += Float(translation)
+            }
+            gestureRecognizer.setTranslation(CGPoint.zero, in: view)
+        }
+
+        
+    }
+    
 }
