@@ -23,6 +23,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     let menuVC = MenuViewController()
     
+    var firstOpen = true
+    
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
         return childViewControllers.lazy.flatMap({ $0 as? StatusViewController }).first!
@@ -102,8 +104,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let splashScreenVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashVC")
-        self.present(splashScreenVC, animated: false)
+        if firstOpen{
+            let splashScreenVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashVC")
+            self.present(splashScreenVC, animated: false)
+            firstOpen = false
+        }
 		
 		// Prevent the screen from being dimmed to avoid interuppting the AR experience.
 		UIApplication.shared.isIdleTimerDisabled = true
