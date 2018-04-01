@@ -79,8 +79,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let rotationGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handleRotateGesture(gestureRecognizer:)))
         rotationGestureRecognizer.delegate = self
         rotationGestureRecognizer.minimumNumberOfTouches = 2
+        rotationGestureRecognizer.maximumNumberOfTouches = 2
         self.sceneView.addGestureRecognizer(rotationGestureRecognizer)
         
+        let upDownGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handleUpDownGesture(gestureRecognizer:)))
+        upDownGestureRecognizer.delegate = self
+        upDownGestureRecognizer.minimumNumberOfTouches = 3
+        upDownGestureRecognizer.minimumNumberOfTouches = 3
+        self.sceneView.addGestureRecognizer(upDownGestureRecognizer)
         
         instantiatePopoverViewControllers()
         

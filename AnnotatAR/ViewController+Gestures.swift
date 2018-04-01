@@ -87,14 +87,26 @@ extension ViewController: UIGestureRecognizerDelegate{
         guard gestureRecognizer.view != nil else { return }
         
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-            let translation = gestureRecognizer.translation(in: view).x / 100.0
+            let translationX = gestureRecognizer.translation(in: view).x / 100.0
+            let translationY = gestureRecognizer.translation(in: view).y / 100.0
             if let node = DataManager.shared().currentObjectMoving{
-                node.eulerAngles.y += Float(translation)
+                node.eulerAngles.y += Float(translationX)
+                node.eulerAngles.x += Float(translationY)
+            }
+            gestureRecognizer.setTranslation(CGPoint.zero, in: view)
+        }   
+    }
+    
+    @objc func handleUpDownGesture(gestureRecognizer: UIPanGestureRecognizer){
+        guard gestureRecognizer.view != nil else { return }
+        
+        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            let translationY = gestureRecognizer.translation(in: view).y / 1000.0
+            if let node = DataManager.shared().currentObjectMoving{
+                node.position.y -= Float(translationY)
             }
             gestureRecognizer.setTranslation(CGPoint.zero, in: view)
         }
-
-        
     }
     
 }

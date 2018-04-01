@@ -63,7 +63,7 @@
 		A792B553EBA5731301903987 /* Pods_AnnotatAR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnnotatAR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7A8FD7B0B6D6899FA4F7CEB /* Pods-AnnotatARTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnnotatARTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnnotatARTests/Pods-AnnotatARTests.release.xcconfig"; sourceTree = "<group>"; };
 		BB4DDF3D207050CD006B6034 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
-		BB9A49E9206F4F4D0078B072 /* AnnotatAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnnotatAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB9A49E9206F4F4D0078B072 /* AnnotateAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnnotateAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9A49EC206F4F4D0078B072 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB9A49EE206F4F4D0078B072 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		BB9A49F0206F4F4D0078B072 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,10 +71,10 @@
 		BB9A49F5206F4F4E0078B072 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB9A49F8206F4F4E0078B072 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB9A49FA206F4F4E0078B072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB9A49FF206F4F4E0078B072 /* AnnotatARTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnnotatARTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB9A49FF206F4F4E0078B072 /* AnnotateARTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnnotateARTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9A4A03206F4F4E0078B072 /* AnnotatARTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotatARTests.swift; sourceTree = "<group>"; };
 		BB9A4A05206F4F4E0078B072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB9A4A0A206F4F4E0078B072 /* AnnotatARUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnnotatARUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB9A4A0A206F4F4E0078B072 /* AnnotateARUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnnotateARUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9A4A0E206F4F4E0078B072 /* AnnotatARUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotatARUITests.swift; sourceTree = "<group>"; };
 		BB9A4A10206F4F4E0078B072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB9A4A1C206F52DB0078B072 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -155,9 +155,9 @@
 		BB9A49EA206F4F4D0078B072 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BB9A49E9206F4F4D0078B072 /* AnnotatAR.app */,
-				BB9A49FF206F4F4E0078B072 /* AnnotatARTests.xctest */,
-				BB9A4A0A206F4F4E0078B072 /* AnnotatARUITests.xctest */,
+				BB9A49E9206F4F4D0078B072 /* AnnotateAR.app */,
+				BB9A49FF206F4F4E0078B072 /* AnnotateARTests.xctest */,
+				BB9A4A0A206F4F4E0078B072 /* AnnotateARUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,9 +234,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BB9A49E8206F4F4D0078B072 /* AnnotatAR */ = {
+		BB9A49E8206F4F4D0078B072 /* AnnotateAR */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BB9A4A13206F4F4E0078B072 /* Build configuration list for PBXNativeTarget "AnnotatAR" */;
+			buildConfigurationList = BB9A4A13206F4F4E0078B072 /* Build configuration list for PBXNativeTarget "AnnotateAR" */;
 			buildPhases = (
 				97AE5F707215855C5CAFFB5D /* [CP] Check Pods Manifest.lock */,
 				BB9A49E5206F4F4D0078B072 /* Sources */,
@@ -249,14 +249,14 @@
 			);
 			dependencies = (
 			);
-			name = AnnotatAR;
+			name = AnnotateAR;
 			productName = AnnotatAR;
-			productReference = BB9A49E9206F4F4D0078B072 /* AnnotatAR.app */;
+			productReference = BB9A49E9206F4F4D0078B072 /* AnnotateAR.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BB9A49FE206F4F4E0078B072 /* AnnotatARTests */ = {
+		BB9A49FE206F4F4E0078B072 /* AnnotateARTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BB9A4A16206F4F4E0078B072 /* Build configuration list for PBXNativeTarget "AnnotatARTests" */;
+			buildConfigurationList = BB9A4A16206F4F4E0078B072 /* Build configuration list for PBXNativeTarget "AnnotateARTests" */;
 			buildPhases = (
 				E050FDEBA254FC62E4CCA3DF /* [CP] Check Pods Manifest.lock */,
 				BB9A49FB206F4F4E0078B072 /* Sources */,
@@ -270,14 +270,14 @@
 			dependencies = (
 				BB9A4A01206F4F4E0078B072 /* PBXTargetDependency */,
 			);
-			name = AnnotatARTests;
+			name = AnnotateARTests;
 			productName = AnnotatARTests;
-			productReference = BB9A49FF206F4F4E0078B072 /* AnnotatARTests.xctest */;
+			productReference = BB9A49FF206F4F4E0078B072 /* AnnotateARTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BB9A4A09206F4F4E0078B072 /* AnnotatARUITests */ = {
+		BB9A4A09206F4F4E0078B072 /* AnnotateARUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BB9A4A19206F4F4E0078B072 /* Build configuration list for PBXNativeTarget "AnnotatARUITests" */;
+			buildConfigurationList = BB9A4A19206F4F4E0078B072 /* Build configuration list for PBXNativeTarget "AnnotateARUITests" */;
 			buildPhases = (
 				3854B4E295614D11EF6C45F3 /* [CP] Check Pods Manifest.lock */,
 				BB9A4A06206F4F4E0078B072 /* Sources */,
@@ -291,9 +291,9 @@
 			dependencies = (
 				BB9A4A0C206F4F4E0078B072 /* PBXTargetDependency */,
 			);
-			name = AnnotatARUITests;
+			name = AnnotateARUITests;
 			productName = AnnotatARUITests;
-			productReference = BB9A4A0A206F4F4E0078B072 /* AnnotatARUITests.xctest */;
+			productReference = BB9A4A0A206F4F4E0078B072 /* AnnotateARUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -319,7 +319,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BB9A49E4206F4F4D0078B072 /* Build configuration list for PBXProject "AnnotatAR" */;
+			buildConfigurationList = BB9A49E4206F4F4D0078B072 /* Build configuration list for PBXProject "AnnotateAR" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -332,9 +332,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BB9A49E8206F4F4D0078B072 /* AnnotatAR */,
-				BB9A49FE206F4F4E0078B072 /* AnnotatARTests */,
-				BB9A4A09206F4F4E0078B072 /* AnnotatARUITests */,
+				BB9A49E8206F4F4D0078B072 /* AnnotateAR */,
+				BB9A49FE206F4F4E0078B072 /* AnnotateARTests */,
+				BB9A4A09206F4F4E0078B072 /* AnnotateARUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -566,12 +566,12 @@
 /* Begin PBXTargetDependency section */
 		BB9A4A01206F4F4E0078B072 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BB9A49E8206F4F4D0078B072 /* AnnotatAR */;
+			target = BB9A49E8206F4F4D0078B072 /* AnnotateAR */;
 			targetProxy = BB9A4A00206F4F4E0078B072 /* PBXContainerItemProxy */;
 		};
 		BB9A4A0C206F4F4E0078B072 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BB9A49E8206F4F4D0078B072 /* AnnotatAR */;
+			target = BB9A49E8206F4F4D0078B072 /* AnnotateAR */;
 			targetProxy = BB9A4A0B206F4F4E0078B072 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -765,7 +765,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnnotatAR.app/AnnotatAR";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnnotateAR.app/AnnotateAR";
 			};
 			name = Debug;
 		};
@@ -786,7 +786,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnnotatAR.app/AnnotatAR";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnnotateAR.app/AnnotateAR";
 			};
 			name = Release;
 		};
@@ -833,7 +833,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BB9A49E4206F4F4D0078B072 /* Build configuration list for PBXProject "AnnotatAR" */ = {
+		BB9A49E4206F4F4D0078B072 /* Build configuration list for PBXProject "AnnotateAR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB9A4A11206F4F4E0078B072 /* Debug */,
@@ -842,7 +842,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BB9A4A13206F4F4E0078B072 /* Build configuration list for PBXNativeTarget "AnnotatAR" */ = {
+		BB9A4A13206F4F4E0078B072 /* Build configuration list for PBXNativeTarget "AnnotateAR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB9A4A14206F4F4E0078B072 /* Debug */,
@@ -851,7 +851,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BB9A4A16206F4F4E0078B072 /* Build configuration list for PBXNativeTarget "AnnotatARTests" */ = {
+		BB9A4A16206F4F4E0078B072 /* Build configuration list for PBXNativeTarget "AnnotateARTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB9A4A17206F4F4E0078B072 /* Debug */,
@@ -860,7 +860,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BB9A4A19206F4F4E0078B072 /* Build configuration list for PBXNativeTarget "AnnotatARUITests" */ = {
+		BB9A4A19206F4F4E0078B072 /* Build configuration list for PBXNativeTarget "AnnotateARUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB9A4A1A206F4F4E0078B072 /* Debug */,

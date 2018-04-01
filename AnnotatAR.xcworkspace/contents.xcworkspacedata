@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:AnnotatAR.xcodeproj">
+      location = "group:/Users/avery/Developer/iOS/AnnotatAR/AnnotateAR.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
