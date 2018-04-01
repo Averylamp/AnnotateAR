@@ -2,6 +2,7 @@ import os
 from flask import Flask, redirect, url_for, render_template, request, send_from_directory
 from werkzeug.utils import secure_filename
 import wolframalpha
+import string
 
 UPLOAD_FOLDER = 'uploads/'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -13,6 +14,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def hello_world():
 	userquery = request.args.get("userquery")
 	if userquery is not None:
+		if '/' in userquery:
+			return 'No plots found'
 		return redirect(url_for("get_plot", userquery=userquery))
 	return render_template('index.html')
 
@@ -20,13 +23,19 @@ def hello_world():
 def get_plot(userquery):
 	app_id = 'ETUYXG-KTKHVQ24U8'
 	client = wolframalpha.Client(app_id)
-	res = client.query(userquery)
-	for pod in res.pods:
-		print(pod)
-		if 'Plot' in pod.title or 'plot' in pod.title:
-			for sub in pod.subpods:
-				if '@src' in sub['img']:
-					return sub['img']['@src']
+	reformatted = string.replace(userquery, "#", "/")
+	reformatted = string.replace(reformatted, "_", "/")
+	print(reformatted)
+	try:
+		res = client.query(reformatted)
+		for pod in res.pods:
+			print(pod)
+			if 'Plot' in pod.title or 'plot' in pod.title:
+				for sub in pod.subpods:
+					if '@src' in sub['img']:
+						return sub['img']['@src']
+	except:
+		return 'No plots found'
 	return 'No plots found'
 
 @app.route('/upload')
