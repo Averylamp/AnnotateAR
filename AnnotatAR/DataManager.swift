@@ -58,22 +58,18 @@ class DataManager {
     
     var userType: UserType = .Unknown
     var state: State = .HostClientSelector
-    var initialState:State = .HostClientSelector
+    var initialState:State = .FindCenter
 //    var userType: UserType = .Host
 //    var state: State = .Demo
 //    var initialState:State = .Demo
 
-    var alignmentSCNNodes = [SCNNode]()
-    var alignmentPoints = [CGPoint]()
-    
     var rootNode: SCNNode?
     var currentObjectMoving: ARObjectNode?
     
-    var allNodes = [ARObjectNode]()
-    
     @objc func update(){
         //       print("Run loop update \(CACurrentMediaTime())")
-        if let node = self.currentObjectMoving, let root = rootNode{
+        if let node = self.currentObjectMoving,
+            let root = rootNode{
             var data = [String: Any]()
             data["name"] = node.name!
             let newTransform = root.convertTransform(node.transform, from: node.parent)
@@ -85,7 +81,6 @@ class DataManager {
     
     func addObject(object: ARObjectNode){
         self.currentObjectMoving = object
-        self.allNodes.append(object)
         self.sendObject(object: object)
     }
    
@@ -97,20 +92,51 @@ class DataManager {
     func sendObject(object: ARObjectNode){
         print("Sending object: \(object.id)")
         let objectData = NSKeyedArchiver.archivedData(withRootObject: object)
-        connectivity.sendData(data: objectData)
+        if userType == .Host{
+            connectivity.sendData(data: objectData)
+        }
+    }
+    
+    func deleteObject(object: ARObjectNode){
+        if let root = rootNode{
+            if let node = root.childNode(withName: object.id, recursively: true) as? ARObjectNode{
+                node.removeFromParentNode()
+                if userType == .Host{
+                    sendDeleteObject(object: node)
+                }
+            }
+        }
+    }
+    
+    func sendDeleteObject(object: ARObjectNode){
+        var data = [String: ARObjectNode]()
+        data["object"] = object
+        let fullData = NSKeyedArchiver.archivedData(withRootObject: data)
+        connectivity.sendData(data: fullData)
+    }
+    
+    func requestAllObjects(){
+        let data = "AllObjectsPlease"
+        connectivity.sendData(data: data.data(using: .utf8)!)
     }
     
     func updateObject(object: ARObjectNode){
         if let root = rootNode{
             if let node = root.childNode(withName: object.id, recursively: true){
                 print("Updating transform of object")
-                node.transform = object.transform
+                node.transform = object.rootTransform
+            }else{
+                print("Object not added already")
+                object.load()
+                object.transform = object.rootTransform
+                root.addChildNode(object)
             }
         }
     }
     
     func lockCurrentMovingObject(){
-        if let node = self.currentObjectMoving, let root = rootNode{
+        if let node = self.currentObjectMoving,
+            let root = rootNode{
             node.transform = root.convertTransform(node.transform, from: node.parent)
             node.removeFromParentNode()
             root.addChildNode(node)
@@ -121,7 +147,8 @@ class DataManager {
     }
     
     func nodeAnimation(nodeName: String, transform: SCNMatrix4){
-        if let root = rootNode, let movingNode = root.childNode(withName: nodeName, recursively: false){
+        if let root = rootNode,
+            let movingNode = root.childNode(withName: nodeName, recursively: false){
             let animation = CABasicAnimation(keyPath: "transform")
             animation.fromValue = movingNode.transform
             animation.toValue = transform
@@ -130,7 +157,6 @@ class DataManager {
             movingNode.transform = transform
         }
     }
-    
     
 }
 
@@ -146,10 +172,13 @@ extension DataManager: ConnectivityManagerDelegate{
         }
         print("New Devices: \(newDevices)")
         if newDevices.count > 0{
-            
-            for object in self.allNodes{
-                self.sendObject(object: object)
-                self.updateObject(object: object)
+            if let root = self.rootNode{
+                for object in root.childNodes{
+                    if let childNode = object as? ARObjectNode{
+                        self.sendObject(object: childNode)
+                        self.updateObject(object: childNode)
+                    }
+                }
             }
         }
         self.allConnectedDevices  = connectedDevices
@@ -167,8 +196,26 @@ extension DataManager: ConnectivityManagerDelegate{
                 self.updateObject(object: newObject)
                 self.delegate?.receivedNewObject(object: newObject)
             }
-            if let animationObject = object as? [String: Any], let nodeName = animationObject["name"] as? String, let transformValues = animationObject["transform"] as? [Float]{
+            if let animationObject = object as? [String: Any],
+                let nodeName = animationObject["name"] as? String,
+                let transformValues = animationObject["transform"] as? [Float]{
                 self.nodeAnimation(nodeName: nodeName, transform: SCNMatrix4.matrixFromFloatArray(transformValue: transformValues))
+            }
+            if let deleteObject = object as? [String:ARObjectNode],
+                let node = deleteObject["model"]{
+                print("Received Delete Object notification")
+                self.deleteObject(object: node)
+            }
+            if let request = object as? String,
+                let root = self.rootNode,
+                request == "AllObjectsPlease",
+                self.userType == .Host
+            {
+                for node in root.childNodes{
+                    if let arNode = node as? ARObjectNode{
+                        self.sendObject(object: arNode)
+                    }
+                }
             }
         }
     }

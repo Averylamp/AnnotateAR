@@ -14,7 +14,7 @@ extension ViewController:DataManagerDelegate{
     func nextState(){
         switch DataManager.shared().state {
         case .HostClientSelector:
-            addTestRoot()
+            addCenteredRoot()
             print("Host Client selector")
             if !self.view.subviews.contains(hostClientVC.view) || hostClientVC.view.isUserInteractionEnabled == false{
                 
@@ -27,9 +27,7 @@ extension ViewController:DataManagerDelegate{
                     self.hostClientVC.view.center.y -= 20
                     self.hostClientVC.view.alpha = 1.0
                 }) { (finished) in
-                    
                 }
-                
             }
         case .FindCenter:
             print("Find Center State")
@@ -38,16 +36,34 @@ extension ViewController:DataManagerDelegate{
             print("Demo Time")
             if DataManager.shared().userType == .Host{
 //                addTestObject(name:"ship")
+            }else{
+                print("Requesting All Objects")
+                DataManager.shared().requestAllObjects()
             }
         default:
             print("Missing something")
         }
-        
-        
+    }
+    
+    func promptModelOptions(model:ARObjectNode){
+        if !self.view.subviews.contains(modelOptionsVC.view) ||
+            modelOptionsVC.view.isUserInteractionEnabled == false{
+            modelOptionsVC.view.center = self.view.center
+            modelOptionsVC.view.alpha = 0.0
+            modelOptionsVC.view.center.y += 20
+            modelOptionsVC.view.isUserInteractionEnabled = true
+            modelOptionsVC.setModel(model: model)
+            blockInteraction()
+            UIView.animate(withDuration: animationDuration) {
+                self.modelOptionsVC.view.center.y -= 20
+                self.modelOptionsVC.view.alpha = 1.0
+            }
+        }
     }
     
     func presentPrompt(text:String, confirmation:String, height: CGFloat){
-        if !self.view.subviews.contains(promptVC.view) || promptVC.view.isUserInteractionEnabled == false{
+        if !self.view.subviews.contains(promptVC.view) ||
+            promptVC.view.isUserInteractionEnabled == false{
             promptVC.setupPrompt(mainText: text, confirmationText: confirmation)
             promptVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: height)
             promptVC.view.center = self.view.center
@@ -59,11 +75,8 @@ extension ViewController:DataManagerDelegate{
                 self.promptVC.view.center.y -= 20
                 self.promptVC.view.alpha = 1.0
             }) { (finished) in
-                
             }
-            
         }
-        
     }
     
     func blockInteraction(){
@@ -86,13 +99,12 @@ extension ViewController:DataManagerDelegate{
     }
     
     func receivedNewObject(object: ARObjectNode){
-        statusViewController.showMessage("Received new obejct: \(object.name) ")
+        statusViewController.showMessage("Received new obejct: \(object.modelName) ")
         print("Received Object")
         if let root = DataManager.shared().rootNode{
             if root.childNode(withName: object.name!, recursively: true) == nil{
                 object.load()
                 root.addChildNode(object)
-                DataManager.shared().allNodes.append(object)
             }
         }
     }
@@ -100,8 +112,11 @@ extension ViewController:DataManagerDelegate{
     func newDevicesConnected(devices: [String]){
         print("New Devices Connected")
         if devices.count > 1{
+            self.statusViewController.stateLabel.text = "Devices: \(devices.count + 1)"
             self.statusViewController.showMessage("Devices connected: \(devices.joined(separator: ", "))")
         }else{
+            self.statusViewController.stateLabel.text = "Devices: \(devices.count + 1)"
+            
             self.statusViewController.showMessage("Device connected: \(devices.joined(separator: ", "))")
         }
     }
