@@ -20,6 +20,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let hostClientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HostClientVC") as! HostClientSelectorViewController
     let promptVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PromptVC") as! PromptViewController
     let modelOptionsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModelOptionsVC") as! ModelOptionsPromptViewController
+    let WFRAVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WolframAlphaVC") as! WolframAlphaPromptController
     
     let menuVC = MenuViewController()
     
@@ -109,6 +110,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         modelOptionsVC.view.isUserInteractionEnabled = false
         modelOptionsVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         
+        
+        self.addChildViewController(WFRAVC)
+        self.view.addSubview(WFRAVC.view)
+        WFRAVC.view.alpha = 0.0
+        WFRAVC.view.isUserInteractionEnabled = false
+        WFRAVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
     }
     
     override func viewWillAppear(_ animated: Bool) {
