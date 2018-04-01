@@ -23,7 +23,7 @@ protocol MenuViewControllerDelegate: class {
 class MenuViewController: UIViewController{
     
     //This will be deleted (probably) it is to represent the height as that will probably change durring development
-    static public let heightOfView: CGFloat = 250
+    static public let heightOfView: CGFloat = 200
     static public let heightOfExpandButton: CGFloat = 60
     private let widthOfImageView: CGFloat = 120
     private let spaceBetweenImageView: CGFloat = 30
@@ -44,11 +44,8 @@ class MenuViewController: UIViewController{
     //tells if the current menu is open or closed
     private var expandState: menuState = .close
     
-    private var imageNamesToSCNName: [String : String] = ["sunmap" : "Sun", "" : ""]
-    
-    private var imageNames: [String] = ["Man", "Sun", "Mercury", "Venus", "Mars", "Earth", "Jupiter", "Saturn", "Uranus"]
-    private var SCNNames: [String] = ["Man", "Sun", "Mercury", "Venus", "Mars", "Earth", "Jupiter", "Saturn", "Uranus"]
-    
+    private var viewNames: [String] = ["Man", "Sun", "Mercury", "Venus", "Mars", "Earth", "Jupiter", "Saturn", "Uranus", "Pluto", "Bike", "Fighter", "Drone", "Ship"]
+//    private var viewNames: [String] = ["Man", "Sun", "Mercury", "Venus", "Mars", "Earth", "Jupiter", "Saturn", "Uranus", "Pluto", "Bike", "Fighter", "Drone", "Ship"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,11 +104,12 @@ class MenuViewController: UIViewController{
         //Prevents menu from opening when it's not supposed to 
 //        if state == self.expandState || !allowsExpand { return }
         if !allowsExpand { return }
-
+        print("StartFrame: \(self.view.frame)")
         if state == .close{
             UIView.animate(withDuration: 1, animations: { [weak self] in
                 self?.expandButton.frame = CGRect(x: 0, y: 0, width: (self?.view.frame.width)!, height: MenuViewController.heightOfExpandButton)
                 self?.scrollView.frame = CGRect(x: 0, y: MenuViewController.heightOfExpandButton, width: (self?.view.frame.width)!, height: MenuViewController.heightOfView - MenuViewController.heightOfExpandButton)
+                print("Close Frame: \((self?.view.frame)!)")
             }) { [weak self] (completed)  in
                 self?.expandImageView.image = #imageLiteral(resourceName: "expand")
                 UIView.animate(withDuration: 0.3, animations: { [weak self] in
@@ -124,6 +122,7 @@ class MenuViewController: UIViewController{
             UIView.animate(withDuration: 1, animations: { [weak self] in
                 self?.expandButton.frame = CGRect(x: 0, y: 0, width: (self?.view.frame.width)!, height: MenuViewController.heightOfExpandButton - 15)
                 self?.scrollView.frame = CGRect(x: 0, y: MenuViewController.heightOfExpandButton - 15, width: (self?.view.frame.width)!, height: MenuViewController.heightOfView - (MenuViewController.heightOfExpandButton - 15))
+                print("Open Frame: \((self?.view.frame)!)")
             }) { [weak self] (completed)  in
                 self?.expandImageView.image = #imageLiteral(resourceName: "collapse")                
             }
@@ -140,14 +139,19 @@ class MenuViewController: UIViewController{
         self.scrollView.backgroundColor = UIColor.white
         self.scrollView.isScrollEnabled = true
         
+        
+        print(self.view.frame)
         self.scrollView.frame = CGRect(x: 0, y: MenuViewController.heightOfExpandButton, width: self.view.frame.width, height: MenuViewController.heightOfView - MenuViewController.heightOfExpandButton)
+        print(scrollView.frame)
         self.updateMenuItems()
     }
     
     private func updateMenuItems(){
         scrollView.subviews.forEach() { $0.removeFromSuperview() }
         var count: CGFloat = 0
-        for i in imageNames{
+        for i in viewNames{
+            
+            let heightOfLabel: CGFloat = 40
             
             let button = UIButton()
             button.setTitle("", for: .normal)
@@ -159,18 +163,23 @@ class MenuViewController: UIViewController{
             let imageView = UIImageView()
             imageView.contentMode = .scaleAspectFit
             imageView.image = image
-            imageView.frame = CGRect(x: 0, y: 0, width: button.frame.height, height: button.frame.height)
+            imageView.frame = CGRect(x: 0, y: 0, width: button.frame.width, height: button.frame.height - heightOfLabel)
             button.addSubview(imageView)
             button.addTarget(self, action: #selector(itemSelected(sender:)), for: .touchUpInside)
             
             scrollView.contentSize.width = ((spaceBetweenImageView + widthOfImageView) * (count + 1)) + spaceBetweenImageView
             scrollView.contentSize.height = button.frame.height
-            print("WIDTH: \(scrollView.contentSize.width)\t\t \(self.view.frame.width)")
+//            print("WIDTH: \(scrollView.contentSize.width)\t\t \(self.view.frame.width)")
             scrollView.addSubview(button)
             
-//            let frame = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
-            let label = UILabel()
-            
+            let frame = CGRect(x: 0, y: button.frame.height - (heightOfLabel), width: button.frame.width, height: heightOfLabel)
+            let label = UILabel(frame: frame)
+            label.text = i
+            label.font = UIFont(name: "Avenir-Next", size: 25)
+            label.textColor = UIColor.backgroundRed
+            label.textAlignment = .center
+            label.adjustsFontSizeToFitWidth = true
+            button.addSubview(label)
             
             count += 1
         }
@@ -178,7 +187,7 @@ class MenuViewController: UIViewController{
     
     @objc private func itemSelected(sender: UIButton){
         self.toggleMenu(with: .close)
-        delegate.didSelectObject(named: SCNNames[sender.tag])
+        delegate.didSelectObject(named: viewNames[sender.tag])
     }
     
     
