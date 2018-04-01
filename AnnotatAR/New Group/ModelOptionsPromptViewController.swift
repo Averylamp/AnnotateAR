@@ -44,8 +44,10 @@ class ModelOptionsPromptViewController: UIViewController {
         userInfo["model"] = self.model
         NotificationCenter.default.post(name: deleteModelOptionsNotificationName, object: self, userInfo: userInfo)
         NotificationCenter.default.post(name: hideModelOptionsNotificationName, object: self)
-
     }
     
-
+    
+    @IBAction func cancelClicked(_ sender: Any) {
+        NotificationCenter.default.post(name: hideModelOptionsNotificationName, object: self)
+    }
 }
