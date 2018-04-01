@@ -20,12 +20,17 @@ class TextPromptViewController: UIViewController {
         
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.insertSubview(blurEffectView, at: 0)
-        // Do any additional setup after loading the view.
+        
+        textField.delegate = self
     }
 
     @IBOutlet weak var textField: UITextField!
     
     @IBAction func createClicked(_ sender: Any) {
+        if self.textField.text == ""{
+            self.cancelClicked(sender)
+            return
+        }
         var userInfo = [String:String]()
         userInfo["text"] = self.textField.text
         NotificationCenter.default.post(name: createTextNodeNotificationName, object: self, userInfo: userInfo)
@@ -36,5 +41,13 @@ class TextPromptViewController: UIViewController {
         NotificationCenter.default.post(name: hideTextPromptNotificationName, object: self)
     }
     
+}
+
+extension TextPromptViewController: UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
 }

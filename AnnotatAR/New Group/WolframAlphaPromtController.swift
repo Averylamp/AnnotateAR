@@ -19,6 +19,8 @@ class WolframAlphaPromptController: UIViewController {
         
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.insertSubview(blurEffectView, at: 0)
+        
+        equationTextField.delegate = self
     }
     
     @IBOutlet var equationTextField: UITextField!
@@ -43,6 +45,13 @@ class WolframAlphaPromptController: UIViewController {
 
     @IBAction func cancelClicked(_ sender: Any) {
         NotificationCenter.default.post(name: hideWolframAlphaNotificationName, object: self)
+    }
+}
+
+extension WolframAlphaPromptController : UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
 
