@@ -47,7 +47,7 @@ class MenuViewController: UIViewController{
     private var imageNamesToSCNName: [String : String] = ["sunmap" : "Sun", "" : ""]
     
     private var imageNames: [String] = ["Logo", "texture", "earthmap1k", "mars_1k_color", "mars_1k_color", "mars_1k_color", "mars_1k_color"]
-    private var SCNNames: [String] = ["Sun", "Ship", "Earth", "Mars"]
+    private var SCNNames: [String] = ["Man", "Sun", "Mercury", "Venus", "Mars", "Earth", "Jupiter", "Saturn", "Uranus"]
     
     
     override func viewDidLoad() {
