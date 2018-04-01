@@ -163,9 +163,13 @@
                                         </view>
                                         <blurEffect style="light"/>
                                     </visualEffectView>
-                                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qR0-x6-fDK">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                        <state key="normal" title="Pointer"/>
+                                    <button opaque="NO" tag="100" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qR0-x6-fDK">
+                                        <rect key="frame" x="22.5" y="22.5" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="KPo-fD-JZC"/>
+                                            <constraint firstAttribute="width" constant="35" id="VX9-s6-sPV"/>
+                                        </constraints>
+                                        <state key="normal" title="Pointer" image="leftArrowLogo"/>
                                         <connections>
                                             <action selector="addAnnotation:" destination="BV1-FR-VrT" eventType="touchUpInside" id="G01-ZI-cyR"/>
                                         </connections>
@@ -173,13 +177,11 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="0lK-tI-Qwh"/>
-                                    <constraint firstItem="qR0-x6-fDK" firstAttribute="width" secondItem="GdA-nf-bSQ" secondAttribute="width" constant="-10" id="4vX-Jl-RhW"/>
                                     <constraint firstItem="qR0-x6-fDK" firstAttribute="centerX" secondItem="GdA-nf-bSQ" secondAttribute="centerX" constant="-5" id="Bhp-oO-6SG"/>
                                     <constraint firstAttribute="width" constant="90" id="Mpd-cn-CMg"/>
                                     <constraint firstItem="SdY-La-2eN" firstAttribute="width" secondItem="GdA-nf-bSQ" secondAttribute="width" id="Qaa-0z-LOe"/>
                                     <constraint firstItem="qR0-x6-fDK" firstAttribute="centerY" secondItem="GdA-nf-bSQ" secondAttribute="centerY" id="jU6-8N-Qbn"/>
                                     <constraint firstItem="SdY-La-2eN" firstAttribute="centerX" secondItem="GdA-nf-bSQ" secondAttribute="centerX" id="jZ7-X6-Vf2"/>
-                                    <constraint firstItem="qR0-x6-fDK" firstAttribute="height" secondItem="GdA-nf-bSQ" secondAttribute="height" id="oDl-zp-rsY"/>
                                     <constraint firstItem="SdY-La-2eN" firstAttribute="centerY" secondItem="GdA-nf-bSQ" secondAttribute="centerY" id="xnQ-yn-8Wx"/>
                                     <constraint firstItem="SdY-La-2eN" firstAttribute="height" secondItem="GdA-nf-bSQ" secondAttribute="height" id="zLd-Hf-oYP"/>
                                 </constraints>
@@ -201,9 +203,13 @@
                                         </view>
                                         <blurEffect style="light"/>
                                     </visualEffectView>
-                                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tB3-od-4OE">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                        <state key="normal" title="Circle"/>
+                                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tB3-od-4OE">
+                                        <rect key="frame" x="23" y="22.5" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="2U2-T4-GTH"/>
+                                            <constraint firstAttribute="height" constant="35" id="ynn-u0-zfK"/>
+                                        </constraints>
+                                        <state key="normal" title="Circle" image="targetLogo"/>
                                         <connections>
                                             <action selector="addAnnotation:" destination="BV1-FR-VrT" eventType="touchUpInside" id="yJg-YA-yYm"/>
                                         </connections>
@@ -214,8 +220,6 @@
                                     <constraint firstAttribute="height" constant="80" id="L2N-ox-pcz"/>
                                     <constraint firstItem="hhM-O5-dAW" firstAttribute="height" secondItem="T6C-gw-i4e" secondAttribute="height" id="NbS-nq-WoX"/>
                                     <constraint firstItem="tB3-od-4OE" firstAttribute="centerY" secondItem="T6C-gw-i4e" secondAttribute="centerY" id="TN7-wh-fGo"/>
-                                    <constraint firstItem="tB3-od-4OE" firstAttribute="height" secondItem="T6C-gw-i4e" secondAttribute="height" id="TYa-1h-GP3"/>
-                                    <constraint firstItem="tB3-od-4OE" firstAttribute="width" secondItem="T6C-gw-i4e" secondAttribute="width" constant="-10" id="cyM-sy-GBf"/>
                                     <constraint firstItem="tB3-od-4OE" firstAttribute="centerX" secondItem="T6C-gw-i4e" secondAttribute="centerX" constant="-5" id="qNc-kO-3iJ"/>
                                     <constraint firstItem="hhM-O5-dAW" firstAttribute="centerX" secondItem="T6C-gw-i4e" secondAttribute="centerX" id="rvq-cS-gTw"/>
                                     <constraint firstItem="hhM-O5-dAW" firstAttribute="width" secondItem="T6C-gw-i4e" secondAttribute="width" id="vB3-cA-VTR"/>
@@ -592,7 +596,9 @@
     </scenes>
     <resources>
         <image name="Logo" width="428" height="214"/>
+        <image name="leftArrowLogo" width="104" height="104"/>
         <image name="restart" width="20" height="23"/>
         <image name="restartPressed" width="20" height="23"/>
+        <image name="targetLogo" width="100" height="100"/>
     </resources>
 </document>
