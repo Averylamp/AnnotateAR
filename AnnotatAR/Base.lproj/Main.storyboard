@@ -432,30 +432,14 @@
             </objects>
             <point key="canvasLocation" x="1276.8" y="158.32083958020991"/>
         </scene>
-        <!--Model Options Prompt View Controller-->
+        <!--Wolfram Alpha Prompt Controller-->
         <scene sceneID="qtT-RL-TcM">
             <objects>
-                <viewController storyboardIdentifier="ModelOptionsVC" id="PYm-Pf-9EK" customClass="ModelOptionsPromptViewController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WolframAlphaVC" id="PYm-Pf-9EK" customClass="WolframAlphaPromptController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aon-4m-N1s">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What would you like to do with the model?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnH-uO-Nar">
-                                <rect key="frame" x="20" y="10" width="260" height="55"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcd-DC-MKU">
-                                <rect key="frame" x="0.0" y="73" width="300" height="42.5"/>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="MOVE">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="moveButtonClicked:" destination="PYm-Pf-9EK" eventType="touchUpInside" id="oZO-zO-dwd"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v6C-BX-cFR">
                                 <rect key="frame" x="0.0" y="72" width="300" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -464,63 +448,77 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtt-Fi-oUr">
-                                <rect key="frame" x="0.0" y="115.5" width="300" height="42"/>
+                                <rect key="frame" x="0.0" y="116.5" width="300" height="41.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="DELETE">
+                                <state key="normal" title="CREATE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="deleteButtonClicked:" destination="PYm-Pf-9EK" eventType="touchUpInside" id="Q3R-Qj-Yhi"/>
+                                    <action selector="createButtonClicked:" destination="PYm-Pf-9EK" eventType="touchUpInside" id="7PN-KV-cBG"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWv-wS-ckv">
-                                <rect key="frame" x="0.0" y="114.5" width="300" height="1"/>
+                                <rect key="frame" x="0.0" y="115.5" width="300" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="1XU-tu-ljw"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RsN-gs-nkw">
-                                <rect key="frame" x="0.0" y="157.5" width="300" height="42.5"/>
+                                <rect key="frame" x="0.0" y="158" width="300" height="42"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="CANCEL">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancelClicked:" destination="PYm-Pf-9EK" eventType="touchUpInside" id="NFJ-9Z-BEp"/>
+                                    <action selector="cancelClicked:" destination="PYm-Pf-9EK" eventType="touchUpInside" id="ekL-Kh-dNE"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gH0-cv-Vb7">
-                                <rect key="frame" x="0.0" y="156.5" width="300" height="1"/>
+                                <rect key="frame" x="0.0" y="157" width="300" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="jaz-qv-WEZ"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What would you like to do with the model?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnH-uO-Nar">
+                                <rect key="frame" x="20" y="10" width="260" height="55"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Y = 4X + 3" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MEO-ND-eHM">
+                                <rect key="frame" x="0.0" y="73" width="300" height="42.5"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="v6C-BX-cFR" firstAttribute="centerX" secondItem="rcd-DC-MKU" secondAttribute="centerX" id="6A9-OZ-etW"/>
+                            <constraint firstItem="9wT-xk-Pf4" firstAttribute="trailing" secondItem="rtt-Fi-oUr" secondAttribute="trailing" id="4g3-n5-TtV"/>
+                            <constraint firstItem="MEO-ND-eHM" firstAttribute="width" secondItem="rtt-Fi-oUr" secondAttribute="width" id="7j0-cO-OHB"/>
                             <constraint firstItem="9wT-xk-Pf4" firstAttribute="bottom" secondItem="RsN-gs-nkw" secondAttribute="bottom" id="8u1-v8-Wvh"/>
                             <constraint firstItem="fnH-uO-Nar" firstAttribute="width" secondItem="aon-4m-N1s" secondAttribute="width" constant="-40" id="9J2-t6-kDj"/>
+                            <constraint firstItem="v6C-BX-cFR" firstAttribute="centerX" secondItem="aon-4m-N1s" secondAttribute="centerX" id="B4z-xh-Vit"/>
                             <constraint firstItem="RsN-gs-nkw" firstAttribute="top" secondItem="gH0-cv-Vb7" secondAttribute="bottom" id="D1z-cf-U3S"/>
                             <constraint firstItem="gH0-cv-Vb7" firstAttribute="centerX" secondItem="RsN-gs-nkw" secondAttribute="centerX" id="DMy-XJ-RMU"/>
-                            <constraint firstItem="rcd-DC-MKU" firstAttribute="top" secondItem="fnH-uO-Nar" secondAttribute="bottom" constant="8" id="H5U-Vh-CMu"/>
+                            <constraint firstItem="MEO-ND-eHM" firstAttribute="top" secondItem="v6C-BX-cFR" secondAttribute="bottom" id="Dke-HX-ghC"/>
                             <constraint firstItem="fnH-uO-Nar" firstAttribute="centerX" secondItem="9wT-xk-Pf4" secondAttribute="centerX" id="IHX-Vb-rbi"/>
-                            <constraint firstItem="rcd-DC-MKU" firstAttribute="width" secondItem="rtt-Fi-oUr" secondAttribute="width" id="J1L-So-2Ar"/>
-                            <constraint firstItem="rcd-DC-MKU" firstAttribute="width" secondItem="aon-4m-N1s" secondAttribute="width" id="ML1-UN-KiM"/>
+                            <constraint firstItem="rtt-Fi-oUr" firstAttribute="leading" secondItem="9wT-xk-Pf4" secondAttribute="leading" id="KRM-gP-jMd"/>
                             <constraint firstItem="v6C-BX-cFR" firstAttribute="width" secondItem="aon-4m-N1s" secondAttribute="width" id="Ngs-uo-0pY"/>
-                            <constraint firstItem="rcd-DC-MKU" firstAttribute="height" secondItem="rtt-Fi-oUr" secondAttribute="height" id="OQT-Yv-ctn"/>
                             <constraint firstItem="gH0-cv-Vb7" firstAttribute="width" secondItem="RsN-gs-nkw" secondAttribute="width" id="Txe-RO-GJX"/>
                             <constraint firstItem="RsN-gs-nkw" firstAttribute="width" secondItem="rtt-Fi-oUr" secondAttribute="width" id="Ujl-Ss-ZIZ"/>
                             <constraint firstItem="rtt-Fi-oUr" firstAttribute="top" secondItem="dWv-wS-ckv" secondAttribute="bottom" id="YpM-of-l8c"/>
-                            <constraint firstItem="rtt-Fi-oUr" firstAttribute="top" secondItem="rcd-DC-MKU" secondAttribute="bottom" id="ZqA-Og-Gar"/>
                             <constraint firstItem="RsN-gs-nkw" firstAttribute="height" secondItem="rtt-Fi-oUr" secondAttribute="height" id="amY-gk-7T2"/>
                             <constraint firstItem="fnH-uO-Nar" firstAttribute="top" secondItem="9wT-xk-Pf4" secondAttribute="top" constant="10" id="d66-W9-ohT"/>
-                            <constraint firstItem="rcd-DC-MKU" firstAttribute="top" secondItem="v6C-BX-cFR" secondAttribute="bottom" id="fs2-Ch-nez"/>
                             <constraint firstItem="rtt-Fi-oUr" firstAttribute="centerX" secondItem="9wT-xk-Pf4" secondAttribute="centerX" id="hFB-UD-h8p"/>
                             <constraint firstItem="RsN-gs-nkw" firstAttribute="centerX" secondItem="9wT-xk-Pf4" secondAttribute="centerX" id="jAg-mX-JJi"/>
+                            <constraint firstItem="MEO-ND-eHM" firstAttribute="height" secondItem="rtt-Fi-oUr" secondAttribute="height" id="jiY-y4-UJE"/>
                             <constraint firstItem="dWv-wS-ckv" firstAttribute="width" secondItem="aon-4m-N1s" secondAttribute="width" id="jjV-3U-SvU"/>
-                            <constraint firstItem="rcd-DC-MKU" firstAttribute="centerX" secondItem="9wT-xk-Pf4" secondAttribute="centerX" id="mrc-kB-LJk"/>
+                            <constraint firstItem="MEO-ND-eHM" firstAttribute="centerX" secondItem="9wT-xk-Pf4" secondAttribute="centerX" id="jre-Yb-J1Q"/>
+                            <constraint firstItem="v6C-BX-cFR" firstAttribute="top" secondItem="fnH-uO-Nar" secondAttribute="bottom" constant="7" id="nms-Am-e3d"/>
+                            <constraint firstItem="dWv-wS-ckv" firstAttribute="top" secondItem="MEO-ND-eHM" secondAttribute="bottom" id="qYU-hz-FcJ"/>
                             <constraint firstItem="RsN-gs-nkw" firstAttribute="top" secondItem="rtt-Fi-oUr" secondAttribute="bottom" id="ryD-fR-Q6X"/>
                             <constraint firstItem="dWv-wS-ckv" firstAttribute="centerX" secondItem="rtt-Fi-oUr" secondAttribute="centerX" id="wjK-lk-aS3"/>
                         </constraints>
@@ -529,6 +527,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="200"/>
                     <connections>
+                        <outlet property="equationTextField" destination="MEO-ND-eHM" id="80v-Mj-hBb"/>
                         <outlet property="titleLabel" destination="fnH-uO-Nar" id="PDS-Jp-0Bp"/>
                     </connections>
                 </viewController>
@@ -646,6 +645,110 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2US-J3-5Q9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-985" y="99"/>
+        </scene>
+        <!--Model Options Prompt View Controller-->
+        <scene sceneID="9oY-2W-Q4o">
+            <objects>
+                <viewController storyboardIdentifier="ModelOptionsVC" id="3KB-gM-bAt" customClass="ModelOptionsPromptViewController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1hi-W7-X3n">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What would you like to do with the model?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enp-ES-o4N">
+                                <rect key="frame" x="20" y="10" width="260" height="55"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEc-Xi-y8O">
+                                <rect key="frame" x="0.0" y="73" width="300" height="42.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="MOVE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="moveButtonClicked:" destination="3KB-gM-bAt" eventType="touchUpInside" id="TzG-rf-q5u"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mjv-6N-ie2">
+                                <rect key="frame" x="0.0" y="72" width="300" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="6ME-fk-ZhU"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDp-ac-pUI">
+                                <rect key="frame" x="0.0" y="115.5" width="300" height="42"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="DELETE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteButtonClicked:" destination="3KB-gM-bAt" eventType="touchUpInside" id="Qve-Hc-rvM"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IaT-Sl-voZ">
+                                <rect key="frame" x="0.0" y="114.5" width="300" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="1b8-Nc-uv3"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8D-tx-kZz">
+                                <rect key="frame" x="0.0" y="157.5" width="300" height="42.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="CANCEL">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelClicked:" destination="3KB-gM-bAt" eventType="touchUpInside" id="mbO-hl-iTh"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PoM-PI-PbG">
+                                <rect key="frame" x="0.0" y="156.5" width="300" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="ra9-bb-yK2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="PoM-PI-PbG" firstAttribute="centerX" secondItem="j8D-tx-kZz" secondAttribute="centerX" id="0Rv-Fi-OBw"/>
+                            <constraint firstItem="mDp-ac-pUI" firstAttribute="centerX" secondItem="GhC-XM-mKt" secondAttribute="centerX" id="1XS-ni-5yV"/>
+                            <constraint firstItem="mDp-ac-pUI" firstAttribute="top" secondItem="DEc-Xi-y8O" secondAttribute="bottom" id="7ld-KV-I4b"/>
+                            <constraint firstItem="DEc-Xi-y8O" firstAttribute="width" secondItem="1hi-W7-X3n" secondAttribute="width" id="AoW-Qj-7uB"/>
+                            <constraint firstItem="GhC-XM-mKt" firstAttribute="bottom" secondItem="j8D-tx-kZz" secondAttribute="bottom" id="GiE-Wt-Fbb"/>
+                            <constraint firstItem="j8D-tx-kZz" firstAttribute="centerX" secondItem="GhC-XM-mKt" secondAttribute="centerX" id="KX0-OV-EGQ"/>
+                            <constraint firstItem="j8D-tx-kZz" firstAttribute="height" secondItem="mDp-ac-pUI" secondAttribute="height" id="PXB-zp-QDD"/>
+                            <constraint firstItem="DEc-Xi-y8O" firstAttribute="height" secondItem="mDp-ac-pUI" secondAttribute="height" id="Psi-L2-hn7"/>
+                            <constraint firstItem="IaT-Sl-voZ" firstAttribute="width" secondItem="1hi-W7-X3n" secondAttribute="width" id="TkO-Xe-kOh"/>
+                            <constraint firstItem="enp-ES-o4N" firstAttribute="width" secondItem="1hi-W7-X3n" secondAttribute="width" constant="-40" id="WBc-Nc-Rv0"/>
+                            <constraint firstItem="DEc-Xi-y8O" firstAttribute="top" secondItem="enp-ES-o4N" secondAttribute="bottom" constant="8" id="auN-xF-Ftt"/>
+                            <constraint firstItem="j8D-tx-kZz" firstAttribute="width" secondItem="mDp-ac-pUI" secondAttribute="width" id="bbY-rQ-TNP"/>
+                            <constraint firstItem="j8D-tx-kZz" firstAttribute="top" secondItem="PoM-PI-PbG" secondAttribute="bottom" id="bjM-4a-5Ab"/>
+                            <constraint firstItem="IaT-Sl-voZ" firstAttribute="centerX" secondItem="mDp-ac-pUI" secondAttribute="centerX" id="hRn-45-Qfj"/>
+                            <constraint firstItem="Mjv-6N-ie2" firstAttribute="centerX" secondItem="DEc-Xi-y8O" secondAttribute="centerX" id="hcb-6a-IHw"/>
+                            <constraint firstItem="j8D-tx-kZz" firstAttribute="top" secondItem="mDp-ac-pUI" secondAttribute="bottom" id="i8c-D8-Nr8"/>
+                            <constraint firstItem="Mjv-6N-ie2" firstAttribute="width" secondItem="1hi-W7-X3n" secondAttribute="width" id="iSC-Qg-mU7"/>
+                            <constraint firstItem="mDp-ac-pUI" firstAttribute="top" secondItem="IaT-Sl-voZ" secondAttribute="bottom" id="mxc-dY-RoX"/>
+                            <constraint firstItem="PoM-PI-PbG" firstAttribute="width" secondItem="j8D-tx-kZz" secondAttribute="width" id="n3D-1g-m9U"/>
+                            <constraint firstItem="DEc-Xi-y8O" firstAttribute="centerX" secondItem="GhC-XM-mKt" secondAttribute="centerX" id="qYA-r2-mJQ"/>
+                            <constraint firstItem="enp-ES-o4N" firstAttribute="centerX" secondItem="GhC-XM-mKt" secondAttribute="centerX" id="rwq-Gg-fDh"/>
+                            <constraint firstItem="DEc-Xi-y8O" firstAttribute="top" secondItem="Mjv-6N-ie2" secondAttribute="bottom" id="wqO-dA-B7z"/>
+                            <constraint firstItem="enp-ES-o4N" firstAttribute="top" secondItem="GhC-XM-mKt" secondAttribute="top" constant="10" id="yIA-sY-cOK"/>
+                            <constraint firstItem="DEc-Xi-y8O" firstAttribute="width" secondItem="mDp-ac-pUI" secondAttribute="width" id="zqc-o0-LhN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GhC-XM-mKt"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="200"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="enp-ES-o4N" id="oco-6g-GI9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A0L-6s-EfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2373" y="159"/>
         </scene>
     </scenes>
     <resources>
