@@ -39,7 +39,8 @@ class WolframAlphaPromptController: UIViewController {
         var userInfo = [String: Any]()
         userInfo["equation"] = self.equationTextField.text!
         NotificationCenter.default.post(name: calculateEquationNotificationName, object: self, userInfo: userInfo)
-        
+        NotificationCenter.default.post(name: hideWolframAlphaNotificationName, object: self)
+
     }
     
 

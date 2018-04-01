@@ -84,7 +84,7 @@ extension ViewController:DataManagerDelegate{
             WolframAlphaVC.view.isUserInteractionEnabled == false{
             WolframAlphaVC.view.center = self.view.center
             WolframAlphaVC.view.alpha = 0.0
-            WolframAlphaVC.view.center.y += 20
+            WolframAlphaVC.view.center.y -= 50
             WolframAlphaVC.view.isUserInteractionEnabled = true
             blockInteraction()
             UIView.animate(withDuration: animationDuration) {
@@ -99,7 +99,7 @@ extension ViewController:DataManagerDelegate{
             textPromptVC.view.isUserInteractionEnabled == false{
             textPromptVC.view.center = self.view.center
             textPromptVC.view.alpha = 0.0
-            textPromptVC.view.center.y += 20
+            textPromptVC.view.center.y -= 50
             textPromptVC.view.isUserInteractionEnabled = true
             blockInteraction()
             UIView.animate(withDuration: animationDuration) {

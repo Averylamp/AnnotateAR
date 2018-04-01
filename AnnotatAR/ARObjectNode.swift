@@ -28,12 +28,14 @@ class ARObjectNode: SCNReferenceNode{
     var descriptionText: String
     var rootTransform: SCNMatrix4
     var colorID: Int
+    var graphImage:UIImage?
     
     init(id: String = "",
           modelName: String,
           rootTransform: SCNMatrix4 = SCNMatrix4.init(),
           descriptionText: String = "",
-          colorID: Int = -1) {
+          colorID: Int = -1,
+          graphImage: UIImage? = nil) {
         if id == ""{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "y-MM-dd H:m:ss.SSSS"
@@ -43,7 +45,7 @@ class ARObjectNode: SCNReferenceNode{
         }
         self.modelName = modelName
         var url : URL?
-        if  modelName == "Circle" || modelName == "Text" || modelName == "Pointer"{
+        if  modelName == "Circle" || modelName == "Text" || modelName == "Pointer" || modelName == "Graph"{
             url = Bundle.main.url(forResource: "art.scnassets/Empty/Empty", withExtension: "scn")!
         }else{
             url = Bundle.main.url(forResource: "art.scnassets/\(modelName)", withExtension: "scn")!
@@ -51,7 +53,7 @@ class ARObjectNode: SCNReferenceNode{
         self.descriptionText = descriptionText
         self.rootTransform = rootTransform
         self.colorID = colorID
-        
+        self.graphImage = graphImage
         super.init(url: url!)!
         self.name = self.id
     }
@@ -67,12 +69,21 @@ class ARObjectNode: SCNReferenceNode{
         let descriptionText = aDecoder.decodeObject(forKey: "descriptionText") as! String
         let colorID = aDecoder.decodeInt32(forKey: "colorID")
         
+        var graphImage: UIImage?
+        
+        if let imageData = aDecoder.decodeObject(forKey: "graphImage") as? Data,
+            let image = UIImage(data: imageData){
+            graphImage = image
+
+        }
+        
         self.init(
             id: id,
             modelName: modelName,
             rootTransform: rootTransform,
             descriptionText: descriptionText,
-            colorID: Int(colorID)
+            colorID: Int(colorID),
+            graphImage: graphImage
         )
     }
     
@@ -90,6 +101,10 @@ class ARObjectNode: SCNReferenceNode{
         print("Root transform : \(self.rootTransform)\nRegular transform : \(self.transform)")
         aCoder.encode(self.rootTransform.toFloatArray(), forKey: "transform")
         aCoder.encode(descriptionText, forKey: "descriptionText")
+        
+        if let image = self.graphImage, let imageData = UIImagePNGRepresentation(image){
+            aCoder.encode(imageData, forKey: "graphImage")
+        }
     }
     
     
@@ -153,7 +168,23 @@ class ARObjectNode: SCNReferenceNode{
             pointerNode.eulerAngles.z = Float(Double.pi  / 2.0)
             pointerNode.position = SCNVector3Make(0.05, 0, 0)
             self.addChildNode(pointerNode)
-            
+        case "Graph":
+            if let graphImage = self.graphImage{
+                let graphNode = SCNNode()
+                let backMaterial = SCNMaterial()
+                backMaterial.diffuse.contents = UIColor.darkGray
+                let graphMaterial = SCNMaterial()
+                graphMaterial.diffuse.contents = graphImage
+                
+                let graphGeometry = SCNBox(width: 0.3, height: 0.3 * graphImage.size.height / graphImage.size.width, length: 0.03, chamferRadius: 0.015)
+                graphGeometry.materials = [graphMaterial, backMaterial, backMaterial, backMaterial, backMaterial, backMaterial]
+                graphNode.geometry = graphGeometry
+
+                self.addChildNode(graphNode)
+            }else{
+                print("ERROR WITH GRAPH IMAGE NULL")
+            }
+            print("Here")
         default:
             
             print("Normal object")
