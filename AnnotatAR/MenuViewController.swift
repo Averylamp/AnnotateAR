@@ -17,13 +17,17 @@ enum menuState{
 
 protocol MenuViewControllerDelegate: class {
     func toggleMenu(for state: menuState)
+    func didSelectObject(named name: String)
 }
 
 class MenuViewController: UIViewController{
     
     //This will be deleted (probably) it is to represent the height as that will probably change durring development
     static public let heightOfView: CGFloat = 200
-    static public let heightOfExpandButton: CGFloat = 55
+    static public let heightOfExpandButton: CGFloat = 60
+    private let widthOfImageView: CGFloat = 120
+    private let spaceBetweenImageView: CGFloat = 30
+    
     
     //horizontal scroll view to preview the items
     private let scrollView = UIScrollView()
@@ -40,21 +44,32 @@ class MenuViewController: UIViewController{
     //tells if the current menu is open or closed
     private var expandState: menuState = .close
     
+    private var imageNamesToSCNName: [String : String] = ["sunmap" : "Sun", "" : ""]
+    
+    private var imageNames: [String] = ["Logo", "texture", "earthmap1k", "mars_1k_color", "mars_1k_color", "mars_1k_color", "mars_1k_color"]
+    private var SCNNames: [String] = ["Sun", "Ship", "Earth", "Mars"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.blue
+        self.view.backgroundColor = UIColor.clear
         
+        setUpScrollView()
         setUpExpandView()
+        
         
     }
     
     private func updateView(){
         toggleMenu(with: expandState)
+        updateMenuItems()
     }
     
+    
+    //MARK: - Expand Button
+    
     private func setUpExpandView(){
-        expandButton.backgroundColor = UIColor.white
+        expandButton.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         expandButton.setTitle("", for: .normal)
         expandButton.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: MenuViewController.heightOfExpandButton)
         self.view.addSubview(expandButton)
@@ -72,7 +87,6 @@ class MenuViewController: UIViewController{
         expandLabel.textAlignment = .center
         expandLabel.adjustsFontSizeToFitWidth = true
         
-        expandButton.backgroundColor = UIColor.white
         expandButton.layer.borderColor = UIColor.white.cgColor
         expandButton.layer.borderWidth = 0
         expandButton.layer.shadowColor = UIColor.lightGray.cgColor
@@ -97,14 +111,19 @@ class MenuViewController: UIViewController{
         if state == .close{
             UIView.animate(withDuration: 1, animations: { [weak self] in
                 self?.expandButton.frame = CGRect(x: 0, y: 0, width: (self?.view.frame.width)!, height: MenuViewController.heightOfExpandButton)
-                self?.expandLabel.alpha = 1
+                self?.scrollView.frame = CGRect(x: 0, y: MenuViewController.heightOfExpandButton, width: (self?.view.frame.width)!, height: MenuViewController.heightOfView - MenuViewController.heightOfExpandButton)
             }) { [weak self] (completed)  in
                 self?.expandImageView.image = #imageLiteral(resourceName: "expand")
+                UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                    self?.expandLabel.alpha = 1
+                })
             }
         }else{
+            self.expandLabel.alpha = 0
+//            self.view.backgroundColor = UIColor.white
             UIView.animate(withDuration: 1, animations: { [weak self] in
-                self?.expandButton.frame = CGRect(x: 0, y: 0, width: (self?.view.frame.width)!, height: 40)
-                self?.expandLabel.alpha = 0
+                self?.expandButton.frame = CGRect(x: 0, y: 0, width: (self?.view.frame.width)!, height: MenuViewController.heightOfExpandButton - 15)
+                self?.scrollView.frame = CGRect(x: 0, y: MenuViewController.heightOfExpandButton - 15, width: (self?.view.frame.width)!, height: MenuViewController.heightOfView - (MenuViewController.heightOfExpandButton - 15))
             }) { [weak self] (completed)  in
                 self?.expandImageView.image = #imageLiteral(resourceName: "collapse")                
             }
@@ -112,6 +131,50 @@ class MenuViewController: UIViewController{
         self.expandState = state
         delegate.toggleMenu(for: state)
     }
+    
+    
+    //MARK: - Scroll View
+    
+    private func setUpScrollView(){
+        self.view.addSubview(scrollView)
+        self.scrollView.backgroundColor = UIColor.white
+        self.scrollView.isScrollEnabled = true
+        
+        self.scrollView.frame = CGRect(x: 0, y: MenuViewController.heightOfExpandButton, width: self.view.frame.width, height: MenuViewController.heightOfView - MenuViewController.heightOfExpandButton)
+        self.updateMenuItems()
+    }
+    
+    private func updateMenuItems(){
+        scrollView.subviews.forEach() { $0.removeFromSuperview() }
+        var count: CGFloat = 0
+        for i in imageNames{
+            
+            let button = UIButton()
+            button.setTitle("", for: .normal)
+            button.tag = Int(count)
+            button.frame = CGRect(x: ((widthOfImageView + spaceBetweenImageView) * count) + spaceBetweenImageView, y: ((MenuViewController.heightOfView - MenuViewController.heightOfExpandButton) - widthOfImageView) / 2, width: widthOfImageView, height: widthOfImageView)
+            button.backgroundColor = UIColor.blue
+            
+            let image = UIImage(named: i) ?? UIImage(named: "Logo")
+            let imageView = UIImageView()
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = image
+            imageView.frame = CGRect(x: 0, y: 0, width: button.frame.height, height: button.frame.height)
+            button.addSubview(imageView)
+            button.addTarget(self, action: #selector(itemSelected(sender:)), for: .touchUpInside)
+            
+            scrollView.contentSize.width = ((spaceBetweenImageView + widthOfImageView) * (count + 1)) + spaceBetweenImageView
+            scrollView.contentSize.height = button.frame.height
+            print("WIDTH: \(scrollView.contentSize.width)\t\t \(self.view.frame.width)")
+            scrollView.addSubview(button)
+            count += 1
+        }
+    }
+    
+    @objc private func itemSelected(sender: UIButton){
+        delegate.didSelectObject(named: SCNNames[sender.tag])
+    }
+    
     
 }
 
