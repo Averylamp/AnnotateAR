@@ -74,6 +74,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         pinchGestureRecognizer.delegate = self
         self.sceneView.addGestureRecognizer(pinchGestureRecognizer)
     
+        let rotationGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handleRotateGesture(gestureRecognizer:)))
+        rotationGestureRecognizer.delegate = self
+        rotationGestureRecognizer.minimumNumberOfTouches = 2
+        self.sceneView.addGestureRecognizer(rotationGestureRecognizer)
+        
+        
         instantiatePopoverViewControllers()
         
     }
