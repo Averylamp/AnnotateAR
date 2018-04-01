@@ -62,19 +62,21 @@ extension ViewController:DataManagerDelegate{
     }
     
     func presentPrompt(text:String, confirmation:String, height: CGFloat){
-        if !self.view.subviews.contains(promptVC.view) ||
-            promptVC.view.isUserInteractionEnabled == false{
-            promptVC.setupPrompt(mainText: text, confirmationText: confirmation)
-            promptVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: height)
-            promptVC.view.center = self.view.center
-            promptVC.view.alpha = 0.0
-            promptVC.view.center.y += 20
-            promptVC.view.isUserInteractionEnabled = true
-            blockInteraction()
-            UIView.animate(withDuration: animationDuration, animations: {
-                self.promptVC.view.center.y -= 20
-                self.promptVC.view.alpha = 1.0
-            }) { (finished) in
+        DispatchQueue.main.async {
+            if !self.view.subviews.contains(self.promptVC.view) ||
+                self.promptVC.view.isUserInteractionEnabled == false{
+                self.promptVC.setupPrompt(mainText: text, confirmationText: confirmation)
+                self.promptVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: height)
+                self.promptVC.view.center = self.view.center
+                self.promptVC.view.alpha = 0.0
+                self.promptVC.view.center.y += 20
+                self.promptVC.view.isUserInteractionEnabled = true
+                self.blockInteraction()
+                UIView.animate(withDuration: animationDuration, animations: {
+                    self.promptVC.view.center.y -= 20
+                    self.promptVC.view.alpha = 1.0
+                }) { (finished) in
+                }
             }
         }
     }

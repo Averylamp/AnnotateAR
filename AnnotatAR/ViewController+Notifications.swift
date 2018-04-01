@@ -118,7 +118,7 @@ extension ViewController{
     
     @objc func calculateWolframalphaEquation(notification: NSNotification){
         if let userInfo = notification.userInfo, let equation = userInfo["equation"] as? String{
-            let equationReplacedEscapes = equation.replacingOccurrences(of: "/", with: "")
+            let equationReplacedEscapes = equation.replacingOccurrences(of: "/", with: "_")
             let encodedString: String = equationReplacedEscapes.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             print(encodedString)
             
