@@ -22,8 +22,7 @@ let colors:[UIColor] = [
 ]
 
 class ARObjectNode: SCNReferenceNode{
-    static var annotationCount = 0
-    static let maxAnnotations = 20
+
     var id: String
     var modelName: String
     var descriptionText: String
@@ -44,9 +43,8 @@ class ARObjectNode: SCNReferenceNode{
         }
         self.modelName = modelName
         var url : URL?
-        if  modelName == "Circle" || modelName == "Text"{
+        if  modelName == "Circle" || modelName == "Text" || modelName == "Pointer"{
             url = Bundle.main.url(forResource: "art.scnassets/Empty/Empty", withExtension: "scn")!
-            // Yes this is horrible
         }else{
             url = Bundle.main.url(forResource: "art.scnassets/\(modelName)", withExtension: "scn")!
         }
@@ -132,6 +130,30 @@ class ARObjectNode: SCNReferenceNode{
             let node = SCNNode(geometry: torusGeometry)
             node.eulerAngles.x = 90
             self.addChildNode(node)
+        case "Pointer":
+            let pointerNode = SCNNode()
+            let pointerMaterial = SCNMaterial()
+            if self.colorID != -1{
+                pointerMaterial.diffuse.contents = colors[self.colorID % colors.count]
+            }else{
+                pointerMaterial.diffuse.contents = UIColor.orange
+            }
+            
+            let cylinderGeometry = SCNCylinder(radius: 0.008, height: 0.05)
+            cylinderGeometry.materials = [pointerMaterial]
+            let cylinderNode = SCNNode(geometry: cylinderGeometry)
+            cylinderNode.position = SCNVector3Make(0, 0.025, 0)
+            pointerNode.addChildNode(cylinderNode)
+            
+            let pointGeometry = SCNCone(topRadius: 0, bottomRadius: 0.014, height: 0.028)
+            pointGeometry.materials = [pointerMaterial]
+            let pointNode = SCNNode(geometry: pointGeometry)
+            pointNode.position = SCNVector3Make(0, 0.057, 0)
+            pointerNode.addChildNode(pointNode)
+            pointerNode.eulerAngles.z = Float(Double.pi  / 2.0)
+            pointerNode.position = SCNVector3Make(0.05, 0, 0)
+            self.addChildNode(pointerNode)
+            
         default:
             
             print("Normal object")

@@ -44,7 +44,7 @@ class MenuViewController: UIViewController{
     //tells if the current menu is open or closed
     private var expandState: menuState = .close
     
-    private var viewNames: [String] = ["Man", "Solar System", "Sun", "Mercury", "Venus", "Mars", "Earth", "Jupiter", "Saturn", "Uranus", "Pluto", "Bike", "Fighter", "Drone", "Ship"]
+    private var viewNames: [String] = ["Man", "Solar System", "Bike", "Fighter", "Drone", "Ship", "Sun", "Mercury", "Venus", "Mars", "Earth", "Jupiter", "Saturn", "Uranus", "Pluto"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +105,7 @@ class MenuViewController: UIViewController{
         if !allowsExpand { return }
         print("StartFrame: \(self.view.frame)")
         if state == .close{
-            UIView.animate(withDuration: 1, animations: { [weak self] in
+            UIView.animate(withDuration: animationDuration / 2, animations: { [weak self] in
                 self?.expandButton.frame = CGRect(x: 0, y: 0, width: (self?.view.frame.width)!, height: MenuViewController.heightOfExpandButton)
                 self?.scrollView.frame = CGRect(x: 0, y: MenuViewController.heightOfExpandButton, width: (self?.view.frame.width)!, height: MenuViewController.heightOfView - MenuViewController.heightOfExpandButton)
                 print("Close Frame: \((self?.view.frame)!)")
@@ -118,7 +118,7 @@ class MenuViewController: UIViewController{
         }else{
             self.expandLabel.alpha = 0
 //            self.view.backgroundColor = UIColor.white
-            UIView.animate(withDuration: 1, animations: { [weak self] in
+            UIView.animate(withDuration: animationDuration / 2, animations: { [weak self] in
                 self?.expandButton.frame = CGRect(x: 0, y: 0, width: (self?.view.frame.width)!, height: MenuViewController.heightOfExpandButton - 15)
                 self?.scrollView.frame = CGRect(x: 0, y: MenuViewController.heightOfExpandButton - 15, width: (self?.view.frame.width)!, height: MenuViewController.heightOfView - (MenuViewController.heightOfExpandButton - 15))
                 print("Open Frame: \((self?.view.frame)!)")

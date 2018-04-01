@@ -84,6 +84,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         instantiatePopoverViewControllers()
         
+        colorPaletteButton.tintColor = colors[colorIndex % colors.count].withAlphaComponent(0.5)
     }
     
     func instantiatePopoverViewControllers(){
@@ -248,24 +249,26 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var imageHighlightAction: SCNAction {
         return .sequence([
             .wait(duration: 0.25),
-            .fadeOpacity(to: 0.85, duration: 0.25),
-            .fadeOpacity(to: 0.15, duration: 0.25),
-            .fadeOpacity(to: 0.85, duration: 0.25),
-            .fadeOpacity(to: 0.15, duration: 0.25),
-            .fadeOpacity(to: 0.85, duration: 0.25),
+            .fadeOpacity(to: 0.85, duration: 0.35),
+            .fadeOpacity(to: 0.15, duration: 0.35),
+            .fadeOpacity(to: 0.85, duration: 0.35),
+            .fadeOpacity(to: 0.15, duration: 0.35),
+            .fadeOpacity(to: 0.85, duration: 0.35),
+            .fadeOpacity(to: 0.15, duration: 0.35),
+            .fadeOpacity(to: 0.85, duration: 0.35),
             .fadeOut(duration: 0.5),
             .removeFromParentNode()
         ])
     }
 
+    @IBOutlet weak var colorPaletteButton: UIButton!
     
     var colorIndex = 0
-    
     
     @IBAction func addAnnotation(_ sender: UIButton) {
         switch sender.tag {
         case 100:
-            let node = ARObjectNode(modelName: "Pointer")
+            let node = ARObjectNode(modelName: "Pointer", colorID: colorIndex % colors.count)
             node.setupNode()
             self.addARObjectNode(node: node)
         case 101:
@@ -276,9 +279,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             self.presentTextPromptVC()
         case 103:
             self.presentWolframAlphaVC()
+        case 104:
+            colorIndex += 1
+            colorPaletteButton.tintColor = colors[colorIndex % colors.count].withAlphaComponent(0.5)
         default:
             print("Unknown annotation")
         }
-        colorIndex += 1
     }
+    
+    
 }
