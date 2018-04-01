@@ -23,7 +23,7 @@ protocol MenuViewControllerDelegate: class {
 class MenuViewController: UIViewController{
     
     //This will be deleted (probably) it is to represent the height as that will probably change durring development
-    static public let heightOfView: CGFloat = 200
+    static public let heightOfView: CGFloat = 250
     static public let heightOfExpandButton: CGFloat = 60
     private let widthOfImageView: CGFloat = 120
     private let spaceBetweenImageView: CGFloat = 30
@@ -167,6 +167,11 @@ class MenuViewController: UIViewController{
             scrollView.contentSize.height = button.frame.height
             print("WIDTH: \(scrollView.contentSize.width)\t\t \(self.view.frame.width)")
             scrollView.addSubview(button)
+            
+//            let frame = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
+            let label = UILabel()
+            
+            
             count += 1
         }
     }
