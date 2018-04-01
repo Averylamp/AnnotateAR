@@ -57,7 +57,7 @@ class DataManager {
     var allConnectedDevices = [String]()
     
     var userType: UserType = .Unknown
-    var state: State = .FindCenter
+    var state: State = .HostClientSelector
     var initialState:State = .FindCenter
 //    var userType: UserType = .Host
 //    var state: State = .Demo

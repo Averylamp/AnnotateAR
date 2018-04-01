@@ -58,8 +58,8 @@ class ARObjectNode: SCNReferenceNode{
         aCoder.encode(self.modelName, forKey: "modelName")
         aCoder.encode(self.name, forKey: "name")
         
-        if (self.parent != DataManager.shared().rootNode){
-            self.rootTransform = DataManager.shared().rootNode!.convertTransform(self.transform, from : DataManager.shared().rootNode!)
+        if (self.parent != DataManager.shared().rootNode), let root = DataManager.shared().rootNode{
+            self.rootTransform = root.convertTransform(self.transform, from : root)
         }else{
             self.rootTransform = self.transform
         }
