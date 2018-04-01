@@ -46,7 +46,7 @@ class MenuViewController: UIViewController{
     
     private var imageNamesToSCNName: [String : String] = ["sunmap" : "Sun", "" : ""]
     
-    private var imageNames: [String] = ["Logo", "texture", "earthmap1k", "mars_1k_color", "mars_1k_color", "mars_1k_color", "mars_1k_color"]
+    private var imageNames: [String] = ["Man", "Sun", "Mercury", "Venus", "Mars", "Earth", "Jupiter", "Saturn", "Uranus"]
     private var SCNNames: [String] = ["Man", "Sun", "Mercury", "Venus", "Mars", "Earth", "Jupiter", "Saturn", "Uranus"]
     
     
@@ -153,7 +153,7 @@ class MenuViewController: UIViewController{
             button.setTitle("", for: .normal)
             button.tag = Int(count)
             button.frame = CGRect(x: ((widthOfImageView + spaceBetweenImageView) * count) + spaceBetweenImageView, y: ((MenuViewController.heightOfView - MenuViewController.heightOfExpandButton) - widthOfImageView) / 2, width: widthOfImageView, height: widthOfImageView)
-            button.backgroundColor = UIColor.blue
+//            button.backgroundColor = UIColor.blue
             
             let image = UIImage(named: i) ?? UIImage(named: "Logo")
             let imageView = UIImageView()
@@ -172,6 +172,7 @@ class MenuViewController: UIViewController{
     }
     
     @objc private func itemSelected(sender: UIButton){
+        self.toggleMenu(with: .close)
         delegate.didSelectObject(named: SCNNames[sender.tag])
     }
     
