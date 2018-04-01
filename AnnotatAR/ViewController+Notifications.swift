@@ -117,43 +117,58 @@ extension ViewController{
             var encodedString: String = equation.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
             print(encodedString)
             
-            let requestURL = "http://annotatear.herokuapp.com/\(encodedString)"
+            let requestURL = "https://annotatear.herokuapp.com/query/\(encodedString)"
             var request = URLRequest(url: URL(string: requestURL)!)
             request.httpMethod = "GET"
             
             URLSession.shared.dataTask(with: request, completionHandler: { [weak self] (data, response, _) in
                 
+                print("HEREE")
                 
-                print("\n")
-                if let httpResponse = response as? HTTPURLResponse { print("response: \(httpResponse.statusCode)\n") }
-                print("\n")
-                if let httpResponse = response as? HTTPURLResponse { print("response: \(httpResponse)\n\n") }
-                print("\n")
+    
+                if let httpResponse = response as? HTTPURLResponse { print("response: \(httpResponse.statusCode)") }
+                if let data = data, let responseString = String(data: data, encoding: .utf8){
+                    
+                    print("Respnose: \(responseString)")
                 
-                let dataString = data?.base64EncodedString()
+                    if let imageURL = URL(string: responseString){
+                        self?.downloadImage(url: imageURL)
+                    }else{
+                        self?.presentPrompt(text: "Image url malfunction.  Try again later", confirmation: "Okay", height: 200)
+                    }
+                }else{
+                    self?.presentPrompt(text: "Did not get a response from server", confirmation: "Okay", height: 200)
+                }
                 
-                print("dataString: \(String(describing: dataString))")
-                
-
-                
-                
-                //            let dataDecoded:NSData = NSData(base64EncodedString: data, options: NSData.Base64DecodingOptions(rawValue: 0))!
-
-//                let dataDecoded : Data? = Data(base64Encoded: data!, options: .ignoreUnknownCharacters)
-//                let decodedimage: UIImage = UIImage(data: dataDecoded!)!
-//
-//                let imageView = UIImageView()
-//                imageView.image = decodedimage
-//                imageView.translatesAutoresizingMaskIntoConstraints = false
-//                self?.view.addSubview(imageView)
-//                imageView.centerXAnchor.constraint(equalTo: (self?.view.centerXAnchor)!, constant: 0).isActive = true
-//                imageView.centerYAnchor.constraint(equalTo: (self?.view.centerYAnchor)!, constant: 0).isActive = true
-//                imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-//                imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-//
             }).resume()
         }
     }
+    
+    func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            completion(data, response, error)
+            }.resume()
+    }
+    
+    func downloadImage(url: URL) {
+        print("Download Started")
+        getDataFromUrl(url: url) { data, response, error in
+            guard let data = data, error == nil else {
+                self.presentPrompt(text: "Retreived Image malfunction.  Try again later", confirmation: "Okay", height: 200)
+                return
+            }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() {
+                if let image = UIImage(data: data){
+                    self.addWolframAlphaNode(image: image)
+                }else{
+                    self.presentPrompt(text: "Image data conversion malfunction.  Try again later", confirmation: "Okay", height: 200)
+                }
+            }
+        }
+    }
+
     
     @objc func hideTextPromptVC(){
         if self.view.subviews.contains(textPromptVC.view){

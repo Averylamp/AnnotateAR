@@ -43,6 +43,12 @@ extension ViewController{
         
     }
     
+    func addWolframAlphaNode(image:UIImage){
+        
+        
+    }
+    
+    
     func demoScreenTapped(gestureRecognizer: UITapGestureRecognizer){
         if DataManager.shared().currentObjectMoving != nil {
             print("Lock node called")
