@@ -15,7 +15,7 @@ extension ViewController{
         return
         if DataManager.shared().rootNode == nil{
             let pointNode = SCNNode()
-            let pointGeometry = SCNSphere(radius: 0.01)
+            let pointGeometry = SCNSphere(radius: 0.02)
             let orangeMaterial = SCNMaterial()
             orangeMaterial.diffuse.contents = UIColor.orange
             pointGeometry.materials = [orangeMaterial]
@@ -44,8 +44,9 @@ extension ViewController{
     }
     
     func addWolframAlphaNode(image:UIImage){
-        
-        
+        let node = ARObjectNode(modelName: "Graph", colorID: colorIndex % colors.count, graphImage: image)
+        node.setupNode()
+        self.addARObjectNode(node: node)
     }
     
     
@@ -62,7 +63,7 @@ extension ViewController{
             let location = gestureRecognizer.location(in: sceneView)
             let hits = self.sceneView.hitTest(location, options: nil)
             guard let tappedNode = hits.first?.node else {
-                print("tapped, but not on node")
+                print("Tapped, no node found")
                 return
             } //if it didn't hit anything, just return
             

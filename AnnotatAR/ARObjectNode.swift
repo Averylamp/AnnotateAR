@@ -169,6 +169,21 @@ class ARObjectNode: SCNReferenceNode{
             pointerNode.position = SCNVector3Make(0.05, 0, 0)
             self.addChildNode(pointerNode)
         case "Graph":
+            if let graphImage = self.graphImage{
+                let graphNode = SCNNode()
+                let backMaterial = SCNMaterial()
+                backMaterial.diffuse.contents = UIColor.darkGray
+                let graphMaterial = SCNMaterial()
+                graphMaterial.diffuse.contents = graphImage
+                
+                let graphGeometry = SCNBox(width: 0.3, height: 0.3 * graphImage.size.height / graphImage.size.width, length: 0.03, chamferRadius: 0.015)
+                graphGeometry.materials = [graphMaterial, backMaterial, backMaterial, backMaterial, backMaterial, backMaterial]
+                graphNode.geometry = graphGeometry
+
+                self.addChildNode(graphNode)
+            }else{
+                print("ERROR WITH GRAPH IMAGE NULL")
+            }
             print("Here")
         default:
             
