@@ -2,7 +2,7 @@ import os
 from flask import Flask, redirect, url_for, render_template, request, send_from_directory
 from werkzeug.utils import secure_filename
 import wolframalpha
-import string
+
 
 UPLOAD_FOLDER = 'uploads/'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -23,8 +23,8 @@ def hello_world():
 def get_plot(userquery):
 	app_id = 'ETUYXG-KTKHVQ24U8'
 	client = wolframalpha.Client(app_id)
-	reformatted = string.replace(userquery, "#", "/")
-	reformatted = string.replace(reformatted, "_", "/")
+	reformatted = userquery.replace("#", "/")
+	reformatted = reformatted.replace("_", "/")
 	print(reformatted)
 	try:
 		res = client.query(reformatted)
