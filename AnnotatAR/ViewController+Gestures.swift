@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SceneKit
 extension ViewController: UIGestureRecognizerDelegate{
 
     @objc func handleSingleTap(gestureRecognizer: UITapGestureRecognizer){
@@ -20,12 +20,33 @@ extension ViewController: UIGestureRecognizerDelegate{
         case .FindCenter:
             print("Unhandled tap")
             DataManager.shared().state = .Demo
+            self.addCenteredRoot()
             nextState()
         default:
             print("Unhandled tap")
         }
     }
     
+    @objc func handlePinch(gestureRecognizer: UIPinchGestureRecognizer){
+        print("Pinching screen")
+        switch DataManager.shared().state {
+        case .Demo:
+            if let node = DataManager.shared().currentObjectMoving{
+                print("Current node found, scaling: \(gestureRecognizer.scale)")
+                let factor = Float(gestureRecognizer.scale)
+                
+                node.scale = SCNVector3Make(node.scale.x * factor, node.scale.y * factor, node.scale.x * factor)
+                gestureRecognizer.scale = 1.0
+            }
+        case .HostClientSelector:
+            print("Unhandled pinch")
+        case .FindCenter:
+            print("Unhandled pinch")
+        default:
+            print("Unhandled pinch")
+        }
+        
+    }
     
     
     

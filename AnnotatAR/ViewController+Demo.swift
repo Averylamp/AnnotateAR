@@ -11,21 +11,22 @@ import SceneKit
 
 extension ViewController{
     
-    func addTestRoot(){
-        
-        let pointNode = SCNNode()
-        let pointGeometry = SCNSphere(radius: 0.01)
-        let orangeMaterial = SCNMaterial()
-        orangeMaterial.diffuse.contents = UIColor.orange
-        pointGeometry.materials = [orangeMaterial]
-        pointNode.geometry = pointGeometry
-        pointNode.position = SCNVector3.init(0, 0, -1)
-        self.sceneView.scene.rootNode.addChildNode(pointNode)
-        DataManager.shared().rootNode = pointNode
-        
+    func addCenteredRoot(){
+        return
+        if DataManager.shared().rootNode == nil{
+            let pointNode = SCNNode()
+            let pointGeometry = SCNSphere(radius: 0.01)
+            let orangeMaterial = SCNMaterial()
+            orangeMaterial.diffuse.contents = UIColor.orange
+            pointGeometry.materials = [orangeMaterial]
+            pointNode.geometry = pointGeometry
+            pointNode.position = SCNVector3.init(0, 0, -1)
+            self.sceneView.scene.rootNode.addChildNode(pointNode)
+            DataManager.shared().rootNode = pointNode
+        }
     }
     
-    func addTestObject(name:String){
+    func addARObjectNode(name:String){
         let node = ARObjectNode(modelName: name)
         node.load()
         node.position = SCNVector3Make(0, 0, -1)
