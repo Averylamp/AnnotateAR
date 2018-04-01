@@ -236,10 +236,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         ])
     }
     
-    @IBAction func testButtonClicked(_ sender: Any) {
-        self.addARObjectNode(name: "Man")
-    }
-    
+//    @IBAction func testButtonClicked(_ sender: Any) {
+//        self.addARObjectNode(name: "Man")
+//    }
+//    
     
     @IBAction func addAnnotation(_ sender: UIButton) {
         switch sender.tag {
