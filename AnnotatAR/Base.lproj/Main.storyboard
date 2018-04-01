@@ -14,7 +14,7 @@
         <!--Status View Controller-->
         <scene sceneID="5Tw-8P-01p">
             <objects>
-                <viewController id="ri3-7p-e6d" customClass="StatusViewController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ri3-7p-e6d" customClass="StatusViewController" customModule="AnnotateAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RAa-Gm-0Pa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,7 +116,7 @@
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="AnnotateAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RLh-bf-1c3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -142,7 +142,7 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GdA-nf-bSQ" userLabel="PointerView">
-                                <rect key="frame" x="305" y="155" width="80" height="70"/>
+                                <rect key="frame" x="305" y="105" width="80" height="70"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SdY-La-2eN">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
@@ -182,7 +182,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6C-gw-i4e" userLabel="CircleView">
-                                <rect key="frame" x="305" y="240" width="80" height="70"/>
+                                <rect key="frame" x="305" y="185" width="80" height="70"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhM-O5-dAW">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
@@ -222,7 +222,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qtg-8U-6kI" userLabel="TextView">
-                                <rect key="frame" x="305" y="325" width="80" height="70"/>
+                                <rect key="frame" x="305" y="265" width="80" height="70"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pnu-uT-Z6v">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
@@ -263,7 +263,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJV-1p-lBn" userLabel="GraphView">
-                                <rect key="frame" x="305" y="410" width="80" height="70"/>
+                                <rect key="frame" x="305" y="345" width="80" height="70"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8HO-Z8-kwM">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
@@ -304,7 +304,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97t-Li-azD" userLabel="ColorView">
-                                <rect key="frame" x="305" y="495" width="80" height="70"/>
+                                <rect key="frame" x="305" y="425" width="80" height="70"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OoK-Vd-36O">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
@@ -351,21 +351,21 @@
                             <constraint firstItem="zJV-1p-lBn" firstAttribute="trailing" secondItem="GBj-4O-Whc" secondAttribute="trailing" constant="10" id="2k1-Yx-gj8"/>
                             <constraint firstItem="Qtg-8U-6kI" firstAttribute="trailing" secondItem="GBj-4O-Whc" secondAttribute="trailing" constant="10" id="CUJ-x0-MOa"/>
                             <constraint firstItem="97t-Li-azD" firstAttribute="trailing" secondItem="GBj-4O-Whc" secondAttribute="trailing" constant="10" id="F3s-wN-Zgc"/>
-                            <constraint firstItem="T6C-gw-i4e" firstAttribute="top" secondItem="GdA-nf-bSQ" secondAttribute="bottom" constant="15" id="FRZ-8a-xqD"/>
-                            <constraint firstItem="Qtg-8U-6kI" firstAttribute="top" secondItem="T6C-gw-i4e" secondAttribute="bottom" constant="15" id="Fff-hZ-xPM"/>
+                            <constraint firstItem="T6C-gw-i4e" firstAttribute="top" secondItem="GdA-nf-bSQ" secondAttribute="bottom" constant="10" id="FRZ-8a-xqD"/>
+                            <constraint firstItem="Qtg-8U-6kI" firstAttribute="top" secondItem="T6C-gw-i4e" secondAttribute="bottom" constant="10" id="Fff-hZ-xPM"/>
                             <constraint firstItem="GBj-4O-Whc" firstAttribute="trailing" secondItem="GdA-nf-bSQ" secondAttribute="trailing" constant="-10" id="HzZ-nd-L6E"/>
                             <constraint firstAttribute="trailing" secondItem="R5W-V8-6lY" secondAttribute="trailing" id="J42-1v-Ihf"/>
                             <constraint firstItem="tnx-rc-95S" firstAttribute="top" secondItem="GBj-4O-Whc" secondAttribute="top" id="Sdx-fT-fqG"/>
-                            <constraint firstItem="97t-Li-azD" firstAttribute="top" secondItem="zJV-1p-lBn" secondAttribute="bottom" constant="15" id="XpF-pF-Slh"/>
+                            <constraint firstItem="97t-Li-azD" firstAttribute="top" secondItem="zJV-1p-lBn" secondAttribute="bottom" constant="10" id="XpF-pF-Slh"/>
                             <constraint firstItem="R5W-V8-6lY" firstAttribute="leading" secondItem="RLh-bf-1c3" secondAttribute="leading" id="Yj0-Fo-B5n"/>
                             <constraint firstItem="T6C-gw-i4e" firstAttribute="trailing" secondItem="GBj-4O-Whc" secondAttribute="trailing" constant="10" id="bDK-RN-7Bw"/>
                             <constraint firstItem="E6c-py-dvH" firstAttribute="top" secondItem="RLh-bf-1c3" secondAttribute="top" id="boO-ZZ-neH"/>
                             <constraint firstItem="GBj-4O-Whc" firstAttribute="trailing" secondItem="E6c-py-dvH" secondAttribute="trailing" id="brT-qF-Rdk"/>
                             <constraint firstItem="tnx-rc-95S" firstAttribute="leading" secondItem="GBj-4O-Whc" secondAttribute="leading" id="cGf-LE-hzb"/>
-                            <constraint firstItem="zJV-1p-lBn" firstAttribute="top" secondItem="Qtg-8U-6kI" secondAttribute="bottom" constant="15" id="eRK-Qh-zlz"/>
+                            <constraint firstItem="zJV-1p-lBn" firstAttribute="top" secondItem="Qtg-8U-6kI" secondAttribute="bottom" constant="10" id="eRK-Qh-zlz"/>
                             <constraint firstItem="R5W-V8-6lY" firstAttribute="top" secondItem="RLh-bf-1c3" secondAttribute="top" id="fDn-zw-Oo2"/>
                             <constraint firstAttribute="bottom" secondItem="E6c-py-dvH" secondAttribute="bottom" id="kLb-BI-xJ4"/>
-                            <constraint firstItem="GdA-nf-bSQ" firstAttribute="top" secondItem="tnx-rc-95S" secondAttribute="bottom" constant="50" id="lRX-bz-nCO"/>
+                            <constraint firstItem="GdA-nf-bSQ" firstAttribute="top" secondItem="tnx-rc-95S" secondAttribute="bottom" id="lRX-bz-nCO"/>
                             <constraint firstAttribute="bottom" secondItem="R5W-V8-6lY" secondAttribute="bottom" id="poH-DX-LIv"/>
                             <constraint firstItem="E6c-py-dvH" firstAttribute="leading" secondItem="GBj-4O-Whc" secondAttribute="leading" id="wEL-Op-yTe"/>
                             <constraint firstItem="GBj-4O-Whc" firstAttribute="trailing" secondItem="tnx-rc-95S" secondAttribute="trailing" id="yUU-ir-Rk1"/>
@@ -390,7 +390,7 @@
         <!--Host Client Selector View Controller-->
         <scene sceneID="5DK-CP-aLg">
             <objects>
-                <viewController storyboardIdentifier="HostClientVC" id="gPi-pZ-xcE" customClass="HostClientSelectorViewController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HostClientVC" id="gPi-pZ-xcE" customClass="HostClientSelectorViewController" customModule="AnnotateAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9z1-Z2-NCP">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -470,7 +470,7 @@
         <!--Prompt View Controller-->
         <scene sceneID="zYc-lC-d66">
             <objects>
-                <viewController storyboardIdentifier="PromptVC" id="bT3-aR-wVM" customClass="PromptViewController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PromptVC" id="bT3-aR-wVM" customClass="PromptViewController" customModule="AnnotateAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b6W-MJ-vo4">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -529,7 +529,7 @@
         <!--Wolfram Alpha Prompt Controller-->
         <scene sceneID="qtT-RL-TcM">
             <objects>
-                <viewController storyboardIdentifier="WolframAlphaVC" id="PYm-Pf-9EK" customClass="WolframAlphaPromptController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WolframAlphaVC" id="PYm-Pf-9EK" customClass="WolframAlphaPromptController" customModule="AnnotateAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aon-4m-N1s">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -630,7 +630,7 @@
         <!--Splash Screen View Controller-->
         <scene sceneID="dwZ-LP-PC8">
             <objects>
-                <viewController storyboardIdentifier="SplashVC" id="2Yi-hD-Ovc" customClass="SplashScreenViewController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashVC" id="2Yi-hD-Ovc" customClass="SplashScreenViewController" customModule="AnnotateAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ozC-xu-aO7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -741,7 +741,7 @@
         <!--Model Options Prompt View Controller-->
         <scene sceneID="9oY-2W-Q4o">
             <objects>
-                <viewController storyboardIdentifier="ModelOptionsVC" id="3KB-gM-bAt" customClass="ModelOptionsPromptViewController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModelOptionsVC" id="3KB-gM-bAt" customClass="ModelOptionsPromptViewController" customModule="AnnotateAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1hi-W7-X3n">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -845,7 +845,7 @@
         <!--Text Prompt View Controller-->
         <scene sceneID="8ez-Fy-0QI">
             <objects>
-                <viewController storyboardIdentifier="TextPromptVC" id="iye-1b-GFi" customClass="TextPromptViewController" customModule="AnnotatAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TextPromptVC" id="iye-1b-GFi" customClass="TextPromptViewController" customModule="AnnotateAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jm8-xu-wOd">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
