@@ -26,10 +26,18 @@ extension ViewController{
         }
     }
     
-    func addARObjectNode(name:String){
-        let node = ARObjectNode(modelName: name)
-        node.load()
-        node.position = SCNVector3Make(0, 0, -1)
+    func addARObjectNode(node: ARObjectNode){
+        var distance:Float = 1
+        if let root = DataManager.shared().rootNode,
+            let cameraNode = self.sceneView.pointOfView{
+            let distance_x = abs(root.position.x - cameraNode.position.x)
+            let distance_z = abs(root.position.z - cameraNode.position.z)
+            print("Distance x: \(distance_x), y: \(distance_z)")
+            let fullDistance  = sqrt(distance_x * distance_x + distance_z * distance_z)
+            distance = fullDistance
+        }
+        node.position = SCNVector3Make(0, 0, -distance)
+        
         self.sceneView.pointOfView?.addChildNode(node)
         DataManager.shared().addObject(object: node)
         

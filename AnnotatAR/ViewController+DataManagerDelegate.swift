@@ -103,7 +103,7 @@ extension ViewController:DataManagerDelegate{
         print("Received Object")
         if let root = DataManager.shared().rootNode{
             if root.childNode(withName: object.name!, recursively: true) == nil{
-                object.load()
+                object.setupNode()
                 root.addChildNode(object)
             }
         }

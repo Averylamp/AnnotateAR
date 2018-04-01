@@ -221,10 +221,53 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qtg-8U-6kI">
+                                <rect key="frame" x="305" y="375" width="80" height="70"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pnu-uT-Z6v">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="S34-zp-S9Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="light"/>
+                                    </visualEffectView>
+                                    <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOo-7V-j0N">
+                                        <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="JvT-FE-6Bg"/>
+                                            <constraint firstAttribute="height" constant="50" id="eAm-ah-7ca"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="21"/>
+                                        <state key="normal" title="Text"/>
+                                        <connections>
+                                            <action selector="addAnnotation:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Dz1-yA-YIr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="LOo-7V-j0N" firstAttribute="centerX" secondItem="Qtg-8U-6kI" secondAttribute="centerX" constant="-5" id="96f-bU-bxQ"/>
+                                    <constraint firstItem="Pnu-uT-Z6v" firstAttribute="height" secondItem="Qtg-8U-6kI" secondAttribute="height" id="FZw-e4-NG9"/>
+                                    <constraint firstItem="LOo-7V-j0N" firstAttribute="centerY" secondItem="Qtg-8U-6kI" secondAttribute="centerY" id="GJ9-Uh-LaL"/>
+                                    <constraint firstAttribute="width" constant="80" id="OMx-5e-bbA"/>
+                                    <constraint firstItem="Pnu-uT-Z6v" firstAttribute="centerX" secondItem="Qtg-8U-6kI" secondAttribute="centerX" id="afT-Ga-VRf"/>
+                                    <constraint firstAttribute="height" constant="70" id="ba2-u1-ffN"/>
+                                    <constraint firstItem="Pnu-uT-Z6v" firstAttribute="centerY" secondItem="Qtg-8U-6kI" secondAttribute="centerY" id="eX4-KV-s3r"/>
+                                    <constraint firstItem="Pnu-uT-Z6v" firstAttribute="width" secondItem="Qtg-8U-6kI" secondAttribute="width" id="s2t-nf-Pcc"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Qtg-8U-6kI" firstAttribute="trailing" secondItem="GBj-4O-Whc" secondAttribute="trailing" constant="10" id="CUJ-x0-MOa"/>
                             <constraint firstItem="T6C-gw-i4e" firstAttribute="top" secondItem="GdA-nf-bSQ" secondAttribute="bottom" constant="15" id="FRZ-8a-xqD"/>
+                            <constraint firstItem="Qtg-8U-6kI" firstAttribute="top" secondItem="T6C-gw-i4e" secondAttribute="bottom" constant="15" id="Fff-hZ-xPM"/>
                             <constraint firstItem="GBj-4O-Whc" firstAttribute="trailing" secondItem="GdA-nf-bSQ" secondAttribute="trailing" constant="-10" id="HzZ-nd-L6E"/>
                             <constraint firstAttribute="trailing" secondItem="R5W-V8-6lY" secondAttribute="trailing" id="J42-1v-Ihf"/>
                             <constraint firstItem="tnx-rc-95S" firstAttribute="top" secondItem="GBj-4O-Whc" secondAttribute="top" id="Sdx-fT-fqG"/>

@@ -59,3 +59,21 @@ extension SCNMatrix4{
         return SCNMatrix4(m11: transformValue[0], m12: transformValue[1], m13: transformValue[2], m14: transformValue[3], m21: transformValue[4], m22: transformValue[5], m23: transformValue[6], m24: transformValue[7], m31: transformValue[8], m32: transformValue[9], m33: transformValue[10], m34: transformValue[11], m41: transformValue[12], m42: transformValue[13], m43: transformValue[14], m44: transformValue[15])
     }
 }
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
+}

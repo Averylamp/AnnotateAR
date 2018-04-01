@@ -27,7 +27,9 @@ extension ViewController: MenuViewControllerDelegate{
     }
     
     func didSelectObject(named name: String) {
-        self.addARObjectNode(name: name)
+        let node = ARObjectNode(modelName: name)
+        node.setupNode()
+        self.addARObjectNode(node: node)
     }
 }
 

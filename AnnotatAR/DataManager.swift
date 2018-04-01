@@ -74,13 +74,14 @@ class DataManager {
             data["name"] = node.name!
             let newTransform = root.convertTransform(node.transform, from: node.parent)
             data["transform"] = newTransform.toFloatArray()
-            print("Sending new Transform -\(newTransform)")
+//            print("Sending new Transform -\(newTransform)")
             sendAnimation(object: data)
         }
     }
     
     func addObject(object: ARObjectNode){
         self.currentObjectMoving = object
+        self.displayLink.isPaused = false
         self.sendObject(object: object)
     }
    
@@ -127,7 +128,7 @@ class DataManager {
                 node.transform = object.rootTransform
             }else{
                 print("Object not added already")
-                object.load()
+                object.setupNode()
                 object.transform = object.rootTransform
                 root.addChildNode(object)
             }

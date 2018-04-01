@@ -197,6 +197,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             node.addChildNode(planeNode)
             
             self.addRootNode(imageNode: node)
+            if (DataManager.shared().state == State.FindCenter){
+                DataManager.shared().state = State.Demo
+                self.nextState()
+            }
         }
 
         DispatchQueue.main.async {
@@ -239,21 +243,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             .removeFromParentNode()
         ])
     }
+
     
-//    @IBAction func testButtonClicked(_ sender: Any) {
-//        self.addARObjectNode(name: "Man")
-//    }
-//    
+    var colorIndex = 0
+    
     
     @IBAction func addAnnotation(_ sender: UIButton) {
         switch sender.tag {
         case 100:
-            self.addARObjectNode(name: "Pointer")
+            let node = ARObjectNode(modelName: "Pointer")
+            node.setupNode()
+            self.addARObjectNode(node: node)
         case 101:
-            self.addARObjectNode(name: "Circle")
+            let node = ARObjectNode(modelName: "Circle", colorID: colorIndex % colors.count)
+            node.setupNode()
+            self.addARObjectNode(node: node)
+        case 102:
+            let node = ARObjectNode(modelName: "Text", descriptionText: "Hello there", colorID: colorIndex % colors.count)
+            node.setupNode()
+            self.addARObjectNode(node: node)
         default:
             print("Unknown annotation")
         }
+        colorIndex += 1
     }
-    
 }
