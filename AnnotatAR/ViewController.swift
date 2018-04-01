@@ -99,7 +99,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         self.addChildViewController(menuVC)
         self.view.insertSubview(menuVC.view, belowSubview: blockingBlurView)
-        menuVC.view.frame = CGRect(x: CGFloat(0), y: self.view.frame.height - MenuViewController.heightOfExpandButton, width: self.view.frame.width, height: MenuViewController.heightOfView)
+        print(self.view.frame)
+        menuVC.view.frame = CGRect(x: 0, y: self.view.frame.height - MenuViewController.heightOfExpandButton, width: self.view.frame.width, height: MenuViewController.heightOfView)
         menuVC.delegate = self
         
         self.addChildViewController(modelOptionsVC)

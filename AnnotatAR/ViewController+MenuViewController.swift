@@ -16,12 +16,12 @@ extension ViewController: MenuViewControllerDelegate{
         if state == .close{
             UIView.animate(withDuration: 1, animations: { [weak self] in
                 
-                self?.menuVC.view.frame = CGRect(x: CGFloat(0), y: (self?.view.frame.height)! - MenuViewController.heightOfExpandButton, width: (self?.view.frame.height)!, height: MenuViewController.heightOfView)
+                self?.menuVC.view.frame = CGRect(x: CGFloat(0), y: (self?.view.frame.height)! - MenuViewController.heightOfExpandButton, width: (self?.view.frame.width)!, height: MenuViewController.heightOfView)
                 
             })
         }else{
             UIView.animate(withDuration: 1, animations: { [weak self] in
-                self?.menuVC.view.frame = CGRect(x: CGFloat(0), y: (self?.view.frame.height)! - MenuViewController.heightOfView, width: (self?.view.frame.height)!, height: MenuViewController.heightOfView)
+                self?.menuVC.view.frame = CGRect(x: CGFloat(0), y: (self?.view.frame.height)! - MenuViewController.heightOfView, width: (self?.view.frame.width)!, height: MenuViewController.heightOfView)
             })
         }
     }
