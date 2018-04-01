@@ -25,6 +25,10 @@ extension ViewController: MenuViewControllerDelegate{
             })
         }
     }
+    
+    func didSelectObject(named name: String) {
+        self.addTestObject(name: name)
+    }
 }
 
 
