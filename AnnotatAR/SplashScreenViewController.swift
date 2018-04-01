@@ -13,10 +13,12 @@ class SplashScreenViewController: UIViewController {
     
     @IBOutlet weak var mainLogo: UIImageView!
     @IBOutlet weak var definitionLabel: UILabel!
+    @IBOutlet weak var hostButton: UIButton!
+    @IBOutlet weak var clientButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        hostButton.layer.borderColor = UIColor.white.cgColor
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,6 +32,33 @@ class SplashScreenViewController: UIViewController {
             })
         }
         
+        self.delay(2.0) {
+            UIView.animate(withDuration: 1.0, animations: {
+                self.clientButton.alpha = 1.0
+            })
+        }
+        self.delay(3.0) {
+            UIView.animate(withDuration: 1.0, animations: {
+                self.hostButton.alpha = 1.0
+            })
+        }
     }
     
+    @IBAction func clientClicked(_ sender: Any) {
+        DataManager.shared().userType = .Client
+        DataManager.shared().state = .FindCenter
+        DataManager.shared().connectivity.startBrowsing()
+        
+        NotificationCenter.default.post(name: hideHostClientNotificationName, object: self)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func hostClicked(_ sender: Any) {
+        DataManager.shared().userType = .Host
+        DataManager.shared().state = .FindCenter
+        DataManager.shared().connectivity.startAdvertising()
+        
+        NotificationCenter.default.post(name: hideHostClientNotificationName, object: self)
+        self.dismiss(animated: true, completion: nil)
+    }
 }

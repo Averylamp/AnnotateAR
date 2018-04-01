@@ -549,7 +549,7 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hS-si-B6x">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hS-si-B6x">
                                 <rect key="frame" x="62.5" y="493.5" width="250" height="50"/>
                                 <color key="backgroundColor" red="0.396078431372549" green="0.062745098039215685" blue="0.062745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -565,9 +565,12 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="clientClicked:" destination="2Yi-hD-Ovc" eventType="touchUpInside" id="AEH-av-ftO"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hed-Zz-Ccg">
-                                <rect key="frame" x="62" y="553.5" width="250" height="50"/>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hed-Zz-Ccg">
+                                <rect key="frame" x="62" y="563.5" width="250" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GTJ-o2-NlG"/>
                                     <constraint firstAttribute="width" constant="250" id="S6H-VB-hoj"/>
@@ -576,6 +579,17 @@
                                 <state key="normal" title="CONTINUE AS TEACHER">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="hostClicked:" destination="2Yi-hD-Ovc" eventType="touchUpInside" id="hFI-El-62q"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.83529411760000005" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -584,7 +598,7 @@
                             <constraint firstItem="Hed-Zz-Ccg" firstAttribute="centerX" secondItem="8hS-si-B6x" secondAttribute="centerX" id="14N-9M-E9o"/>
                             <constraint firstItem="ieK-eL-qPn" firstAttribute="centerX" secondItem="3n9-Wm-Zbp" secondAttribute="centerX" id="6LB-ZI-tXx"/>
                             <constraint firstItem="8hS-si-B6x" firstAttribute="top" secondItem="5X7-Gc-DDk" secondAttribute="bottom" constant="50" id="9HV-16-vtc"/>
-                            <constraint firstItem="Hed-Zz-Ccg" firstAttribute="top" secondItem="8hS-si-B6x" secondAttribute="bottom" constant="10" id="Kex-Q7-WTn"/>
+                            <constraint firstItem="Hed-Zz-Ccg" firstAttribute="top" secondItem="8hS-si-B6x" secondAttribute="bottom" constant="20" id="Kex-Q7-WTn"/>
                             <constraint firstItem="5X7-Gc-DDk" firstAttribute="centerY" secondItem="3n9-Wm-Zbp" secondAttribute="centerY" constant="50" id="Yb7-af-63C"/>
                             <constraint firstItem="8hS-si-B6x" firstAttribute="centerX" secondItem="3n9-Wm-Zbp" secondAttribute="centerX" id="acv-PN-Gzy"/>
                             <constraint firstItem="ieK-eL-qPn" firstAttribute="centerY" secondItem="3n9-Wm-Zbp" secondAttribute="centerY" constant="-30" id="eNU-JE-LyF"/>
@@ -592,7 +606,9 @@
                         <viewLayoutGuide key="safeArea" id="3n9-Wm-Zbp"/>
                     </view>
                     <connections>
+                        <outlet property="clientButton" destination="8hS-si-B6x" id="5kX-GN-OHH"/>
                         <outlet property="definitionLabel" destination="5X7-Gc-DDk" id="GPI-se-mB9"/>
+                        <outlet property="hostButton" destination="Hed-Zz-Ccg" id="MAd-fX-Crb"/>
                         <outlet property="mainLogo" destination="ieK-eL-qPn" id="mL4-hG-mCs"/>
                     </connections>
                 </viewController>
