@@ -207,10 +207,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func addRootNode(imageNode: SCNNode){
         if let root = DataManager.shared().rootNode{
+            print("Removing root node")
             root.childNodes.forEach{
                 $0.removeFromParentNode()
             }
         }
+        print("Adding root node")
         let pointNode = SCNNode()
         let pointGeometry = SCNSphere(radius: 0.01)
         let orangeMaterial = SCNMaterial()
@@ -221,6 +223,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         pointNode.transform = transform
         self.sceneView.scene.rootNode.addChildNode(pointNode)
         DataManager.shared().rootNode = pointNode
+        DataManager.shared().requestAllObjects()
     }
 
     var imageHighlightAction: SCNAction {
