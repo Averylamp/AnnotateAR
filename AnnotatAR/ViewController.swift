@@ -19,6 +19,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     let hostClientVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HostClientVC") as! HostClientSelectorViewController
     let promptVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PromptVC") as! PromptViewController
+    let modelOptionsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ModelOptionsVC") as! ModelOptionsPromptViewController
+    
+    let menuVC = MenuViewController()
+    
+    var firstOpen = true
     
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
@@ -56,7 +61,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         blockingBlurView.isUserInteractionEnabled = false
         self.view.addSubview(blockingBlurView)
         
+        let panelPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ViewController.handlePanGesture(_:)))
+        panelPanGestureRecognizer.delegate = self
+//        menuVC.view.addGestureRecognizer(panelPanGestureRecognizer)
+//        panelPanGestureRecognizer.isEnabled = false
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleSingleTap(gestureRecognizer:)))
+        tapGestureRecognizer.delegate = self
+        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+        
+        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(ViewController.handlePinch(gestureRecognizer:)))
+        pinchGestureRecognizer.delegate = self
+        self.sceneView.addGestureRecognizer(pinchGestureRecognizer)
+    
+        instantiatePopoverViewControllers()
+        
+    }
+    
+    func instantiatePopoverViewControllers(){
         self.addChildViewController(hostClientVC)
         self.view.addSubview(hostClientVC.view)
         hostClientVC.view.alpha = 0.0
@@ -69,15 +91,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         promptVC.view.isUserInteractionEnabled = false
         promptVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleSingleTap(gestureRecognizer:)))
-        tapGestureRecognizer.delegate = self
-        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+        self.addChildViewController(menuVC)
+        self.view.insertSubview(menuVC.view, belowSubview: blockingBlurView)
+        menuVC.view.frame = CGRect(x: CGFloat(0), y: self.view.frame.height - MenuViewController.heightOfExpandButton, width: self.view.frame.width, height: MenuViewController.heightOfView)
+        menuVC.delegate = self
         
+        self.addChildViewController(modelOptionsVC)
+        self.view.addSubview(modelOptionsVC.view)
+        modelOptionsVC.view.alpha = 0.0
+        modelOptionsVC.view.isUserInteractionEnabled = false
+        modelOptionsVC.view.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
 
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if firstOpen{
+            let splashScreenVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashVC")
+            self.present(splashScreenVC, animated: false)
+            firstOpen = false
+        }
 		
 		// Prevent the screen from being dimmed to avoid interuppting the AR experience.
 		UIApplication.shared.isIdleTimerDisabled = true
@@ -100,6 +137,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     /// Creates a new AR configuration to run on the `session`.
     /// - Tag: ARReferenceImage-Loading
 	func resetTracking() {
+        
+        if let root = DataManager.shared().rootNode{
+            root.removeFromParentNode()
+            DataManager.shared().rootNode = nil
+        }
         
         guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
             fatalError("Missing expected asset catalog resources.")
@@ -146,6 +188,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             // Add the plane visualization to the scene.
             node.addChildNode(planeNode)
+            
+            self.addRootNode(imageNode: node)
         }
 
         DispatchQueue.main.async {
@@ -153,6 +197,24 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             self.statusViewController.cancelAllScheduledMessages()
             self.statusViewController.showMessage("Detected image “\(imageName)”")
         }
+    }
+    
+    func addRootNode(imageNode: SCNNode){
+        if let root = DataManager.shared().rootNode{
+            root.childNodes.forEach{
+                $0.removeFromParentNode()
+            }
+        }
+        let pointNode = SCNNode()
+        let pointGeometry = SCNSphere(radius: 0.01)
+        let orangeMaterial = SCNMaterial()
+        orangeMaterial.diffuse.contents = UIColor.orange
+        pointGeometry.materials = [orangeMaterial]
+        pointNode.geometry = pointGeometry
+        let transform = self.sceneView.scene.rootNode.convertTransform(imageNode.transform, to: self.sceneView.scene.rootNode)
+        pointNode.transform = transform
+        self.sceneView.scene.rootNode.addChildNode(pointNode)
+        DataManager.shared().rootNode = pointNode
     }
 
     var imageHighlightAction: SCNAction {
@@ -168,8 +230,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         ])
     }
     
-    @IBAction func testButtonClicked(_ sender: Any) {
-        self.addTestObject(name: "ship")
+//    @IBAction func testButtonClicked(_ sender: Any) {
+//        self.addARObjectNode(name: "Man")
+//    }
+//    
+    
+    @IBAction func addAnnotation(_ sender: UIButton) {
+        switch sender.tag {
+        case 100:
+            self.addARObjectNode(name: "Pointer")
+        case 101:
+            self.addARObjectNode(name: "Circle")
+        default:
+            print("Unknown annotation")
+        }
     }
     
 }
