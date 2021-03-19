@@ -13,7 +13,7 @@ inflect==0.2.5
 ipaddress==1.0.19
 itsdangerous==0.24
 jaraco.itertools==2.2
-Jinja2==2.10
+Jinja2==2.11.3
 MarkupSafe==1.0
 more-itertools==4.1.0
 ordereddict==1.1
