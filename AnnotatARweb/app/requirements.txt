@@ -21,7 +21,7 @@ pathlib==1.0.1
 pipenv==11.9.0
 pycparser==2.18
 pyOpenSSL==17.5.0
-requests==2.18.4
+requests==2.20.0
 six==1.11.0
 urllib3==1.26.5
 virtualenv==15.1.0
