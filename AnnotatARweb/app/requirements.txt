@@ -26,6 +26,6 @@ six==1.11.0
 urllib3==1.26.5
 virtualenv==15.1.0
 virtualenv-clone==0.3.0
-Werkzeug==0.15.3
+Werkzeug==0.15.5
 wolframalpha==3.0.1
 xmltodict==0.11.0
